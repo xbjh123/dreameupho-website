@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DreamEupho 梦想悠风 — 通向未来的旋律♪</title>
+<meta name="description" content="DreamEupho 梦想悠风 — 《吹响吧！上低音号》同人衍生视觉小说官方宣传网站。通向未来的旋律♪">
+<link rel="icon" type="image/png" href="assets/img/logo/DreamEupho_LOGO_b.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 五线谱滚动进度条 -->
+<div class="progress" aria-hidden="true">
+  <div class="progress-line"></div>
+  <div class="progress-note">♪</div>
+</div>
+
+<!-- ================= 顶部导航「节目单谱架」 ================= -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="nav-logo"><img src="assets/img/logo/DreamEupho_LOGO_a.png" alt="DreamEupho"></span>
+    </a>
+    <div class="nav-links">
+      <a href="#intro" class="nav-link" data-i18n="navIntro">游戏介绍</a>
+      <a href="#story" class="nav-link" data-i18n="navStory">故事背景</a>
+      <a href="#characters" class="nav-link" data-i18n="navChars">人物介绍</a>
+      <a href="#credits" class="nav-link" data-i18n="navCredits">制作成员</a>
+      <a href="#news" class="nav-link" data-i18n="navNews">资讯更新</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="zh" aria-pressed="true">中</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="recruit.html" class="btn btn-primary nav-cta"><span data-i18n="navJoin">加入我们</span></a>
+      <button class="hamburger" id="hamburger" aria-label="打开菜单" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="h-note">♪</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= 移动端菜单「演奏会节目单」 ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-panel">
+    <div class="mm-header">
+      <span class="mm-brandimg"><img src="assets/img/logo/DreamEupho_LOGO_b.png" alt=""></span>
+      <div class="mm-headertext">
+        <span class="mm-prog">PROGRAM</span>
+        <span class="mm-sub" data-i18n="mmSub">节目单 · 通向未来的旋律</span>
+      </div>
+      <button class="mm-close" id="mmClose" aria-label="关闭菜单">
+        <span class="bar-tc thin"></span><span class="bar-tc thick"></span>
+      </button>
+    </div>
+    <nav class="mm-links">
+      <a href="#intro"><span class="mi">01</span><span class="mn" data-i18n="navIntro">游戏介绍</span><span class="ml"></span><span class="me">INTRODUCTION</span></a>
+      <a href="#story"><span class="mi">02</span><span class="mn" data-i18n="navStory">故事背景</span><span class="ml"></span><span class="me">STORY</span></a>
+      <a href="#characters"><span class="mi">03</span><span class="mn" data-i18n="navChars">人物介绍</span><span class="ml"></span><span class="me">CHARACTERS</span></a>
+      <a href="#credits"><span class="mi">04</span><span class="mn" data-i18n="navCredits">制作成员</span><span class="ml"></span><span class="me">CREDITS</span></a>
+      <a href="#news"><span class="mi">05</span><span class="mn" data-i18n="navNews">资讯更新</span><span class="ml"></span><span class="me">NEWS</span></a>
+    </nav>
+    <div class="mm-bottom">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="zh" aria-pressed="true">中</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="recruit.html" class="btn btn-primary mm-join"><span data-i18n="navJoin">加入我们</span></a>
+    </div>
+    <svg class="mm-cloud" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/>
+    </svg>
+  </div>
+</div>
+
+<main>
+
+  <!-- ================= Hero 首屏 ================= -->
+  <section class="hero" id="top">
+    <div class="hero-bgimg" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <span class="hero-note hn-1" aria-hidden="true">♪</span>
+    <span class="hero-note hn-2" aria-hidden="true">♫</span>
+    <span class="hero-note hn-3" aria-hidden="true">♪</span>
+    <span class="hero-note hn-4" aria-hidden="true">♪</span>
+    <span class="hero-note hn-5" aria-hidden="true">♫</span>
+
+    <div class="hero-content">
+      <img src="assets/img/logo/DreamEupho_LOGO_a.png" alt="DreamEupho 梦想悠风" class="hero-logo" width="280">
+      <h1 class="hero-title"><span data-i18n="heroTitle">通向未来的旋律</span><span class="gold-note">♪</span></h1>
+      <p class="hero-sub" data-i18n="heroSub">A MELODY TOWARD THE FUTURE</p>
+      <div class="hero-actions">
+        <a href="recruit.html" class="btn btn-white btn-lg" data-i18n="heroCta">加入制作组 →</a>
+        <a href="#intro" class="btn btn-ghost-white btn-lg" data-i18n="heroMore">了解游戏 ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hs-line"></span>
+      <span class="hs-note">♪</span>
+    </div>
+
+    <svg class="clouds-layer cl-back" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,110 L0,82 C220,44 480,104 840,84 C1120,68 1320,100 1440,74 L1440,110 Z" fill="#FFFFFF" opacity="0.5"/>
+    </svg>
+    <svg class="clouds-layer cl-front" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF" opacity="0.9"/>
+    </svg>
+  </section>
+
+  <!-- ================= MOVEMENT 01 游戏介绍 ================= -->
+  <section class="section mv-block" id="intro">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container-narrow reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">01</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <span class="score-mark mark-up" aria-hidden="true"><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span></span>
+          <div class="score-title-group">
+            <p class="score-tempo">ANDANTE · 行板</p>
+            <h2 class="score-title" data-i18n="secIntro">游戏介绍</h2>
+            <p class="score-en">GAME INTRODUCTION</p>
+            <p class="score-quote" data-i18n="introQuote">免费同人视觉小说 · 分支选项 · 三条恋爱路线</p>
+          </div>
+          <span class="score-end end-note" aria-hidden="true">♪</span>
+        </div>
+      </header>
+
+      <p class="lead" id="introShort"></p>
+      <ul class="intro-bullets" id="introBullets"></ul>
+      <div class="chip-row">
+        <span class="chip" data-i18n="chipVN">视觉小说</span>
+        <span class="chip" data-i18n="chipBand">吹奏部</span>
+        <span class="chip" data-i18n="chipFree">完全免费</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 02 故事背景 ================= -->
+  <section class="section section-alt mv-block" id="story">
+    <span class="baton" aria-hidden="true"></span>
+    <svg class="bg-cloud bg-c1" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/></svg>
+    <div class="container-narrow reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">02</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <div class="score-title-group">
+            <p class="score-tempo">ESPRESSIVO · 富有表情地</p>
+            <h2 class="score-title" data-i18n="secStory">故事背景</h2>
+            <p class="score-en">STORY</p>
+            <svg class="mark-hairpin" viewBox="0 0 120 16" aria-hidden="true">
+              <path d="M0 8 L60 1 L120 8" fill="none" stroke="rgba(30,111,186,0.3)" stroke-width="1.5"/>
+              <path d="M0 8 L60 15 L120 8" fill="none" stroke="rgba(30,111,186,0.3)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <svg class="score-end end-hairpin" viewBox="0 0 56 16" aria-hidden="true">
+            <path d="M56 8 L28 1 L0 8" fill="none" stroke="rgba(30,111,186,0.3)" stroke-width="1.5"/>
+            <path d="M56 8 L28 15 L0 8" fill="none" stroke="rgba(30,111,186,0.3)" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </header>
+      <div class="story-paras" id="storyParas"></div>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 03 人物介绍 ================= -->
+  <section class="section mv-block" id="characters">
+    <span class="baton" aria-hidden="true"></span>
+    <svg class="bg-cloud bg-c2" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/></svg>
+    <div class="container-wide reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">03</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <span class="score-mark mark-dots" aria-hidden="true"><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span></span>
+          <div class="score-title-group">
+            <p class="score-tempo">SOLI · 独奏群像</p>
+            <h2 class="score-title" data-i18n="secChars">人物介绍</h2>
+            <p class="score-en">CHARACTERS</p>
+          </div>
+          <span class="score-end end-stairs" aria-hidden="true"><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span></span>
+        </div>
+      </header>
+
+      <h2 class="sub-head" data-i18n="mainChars">主要角色</h2>
+      <div class="char-main-grid" id="charMain"></div>
+
+      <div class="staff-divider" aria-hidden="true">
+        <span class="sd-line"></span>
+        <span class="sd-note">♪</span>
+        <span class="sd-line"></span>
+      </div>
+
+      <h2 class="sub-head" data-i18n="supportChars">配角阵容</h2>
+      <div class="char-support-grid" id="charSupport"></div>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 04 制作成员 ================= -->
+  <section class="section section-alt mv-block" id="credits">
+    <span class="baton" aria-hidden="true"></span>
+    <svg class="bg-cloud bg-c3" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/></svg>
+    <div class="container reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">04</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <span class="score-mark mark-chord" aria-hidden="true"><span class="mk-n">●</span><span class="mk-n">●</span><span class="mk-n">●</span></span>
+          <div class="score-title-group">
+            <p class="score-tempo">TUTTI · 全奏</p>
+            <h2 class="score-title" data-i18n="secCredits">制作成员</h2>
+            <p class="score-en">CREDITS</p>
+          </div>
+          <span class="score-end end-chord" aria-hidden="true"><span class="mk-n">●</span><span class="mk-n">●</span><span class="mk-n">●</span></span>
+        </div>
+      </header>
+
+      <div class="core-grid" id="coreTeam"></div>
+      <div class="credit-groups" id="creditGroups"></div>
+
+      <div class="thanks-wrap">
+        <div class="staff thanks-staff" aria-hidden="true"></div>
+        <div class="thanks-title">SPECIAL THANKS</div>
+        <p class="thanks-names" id="thanksNames"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 05 资讯更新 ================= -->
+  <section class="section mv-block" id="news">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container-narrow reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">05</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <div class="score-title-group">
+            <p class="score-tempo">MODERATO · 中板</p>
+            <h2 class="score-title" data-i18n="secNews">资讯更新</h2>
+            <p class="score-en">LATEST NEWS</p>
+          </div>
+        </div>
+      </header>
+      <div class="news-list" id="newsList"></div>
+      <div class="news-more" id="newsMore" style="display:none;">
+        <a href="#news" class="link-btn"><span data-i18n="newsAll">查看全部</span><span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 06 重要声明 ================= -->
+  <section class="section notice-section mv-block" id="notice">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">06</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <svg class="mark-fermata" viewBox="0 0 28 30" aria-hidden="true">
+            <path d="M2 20 Q14 2 26 20" fill="none" stroke="rgba(30,111,186,0.35)" stroke-width="1.5"/>
+            <circle cx="14" cy="25" r="3" fill="rgba(30,111,186,0.35)"/>
+          </svg>
+          <div class="score-title-group">
+            <p class="score-tempo">FERMATA · 延长记号</p>
+            <h2 class="score-title" data-i18n="secNotice">重要声明</h2>
+            <p class="score-en">IMPORTANT NOTICE</p>
+          </div>
+          <svg class="score-end end-fermata" viewBox="0 0 22 26" aria-hidden="true">
+            <path d="M1 17 Q11 1 21 17" fill="none" stroke="rgba(30,111,186,0.35)" stroke-width="1.5"/>
+            <circle cx="11" cy="21" r="2.5" fill="rgba(30,111,186,0.35)"/>
+          </svg>
+        </div>
+      </header>
+      <div class="notice-cards" id="noticeCards"></div>
+    </div>
+  </section>
+
+  <!-- ================= 招募 CTA ================= -->
+  <section class="cta mv-block" id="recruit">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="cta-mask" aria-hidden="true"></div>
+    <span class="cta-note cn-1" aria-hidden="true">♪</span>
+    <span class="cta-note cn-2" aria-hidden="true">♫</span>
+    <div class="cta-content">
+      <p class="cta-line"><span data-i18n="ctaLine">一起吹响通往未来的旋律吧</span><span class="gold-note">♪</span></p>
+      <p class="cta-sub" data-i18n="ctaSub">持续招募中 · 剧本 / 美术 / 配音 / 音乐 / 程序 / 运营 / 翻译</p>
+      <a href="recruit.html" class="btn btn-white btn-lg" data-i18n="ctaBtn">查看岗位详情 →</a>
+    </div>
+    <div class="cta-meta" data-i18n="ctaGroup">玩家群 / 招募群：1029729353 / 1022882012</div>
+  </section>
+
+</main>
+
+<!-- ================= 页脚 ================= -->
+<svg class="foot-cloud" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="gNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F3D6B"/><stop offset="1" stop-color="#0A2C4F"/>
+    </linearGradient>
+  </defs>
+  <path d="M0,72 L0,40 C200,10 420,58 760,44 C1080,30 1260,60 1440,36 L1440,72 Z" fill="url(#gNight)"/>
+</svg>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="foot-brand">
+        <img src="assets/img/logo/DreamEupho_LOGO_a.png" alt="DreamEupho 梦想悠风" class="foot-logo">
+        <p class="foot-tagline" data-i18n="footTagline">A MELODY TOWARD THE FUTURE</p>
+      </div>
+      <div class="foot-social">
+        <a href="https://space.bilibili.com/1309393596" target="_blank" rel="noopener">bilibili</a>
+        <a href="https://weibo.com" target="_blank" rel="noopener">微博</a>
+        <a href="https://www.xiaohongshu.com" target="_blank" rel="noopener">小红书</a>
+        <a href="mailto:dreameupho@163.com">Email</a>
+        <a href="https://discord.gg/eeGYKxgxV" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+
+    <hr class="foot-divider">
+
+    <div class="foot-notice">
+      <button class="foot-notice-toggle"><span data-i18n="footNotice">重要声明</span>&nbsp;<span class="caret" data-i18n="footExpand">展开 ▾</span></button>
+      <div class="foot-notice-body" id="footNoticeBody"></div>
+      <a href="#notice" class="foot-notice-link" data-i18n="footFull">查看完整声明 ↑</a>
+    </div>
+
+    <div class="foot-bottom">
+      <span><span data-i18n="footCopyright">© 2026 DreamEupho 制作组</span> <span class="gold-note">♪</span></span>
+      <span data-i18n="footDoujin">同人非官方作品，与原作版权方无关</span>
+      <span class="finale">FINALE ♪</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

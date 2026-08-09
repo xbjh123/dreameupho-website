@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加入我们 — DreamEupho 梦想悠风</title>
+<meta name="description" content="DreamEupho 梦想悠风 项目成员招募 — 剧本 / 美术 / 配音 / 音乐 / 程序 / 运营 / 翻译 七大方向。">
+<link rel="icon" type="image/png" href="assets/img/logo/DreamEupho_LOGO_b.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-recr>
+
+<!-- 五线谱滚动进度条 -->
+<div class="progress" aria-hidden="true">
+  <div class="progress-line"></div>
+  <div class="progress-note">♪</div>
+</div>
+
+<!-- ================= 顶部导航「节目单谱架」 ================= -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="nav-logo"><img src="assets/img/logo/DreamEupho_LOGO_a.png" alt="DreamEupho"></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#intro" class="nav-link" data-ri18n="navIntro">游戏介绍</a>
+      <a href="index.html#story" class="nav-link" data-ri18n="navStory">故事背景</a>
+      <a href="index.html#characters" class="nav-link" data-ri18n="navChars">人物介绍</a>
+      <a href="index.html#credits" class="nav-link" data-ri18n="navCredits">制作成员</a>
+      <a href="index.html#news" class="nav-link" data-ri18n="navNews">资讯更新</a>
+    </div>
+    <div class="nav-right">
+      <div class="mlang" id="mlangNav">
+        <button class="mlang-btn" type="button" aria-expanded="false" aria-haspopup="listbox">
+          <span class="mlang-current">简体中文</span><span class="mlang-caret">♪</span>
+        </button>
+        <div class="mlang-panel" role="listbox" aria-label="Language"></div>
+      </div>
+      <a href="index.html" class="btn btn-primary nav-cta"><span data-ri18n="backHome">返回首页</span></a>
+      <button class="hamburger" id="hamburger" aria-label="打开菜单" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="h-note">♪</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= 移动端菜单「演奏会节目单」 ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-panel">
+    <div class="mm-header">
+      <span class="mm-brandimg"><img src="assets/img/logo/DreamEupho_LOGO_b.png" alt=""></span>
+      <div class="mm-headertext">
+        <span class="mm-prog">PROGRAM</span>
+        <span class="mm-sub" data-i18n="mmSub">节目单 · 通向未来的旋律</span>
+      </div>
+      <button class="mm-close" id="mmClose" aria-label="关闭菜单">
+        <span class="bar-tc thin"></span><span class="bar-tc thick"></span>
+      </button>
+    </div>
+    <nav class="mm-links">
+      <a href="index.html#intro"><span class="mi">01</span><span class="mn" data-ri18n="navIntro">游戏介绍</span><span class="ml"></span><span class="me">INTRODUCTION</span></a>
+      <a href="index.html#story"><span class="mi">02</span><span class="mn" data-ri18n="navStory">故事背景</span><span class="ml"></span><span class="me">STORY</span></a>
+      <a href="index.html#characters"><span class="mi">03</span><span class="mn" data-ri18n="navChars">人物介绍</span><span class="ml"></span><span class="me">CHARACTERS</span></a>
+      <a href="index.html#credits"><span class="mi">04</span><span class="mn" data-ri18n="navCredits">制作成员</span><span class="ml"></span><span class="me">CREDITS</span></a>
+      <a href="index.html#news"><span class="mi">05</span><span class="mn" data-ri18n="navNews">资讯更新</span><span class="ml"></span><span class="me">NEWS</span></a>
+    </nav>
+    <div class="mm-bottom">
+      <div class="mlang" id="mlangMenu">
+        <button class="mlang-btn" type="button" aria-expanded="false" aria-haspopup="listbox">
+          <span class="mlang-current">简体中文</span><span class="mlang-caret">♪</span>
+        </button>
+        <div class="mlang-panel" role="listbox" aria-label="Language"></div>
+      </div>
+      <a href="index.html" class="btn btn-primary mm-join"><span data-ri18n="backHome">返回首页</span></a>
+    </div>
+    <svg class="mm-cloud" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/>
+    </svg>
+  </div>
+</div>
+
+<main>
+
+  <!-- ================= ENCORE 页头 ================= -->
+  <section class="encore-head" id="top">
+    <div class="hero-bgimg" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <span class="hero-note hn-1" aria-hidden="true">♪</span>
+    <span class="hero-note hn-2" aria-hidden="true">♫</span>
+
+    <div class="encore-content">
+      <span class="encore-num">EN</span>
+      <h1 class="encore-title" data-ri18n="headerEyebrow">加入我们</h1>
+      <p class="encore-en" data-ri18n="headerSub">JOIN US</p>
+      <p class="encore-sub" data-i18n="encoreSub">出于对作品纯粹的热爱，我们正在寻找志同道合的创作者</p>
+    </div>
+  </section>
+
+  <!-- ================= 招募说明 ================= -->
+  <section class="section mv-block" id="about">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container-narrow reveal">
+      <h2 class="sec-title" id="aboutTitle">DreamEupho 是什么</h2>
+      <div class="what-cards" id="whatCards"></div>
+
+      <h2 class="sec-title" id="joinTitle">加入 DreamEupho</h2>
+      <p class="sec-desc" id="joinText">出于对作品纯粹的热爱，我们正在寻找志同道合的创作者加入我们的开发管线。本文档长期更新，具体招募岗位会随项目进度动态调整。如果你愿意用技能或热爱参与这项企划，欢迎随时提交申请！</p>
+      <div class="tip-bar">
+        <span class="tip-icon">♩</span>
+        <span data-i18n="rTip">以下岗位要求主要用于帮助应聘者了解工作内容，并非必须全部满足。如暂时缺少完整项目经验，但具备相关基础、作品或持续参与项目的意愿，也欢迎报名沟通。部分岗位根据个人能力拆分工作，不要求一人承担全部内容。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 联系方式 ================= -->
+  <section class="section section-alt mv-block" id="contact">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container reveal">
+      <h2 class="sec-title" id="contactTitle">联系方式</h2>
+      <div class="contact-grid" id="contactGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= 岗位列表 ================= -->
+  <section class="section mv-block" id="jobs">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container reveal">
+      <h2 class="sec-title" id="jobsTitle">项目成员招募岗位</h2>
+      <p class="sec-desc" id="jobsDesc">以下岗位要求主要用于帮助应聘者了解工作内容，并非必须全部满足。</p>
+      <div class="job-list" id="jobList"></div>
+    </div>
+  </section>
+
+  <!-- ================= 底部 CTA ================= -->
+  <section class="section section-alt cta-bottom mv-block" id="join">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container reveal">
+      <h2 data-ri18n="ctaBottomTitle">准备好一起吹响了吗？</h2>
+      <a href="mailto:dreameupho@163.com" class="btn btn-primary btn-lg" data-ri18n="ctaBottomBtn">通过 QQ 联系我们</a>
+      <p class="cta-sub" style="margin-top:16px;color:var(--slate);">QQ 群 1022882012 ｜ 玩家群 1029729353 ｜ Email dreameupho@163.com</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= 页脚 ================= -->
+<svg class="foot-cloud" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="gNightR" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F3D6B"/><stop offset="1" stop-color="#0A2C4F"/>
+    </linearGradient>
+  </defs>
+  <path d="M0,72 L0,40 C200,10 420,58 760,44 C1080,30 1260,60 1440,36 L1440,72 Z" fill="url(#gNightR)"/>
+</svg>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="foot-brand">
+        <img src="assets/img/logo/DreamEupho_LOGO_a.png" alt="DreamEupho 梦想悠风" class="foot-logo">
+        <p class="foot-tagline" data-i18n="footTagline">A MELODY TOWARD THE FUTURE</p>
+      </div>
+      <div class="foot-social">
+        <a href="https://space.bilibili.com/1309393596" target="_blank" rel="noopener">bilibili</a>
+        <a href="https://weibo.com" target="_blank" rel="noopener">微博</a>
+        <a href="https://www.xiaohongshu.com" target="_blank" rel="noopener">小红书</a>
+        <a href="mailto:dreameupho@163.com">Email</a>
+        <a href="https://discord.gg/eeGYKxgxV" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+
+    <hr class="foot-divider">
+
+    <div class="foot-notice">
+      <button class="foot-notice-toggle"><span data-i18n="footNotice">重要声明</span>&nbsp;<span class="caret" data-i18n="footExpand">展开 ▾</span></button>
+      <div class="foot-notice-body" id="footNoticeBody"></div>
+      <a href="index.html#notice" class="foot-notice-link" data-i18n="footFull">查看完整声明 ↑</a>
+    </div>
+
+    <div class="foot-bottom">
+      <span><span id="footCopyright">© 2026 DreamEupho 制作组</span> <span class="gold-note">♪</span></span>
+      <span data-ri18n="footerLine1" id="footDoujin">同人非官方作品，与原作版权方无关</span>
+      <span class="finale">FINALE ♪</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+<script src="js/recruit-i18n.js?v=2"></script>
+</body>
+</html>

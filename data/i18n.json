@@ -1,0 +1,85 @@
+{
+  "intro": {
+    "short": {
+      "zh": "一部关于久美子三年级生活的免费同人视觉小说，包含分支选项与三条恋爱路线。",
+      "en": "A free fan-made visual novel about Kumiko's third year, featuring branching choices and three romance routes."
+    },
+    "bullets": [
+      {
+        "zh": "非官方 · 完全免费：这是一部非官方的同人视觉小说。游戏是——并且永远是——完全免费的。",
+        "en": "Unofficial & Completely Free: This is an unofficial fan-made visual novel. The game is—and always will be—completely free."
+      },
+      {
+        "zh": "不使用官方素材：出于对原作版权方的尊重，本项目不直接使用任何官方美术、音乐或音频素材。全部游戏素材均为独立创作或合法授权的第三方资源。若无意中侵犯了您的权利，请联系我们以便修正。",
+        "en": "No Official Assets: Out of respect for the original copyright holders, this project makes no direct use of any official artwork, music, or audio assets. All game assets are either independently created or legally licensed third-party resources. If we have inadvertently infringed upon your rights, please contact us so we can make corrections."
+      },
+      {
+        "zh": "语言与音频：中文、英语和日语以外的语言文本借助机器翻译工具制作，可能存在语义偏差——尤其是管乐术语与角色语气方面。此外，本游戏仅包含中文配音。由于制作预算限制，基础界面仅提供英语与简中版本，希望这不会影响您的剧情体验。",
+        "en": "On Languages & Audio: Text in languages other than Chinese, English and Japanese was produced with the assistance of machine translation tools, so there may be some semantic drift—particularly regarding wind band terminology and individual characters' voices. In addition, this game features Chinese voice acting only. Due to production budget constraints, the base UI is only available in English and schinese. We sincerely hope this does not detract from your experience of the story."
+      }
+    ]
+  },
+  "story": {
+    "paragraphs": [
+      {
+        "zh": "又一个春天降临北宇治高中，上低音号手黄前久美子正式接过了北宇治吹奏乐部部长一职。",
+        "en": "Another spring has arrived at Kitauji High School, and euphonium player Kumiko Oumae officially takes up the baton as president of the Kitauji Concert Band."
+      },
+      {
+        "zh": "这一年，是她与伙伴们最后一次冲击全国大赛金奖的机会。",
+        "en": "This year marks her—and her friends'—final chance to pursue the Gold Prize at the National Wind Band Contest."
+      },
+      {
+        "zh": "在那之前，Sunrise 音乐节的行进演出，不过是一道开胃小菜。",
+        "en": "Before that, the marching show at the Sunrise Festival looks like nothing more than a light appetizer."
+      },
+      {
+        "zh": "然而，随着新学年开始，吹奏部的琴房里迎来的，不仅是永远活力满格的新生，还有一位手执上低音号的转校生——她的到来，即将击碎这份平淡的日常。",
+        "en": "Yet as the new school year begins, the band room welcomes not only underclassmen whose energy is forever dialed to maximum, but also a transfer student, her own euphonium in hand—one whose arrival is about to shatter the humdrum everyday."
+      },
+      {
+        "zh": "随着她的到来，那熟悉的裂痕再度在社团中蔓延开来。",
+        "en": "With her coming, an all-too-familiar rift begins to creep through the club once more."
+      },
+      {
+        "zh": "但这一次，久美子嗅到了不一样的气息。裂痕之下翻涌的，不仅是胜负之争，更是一场足以摧毁多年信念积累的危机。",
+        "en": "But this time, Kumiko senses something different. What churns beneath that rift is not merely a rivalry over winning or losing, but also a crisis grave enough to undo everything that years of faith have built."
+      },
+      {
+        "zh": "她会朝着众人仰望的梦想继续前进吗？会半途而废吗？",
+        "en": "Will she press on toward the dream everyone looks up to? Will she stop halfway?"
+      },
+      {
+        "zh": "又或者……她会亲手将自己逐出那片曾经深爱的舞台？",
+        "en": "Or… will she cast herself out from the stage she once loved so dearly?"
+      },
+      {
+        "zh": "一切，都取决于久美子即将做出的选择。",
+        "en": "Everything hinges on the choice Kumiko is about to make."
+      }
+    ]
+  },
+  "notice": {
+    "title": {
+      "zh": "重要声明",
+      "en": "Important Notice"
+    },
+    "items": [
+      {
+        "icon": "♩",
+        "zh": "非官方 · 完全免费：这是一部非官方的同人视觉小说。游戏是——并且永远是——完全免费的。",
+        "en": "Unofficial & Completely Free: This is an unofficial fan-made visual novel. The game is—and always will be—completely free."
+      },
+      {
+        "icon": "♫",
+        "zh": "不使用官方素材：本项目不直接使用任何官方美术、音乐或音频素材。全部游戏素材均为独立创作或合法授权的第三方资源。若无意中侵犯了您的权利，请联系我们以便修正。",
+        "en": "No Official Assets: This project makes no direct use of any official artwork, music, or audio assets. All game assets are either independently created or legally licensed third-party resources. If we have inadvertently infringed upon your rights, please contact us so we can make corrections."
+      },
+      {
+        "icon": "♪",
+        "zh": "语言与音频：中英日以外的语言文本借助机器翻译制作，可能存在语义偏差。本游戏仅包含中文配音；基础界面仅提供英语与简中版本。",
+        "en": "On Languages & Audio: Text in languages other than Chinese, English and Japanese was produced with the assistance of machine translation tools. This game features Chinese voice acting only; the base UI is available in English and schinese."
+      }
+    ]
+  }
+}
