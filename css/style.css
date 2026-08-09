@@ -1203,11 +1203,11 @@ body.menu-locked { overflow: hidden; }
 .notice-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
 .notice-card p { font-size: 14px; line-height: 1.8; color: var(--slate); }
 
-/* ---------- 18. 招募 CTA（保留 v2 浅色浮起面板） ---------- */
+/* ---------- 18. 招募 CTA（深蓝渐变底 + 浅色浮起面板，无背景素材图） ---------- */
 .cta {
   position: relative;
   overflow: hidden;
-  background: url("../assets/img/hero/hero-recruit.jpg") center / cover no-repeat;
+  background: linear-gradient(180deg, #0F3D6B 0%, #0A2C4F 100%);
   padding: 96px 0;
 }
 /* 深蓝底白色 6% 五线谱纹理 */
@@ -1219,15 +1219,11 @@ body.menu-locked { overflow: hidden; }
   background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.06) 0 1px, transparent 1px 12px);
   pointer-events: none;
 }
-.cta-mask {
-  position: absolute; inset: 0;
-  background: rgba(15,61,107,0.55);
-}
-/* CTA 漂浮音符 */
+/* CTA 漂浮音符（深蓝底上调亮可见） */
 .cta-note {
   position: absolute;
   z-index: 2;
-  color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.3);
   font-size: 18px;
   line-height: 1;
   pointer-events: none;
