@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DreamEupho 管理后台</title>
+<style>
+/* ============================================================
+   DreamEupho 管理后台 — 独立页面（贴合站点设计语言，纯手写）
+   ============================================================ */
+:root {
+  --blue: #1E6FBA;
+  --blue-deep: #0F3D6B;
+  --gold: #F2B33D;
+  --ink: #1B2A41;
+  --slate: #5A6B85;
+  --bg: #F5F9FD;
+  --card: #FFFFFF;
+  --border: rgba(30,111,186,0.14);
+  --border-strong: rgba(30,111,186,0.45);
+  --tag-bg: #E8F2FC;
+  --hover: rgba(232,242,252,0.6);
+  --success: #1E8E50;
+  --error: #C0392B;
+  --shadow: 0 4px 24px rgba(30,111,186,0.08);
+}
+[data-theme="dark"] {
+  --blue: #6FAFEA;
+  --blue-deep: #0F3D6B;
+  --ink: #E6EEF8;
+  --slate: #93A5C0;
+  --bg: #0B1526;
+  --card: #132238;
+  --border: rgba(74,144,217,0.35);
+  --border-strong: rgba(74,144,217,0.65);
+  --tag-bg: rgba(74,144,217,0.15);
+  --hover: rgba(74,144,217,0.18);
+  --success: #58C77D;
+  --error: #F08080;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+.adm-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(180deg, #0F3D6B, #0A2C4F);
+  color: #FFFFFF;
+  padding: 14px 26px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.adm-logo { height: 34px; width: auto; }
+.adm-header h1 { font-size: 18px; font-weight: 700; flex: 1; letter-spacing: 0.04em; }
+.adm-btn-ghost {
+  border: 1px solid rgba(255,255,255,0.45);
+  color: #FFFFFF;
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.adm-btn-ghost:hover { background: rgba(255,255,255,0.15); }
+.adm-main { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+.adm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+@media (max-width: 860px) { .adm-grid { grid-template-columns: 1fr; } }
+.adm-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+.adm-card h2 { font-size: 17px; margin-bottom: 4px; }
+.adm-sub { font-size: 13px; color: var(--slate); margin-bottom: 16px; }
+.adm-login-wrap { max-width: 400px; margin: 10vh auto 0; padding: 0 20px; }
+.adm-login-wrap .adm-card { text-align: center; }
+.adm-label { display: block; font-size: 13px; font-weight: 700; margin: 14px 0 6px; text-align: left; }
+input.adm-input, textarea.adm-input {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input.adm-input:focus, textarea.adm-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30,111,186,0.18);
+}
+[data-theme="dark"] input.adm-input:focus, [data-theme="dark"] textarea.adm-input:focus {
+  box-shadow: 0 0 0 3px rgba(74,144,217,0.25);
+}
+textarea.adm-input { resize: vertical; line-height: 1.6; }
+.adm-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: var(--blue);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+.adm-btn:hover { background: var(--blue-deep); }
+.adm-btn.full { width: 100%; margin-top: 18px; }
+.adm-btn:disabled { opacity: 0.6; cursor: wait; }
+.adm-msg { min-height: 20px; font-size: 13px; margin-top: 10px; }
+.adm-msg.ok { color: var(--success); }
+.adm-msg.err { color: var(--error); }
+
+/* 资讯列表 */
+.adm-list-title { font-size: 15px; font-weight: 700; margin: 26px 0 6px; }
+.adm-news-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.adm-news-item:last-child { border-bottom: none; }
+.adm-news-t { flex: 1; min-width: 0; }
+.adm-news-title { display: block; font-size: 14px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.adm-news-meta { font-size: 12px; color: var(--slate); margin-top: 2px; }
+.adm-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--tag-bg);
+  color: var(--blue);
+  flex: none;
+  white-space: nowrap;
+}
+.adm-del {
+  flex: none;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--error);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.adm-del:hover { background: rgba(192,57,43,0.08); }
+.adm-del:disabled { opacity: 0.5; cursor: wait; }
+.adm-empty { font-size: 13px; color: var(--slate); padding: 14px 0; }
+
+/* 愿望单 */
+.adm-stat { font-size: 14px; margin: 6px 0 14px; }
+.adm-stat b { color: var(--blue); font-size: 24px; margin-left: 6px; }
+.adm-wl { max-height: 460px; overflow: auto; margin-top: 16px; }
+.adm-wl-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  padding: 9px 2px;
+  border-bottom: 1px dashed var(--border);
+}
+.adm-wl-row:last-child { border-bottom: none; }
+.adm-wl-email { font-family: "Consolas", "Courier New", monospace; color: var(--ink); word-break: break-all; }
+.adm-wl-time { color: var(--slate); flex: none; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<header class="adm-header">
+  <img class="adm-logo" src="assets/img/logo/DreamEupho_LOGO_a.png" alt="DreamEupho">
+  <h1>DreamEupho 管理后台</h1>
+  <button class="adm-btn-ghost" id="admTheme" type="button" title="切换主题">☀ / ☾</button>
+  <button class="adm-btn-ghost" id="admLogout" type="button" hidden>退出登录</button>
+</header>
+
+<!-- ============ 登录 ============ -->
+<section class="adm-login-wrap" id="loginView">
+  <div class="adm-card">
+    <h2>管理登录</h2>
+    <p class="adm-sub">请输入管理令牌（Token）以访问管理后台</p>
+    <form id="loginForm" novalidate>
+      <label class="adm-label" for="tokenInput">Admin Token</label>
+      <input class="adm-input" id="tokenInput" type="password" autocomplete="off" placeholder="••••••••">
+      <button class="adm-btn full" type="submit" id="loginBtn">登 录</button>
+      <p class="adm-msg" id="loginMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ 管理面板 ============ -->
+<section class="adm-main" id="panelView" hidden>
+  <div class="adm-grid">
+
+    <div class="adm-card">
+      <h2>资讯管理</h2>
+      <p class="adm-sub">发布 / 管理网站资讯，正文支持 Markdown</p>
+      <form id="newsForm" novalidate>
+        <label class="adm-label" for="newsTitle">标题</label>
+        <input class="adm-input" id="newsTitle" type="text" placeholder="资讯标题">
+        <label class="adm-label" for="newsDate">日期</label>
+        <input class="adm-input" id="newsDate" type="date">
+        <label class="adm-label" for="newsTag">标签</label>
+        <input class="adm-input" id="newsTag" type="text" placeholder="公告 / 招募 / 开发 …">
+        <label class="adm-label" for="newsContent">内容（Markdown）</label>
+        <textarea class="adm-input" id="newsContent" rows="8" placeholder="支持 **粗体**、*斜体*、# 标题、- 列表、[链接](url)、`行内代码`"></textarea>
+        <button class="adm-btn full" type="submit" id="publishBtn">发 布</button>
+        <p class="adm-msg" id="newsMsg" role="status"></p>
+      </form>
+      <div class="adm-list-title">已有资讯</div>
+      <div id="newsList"></div>
+    </div>
+
+    <div class="adm-card">
+      <h2>愿望单</h2>
+      <p class="adm-sub">已订阅「发售通知」的用户</p>
+      <p class="adm-stat">订阅总数<b id="wlCount">0</b></p>
+      <button class="adm-btn" id="copyEmailsBtn" type="button">复制全部邮箱</button>
+      <span class="adm-msg" id="wlMsg" style="display:inline-block; margin-left:10px;"></span>
+      <div class="adm-wl" id="wlList"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  /* API 基址：生产同源留空 ''（/api 直接可用，如 temp.dreameupho.com）。
+     本地开发可临时改为 'http://localhost:8090' */
+  var API_BASE = "";
+
+  var token = "";
+  try { token = sessionStorage.getItem("de_admin_token") || ""; } catch (e) {}
+
+  /* ---------- 主题（跟随系统 + 手动切换，与主站一致） ---------- */
+  var themeBtn = document.getElementById("admTheme");
+  function applyTheme() {
+    var saved = null;
+    try { saved = localStorage.getItem("de_admin_theme"); } catch (e) {}
+    var dark = saved ? saved === "dark"
+      : !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  }
+  themeBtn.addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("de_admin_theme", next); } catch (e) {}
+  });
+  applyTheme();
+
+  function $(id) { return document.getElementById(id); }
+  var loginView = $("loginView"), panelView = $("panelView");
+  var loginMsg = $("loginMsg"), newsMsg = $("newsMsg"), wlMsg = $("wlMsg");
+
+  function setMsg(el, text, type) {
+    el.textContent = text || "";
+    el.className = "adm-msg" + (type ? " " + type : "");
+  }
+
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ "Content-Type": "application/json" }, opts.headers || {});
+    if (token) opts.headers["Authorization"] = "Bearer " + token;
+    return fetch(API_BASE + path, opts).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (d) {
+        return { status: r.status, data: d };
+      });
+    });
+  }
+
+  /* ---------- 登录（Token 存 sessionStorage，不跨会话持久化） ---------- */
+  function doLogin(t) {
+    token = t;
+    return api("/api/admin/stats").then(function (res) {
+      if (res.status === 200 && res.data.ok) {
+        try { sessionStorage.setItem("de_admin_token", t); } catch (e) {}
+        showPanel();
+        return true;
+      }
+      token = "";
+      return false;
+    });
+  }
+
+  function showPanel() {
+    loginView.hidden = true;
+    panelView.hidden = false;
+    $("admLogout").hidden = false;
+    refreshNewsList();
+    refreshWishlist();
+  }
+
+  function logout() {
+    token = "";
+    try { sessionStorage.removeItem("de_admin_token"); } catch (e) {}
+    panelView.hidden = true;
+    loginView.hidden = false;
+    $("admLogout").hidden = true;
+    $("tokenInput").value = "";
+    setMsg(loginMsg, "");
+    setMsg(newsMsg, "");
+    setMsg(wlMsg, "");
+  }
+
+  $("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var t = $("tokenInput").value.trim();
+    if (!t) { setMsg(loginMsg, "请输入管理令牌", "err"); return; }
+    var btn = $("loginBtn");
+    btn.disabled = true;
+    setMsg(loginMsg, "验证中…");
+    doLogin(t).then(function (ok) {
+      btn.disabled = false;
+      if (!ok) setMsg(loginMsg, "令牌无效或服务器不可用，请重试", "err");
+    }).catch(function () {
+      btn.disabled = false;
+      setMsg(loginMsg, "无法连接服务器，请检查 API 地址", "err");
+    });
+  });
+  $("admLogout").addEventListener("click", logout);
+
+  /* 已有会话令牌：自动尝试登录 */
+  if (token) {
+    doLogin(token).catch(function () { logout(); });
+  }
+
+  /* ---------- 资讯管理 ---------- */
+  $("newsDate").value = new Date().toISOString().slice(0, 10);   /* 日期默认今天 */
+
+  $("newsForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var title = $("newsTitle").value.trim();
+    var content = $("newsContent").value.trim();
+    if (!title || !content) { setMsg(newsMsg, "标题与内容不能为空", "err"); return; }
+    var date = $("newsDate").value || "";
+    var tag = $("newsTag").value.trim() || "公告";
+    var btn = $("publishBtn");
+    btn.disabled = true;
+    setMsg(newsMsg, "发布中…");
+    api("/api/admin/news", {
+      method: "POST",
+      body: JSON.stringify({ title: title, date: date, tag: tag, content: content })
+    }).then(function (res) {
+      if (res.status === 200 && res.data.ok) {
+        setMsg(newsMsg, "发布成功", "ok");
+        $("newsTitle").value = "";
+        $("newsContent").value = "";
+        $("newsTag").value = "";
+        refreshNewsList();
+      } else if (res.data && res.data.error === "unauthorized") {
+        setMsg(newsMsg, "令牌已失效，请重新登录", "err");
+      } else {
+        setMsg(newsMsg, "发布失败，请稍后再试", "err");
+      }
+    }).catch(function () {
+      setMsg(newsMsg, "网络错误，发布失败", "err");
+    }).then(function () {
+      btn.disabled = false;
+    });
+  });
+
+  function refreshNewsList() {
+    var box = $("newsList");
+    box.innerHTML = "";
+    api("/api/news").then(function (res) {
+      var news = (res.data && res.data.news) || [];
+      if (!news.length) {
+        box.innerHTML = '<div class="adm-empty">暂无资讯，发布一条试试</div>';
+        return;
+      }
+      news.forEach(function (n) {
+        var row = document.createElement("div");
+        row.className = "adm-news-item";
+        row.innerHTML =
+          '<span class="adm-news-t"><span class="adm-news-title"></span>' +
+          '<span class="adm-news-meta"></span></span>' +
+          (n.tag ? '<span class="adm-tag"></span>' : "") +
+          '<button class="adm-del" type="button">删除</button>';
+        row.querySelector(".adm-news-title").textContent = n.title;
+        row.querySelector(".adm-news-meta").textContent = n.date + (n.tag ? " · " + n.tag : "");
+        if (n.tag) row.querySelector(".adm-tag").textContent = n.tag;
+        row.querySelector(".adm-del").addEventListener("click", function () {
+          if (!window.confirm("确定删除「" + n.title + "」？")) return;
+          var del = row.querySelector(".adm-del");
+          del.disabled = true;
+          api("/api/admin/news?id=" + n.id, { method: "DELETE" }).then(function (res) {
+            if (res.status === 200 && res.data.ok) {
+              refreshNewsList();
+            } else {
+              setMsg(newsMsg, "删除失败", "err");
+              del.disabled = false;
+            }
+          }).catch(function () {
+            setMsg(newsMsg, "网络错误，删除失败", "err");
+            del.disabled = false;
+          });
+        });
+        box.appendChild(row);
+      });
+    }).catch(function () {
+      box.innerHTML = '<div class="adm-empty">无法获取资讯列表</div>';
+    });
+  }
+
+  /* ---------- 愿望单 ---------- */
+  function refreshWishlist() {
+    api("/api/admin/wishlist").then(function (res) {
+      if (res.status !== 200 || !res.data.ok) {
+        $("wlList").innerHTML = '<div class="adm-empty">无法获取愿望单数据</div>';
+        return;
+      }
+      var emails = res.data.emails || [];
+      $("wlCount").textContent = res.data.count;
+      var box = $("wlList");
+      box.innerHTML = "";
+      if (!emails.length) { box.innerHTML = '<div class="adm-empty">暂无订阅邮箱</div>'; return; }
+      emails.forEach(function (it) {
+        var row = document.createElement("div");
+        row.className = "adm-wl-row";
+        row.innerHTML = '<span class="adm-wl-email"></span><span class="adm-wl-time"></span>';
+        row.querySelector(".adm-wl-email").textContent = it.email;
+        row.querySelector(".adm-wl-time").textContent = it.created_at || "";
+        box.appendChild(row);
+      });
+    }).catch(function () {
+      $("wlList").innerHTML = '<div class="adm-empty">无法获取愿望单数据</div>';
+    });
+  }
+
+  $("copyEmailsBtn").addEventListener("click", function () {
+    api("/api/admin/wishlist").then(function (res) {
+      var emails = ((res.data && res.data.emails) || []).map(function (it) { return it.email; });
+      if (!emails.length) { setMsg(wlMsg, "暂无可复制的邮箱", "err"); return; }
+      var text = emails.join("\n");
+      function done() { setMsg(wlMsg, "已复制 " + emails.length + " 个邮箱", "ok"); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+      } else {
+        fallbackCopy(text);
+        done();
+      }
+    }).catch(function () { setMsg(wlMsg, "复制失败", "err"); });
+  });
+
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>

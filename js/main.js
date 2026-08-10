@@ -12,6 +12,9 @@
   /* 愿望单 API 地址：生产默认 '/api/wishlist'（同源反向代理）。
      本地开发联调可临时改为 'http://localhost:8090/api/wishlist' */
   var WISHLIST_API = "/api/wishlist";
+  /* 资讯 API 地址：生产默认 '/api/news'（同源）。
+     本地开发联调可临时改为 'http://localhost:8090/api/news' */
+  var NEWS_API = "/api/news";
   /* 邮箱校验正则（与后端 EMAIL_RE 保持一致） */
   var WL_EMAIL_RE = /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/;
 
@@ -144,29 +147,135 @@
     thanksEl.textContent = D.credits.thanks;
   }
 
-  /* ---------- 渲染：资讯（节目单条目行） ---------- */
+  /* ---------- 轻量 Markdown → HTML 渲染器（先转义再渲染，防 XSS） ---------- */
+  function escapeHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+  /* 行内：`code`、**粗体**、*斜体*、[链接](url)（在已转义文本上执行） */
+  function mdInline(s) {
+    return s
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, txt, url) {
+        /* 仅放行安全协议，拦截 javascript: / data: 等 */
+        if (!/^(https?:\/\/|mailto:|#|\/)/i.test(url)) return m;
+        return '<a href="' + url + '" target="_blank" rel="noopener">' + txt + "</a>";
+      });
+  }
+  /* 块级：段落 / #~### 标题 / - 列表 */
+  function mdToHtml(md) {
+    if (!md) return "";
+    var lines = escapeHtml(md).replace(/\r\n?/g, "\n").split("\n");
+    var html = "";
+    var inList = false;
+    function closeList() { if (inList) { html += "</ul>\n"; inList = false; } }
+    lines.forEach(function (line) {
+      var t = line.trim();
+      if (t === "") { closeList(); return; }
+      var hm = t.match(/^(#{1,3})\s+(.*)$/);
+      if (hm) {
+        closeList();
+        var lv = hm[1].length;
+        html += "<h" + lv + ">" + mdInline(hm[2]) + "</h" + lv + ">\n";
+        return;
+      }
+      var lm = t.match(/^[-*]\s+(.*)$/);
+      if (lm) {
+        if (!inList) { html += "<ul>\n"; inList = true; }
+        html += "<li>" + mdInline(lm[1]) + "</li>\n";
+        return;
+      }
+      closeList();
+      html += "<p>" + mdInline(t) + "</p>\n";
+    });
+    closeList();
+    return html;
+  }
+  /* 摘要用：去除 markdown 标记得到纯文本 */
+  function mdPlain(md) {
+    return String(md || "")
+      .replace(/```[\s\S]*?```/g, " ")
+      .replace(/`([^`]*)`/g, "$1")
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+      .replace(/#{1,6}\s*/g, "")
+      .replace(/\*\*([^*]*)\*\*/g, "$1")
+      .replace(/\*([^*]*)\*/g, "$1")
+      .replace(/^\s*[-*]\s+/gm, "")
+      .replace(/\s+/g, " ").trim();
+  }
+
+  /* ---------- 渲染：资讯（节目单条目行，可展开 markdown 正文） ---------- */
+  var backendNews = null;   // 后端 /api/news 数据（null = 未加载，回退 D.news）
+  var newsOpen = {};        // 展开状态：资讯 id -> true
+
+  function effectiveNews() {
+    return backendNews !== null ? backendNews : (D ? D.news : []);
+  }
+
   function renderNews() {
     var listEl = document.getElementById("newsList");
     var moreEl = document.getElementById("newsMore");
     if (!listEl) return;
 
     var zh = currentLang === "zh";
-    var items = D.news.map(function (n) {
-      var d = n.date.split("-");
+    var items = effectiveNews();
+    listEl.innerHTML = items.map(function (n) {
+      var d = String(n.date || "").split("-");
       var tagCls = n.tag === "招募" ? "chip-gold" : (n.tag === "公告" ? "chip-slate" : "chip");
+      var title = zh ? n.title : (n.titleEn || n.title);
+      var content = zh ? n.content : (n.contentEn || n.content);
       var inner =
-        '<span class="nr-date"><span class="nr-d">' + d[2] + "." + d[1] + '</span><span class="nr-y">' + d[0] + "</span></span>" +
-        '<span class="nr-body"><span class="nr-title">' + (zh ? n.title : (n.titleEn || n.title)) + '</span>' +
-        '<span class="nr-excerpt">' + clip(zh ? n.content : (n.contentEn || n.content), 80) + "</span></span>" +
+        '<span class="nr-date"><span class="nr-d">' + (d[2] || "") + "." + (d[1] || "") + '</span><span class="nr-y">' + (d[0] || "") + "</span></span>" +
+        '<span class="nr-body"><span class="nr-title">' + escapeHtml(title) + "</span>" +
+        '<span class="nr-excerpt">' + clip(escapeHtml(mdPlain(content)), 80) + "</span></span>" +
         '<span class="nr-leader"></span>' +
-        '<span class="nr-side"><span class="chip ' + tagCls + '">' + n.tag + '</span><span class="nr-arrow">›</span></span>';
-      return n.link
-        ? '<a class="news-row fade-up" href="' + n.link + '">' + inner + "</a>"
-        : '<div class="news-row fade-up">' + inner + "</div>";
+        '<span class="nr-side"><span class="chip ' + tagCls + '">' + escapeHtml(n.tag) + '</span><span class="nr-arrow">›</span></span>';
+      if (n.link) {
+        /* 带外链的条目保持跳转行为 */
+        return '<a class="news-row fade-up" href="' + n.link + '">' + inner + "</a>";
+      }
+      /* 常规资讯：点击展开 markdown 正文 */
+      var isOpen = !!newsOpen[n.id];
+      return '<div class="news-item fade-up' + (isOpen ? " open" : "") + '" data-news-id="' + n.id + '">' +
+        '<div class="news-row nr-toggle" data-expand>' + inner + "</div>" +
+        '<div class="nr-body-full">' + mdToHtml(content) + "</div>" +
+        "</div>";
     }).join("");
-    listEl.innerHTML = items;
+    bindNewsToggle(listEl);
 
-    if (moreEl) moreEl.style.display = D.news.length > 5 ? "" : "none";
+    if (moreEl) moreEl.style.display = items.length > 5 ? "" : "none";
+  }
+
+  function bindNewsToggle(listEl) {
+    Array.prototype.forEach.call(listEl.querySelectorAll(".news-item[data-news-id]"), function (item) {
+      var toggle = item.querySelector(".nr-toggle");
+      if (!toggle || toggle._bound) return;
+      toggle._bound = true;
+      toggle.addEventListener("click", function () {
+        var id = item.getAttribute("data-news-id");
+        var open = item.classList.toggle("open");
+        if (open) newsOpen[id] = true; else delete newsOpen[id];
+      });
+    });
+  }
+
+  /* ---------- 资讯数据源：优先后端 /api/news，失败回退 data/news.json ---------- */
+  function loadNews() {
+    if (location.protocol === "file:") return;   /* file:// 无法 fetch，直接用内联数据 */
+    fetch(NEWS_API, { headers: { "Accept": "application/json" } })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        backendNews = (d && d.ok && Array.isArray(d.news)) ? d.news : null;
+      })
+      .catch(function () { backendNews = null; })
+      .then(function () { renderNews(); });
   }
 
   /* ---------- 渲染：介绍 / 故事 / 声明 ---------- */
@@ -630,5 +739,6 @@
     initHeroParallax();
     initTheme();
     initWishlist();
+    loadNews();
   });
 })();

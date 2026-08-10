@@ -1295,6 +1295,47 @@ body.menu-locked { overflow: hidden; }
 
 .news-more { text-align: center; margin-top: 40px; }
 
+/* 资讯展开（markdown 正文） */
+.news-item { border-bottom: 1px solid rgba(30,111,186,0.1); }
+.news-item:first-child { border-top: 1px solid rgba(30,111,186,0.1); }
+.news-item .news-row { border-bottom: none; border-top: none; }
+.news-item.open .news-row { background: var(--hover-bg); }
+.news-row.nr-toggle { cursor: pointer; }
+.news-item.open .nr-arrow { color: var(--blue); transform: rotate(90deg); }
+.nr-body-full {
+  display: none;
+  padding: 4px 4px 26px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink);
+}
+.news-item.open .nr-body-full { display: block; }
+.nr-body-full h1,
+.nr-body-full h2,
+.nr-body-full h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 16px 0 8px;
+}
+.nr-body-full h1 { font-size: 18px; }
+.nr-body-full p { margin: 0 0 12px; }
+.nr-body-full ul { margin: 0 0 12px; padding-left: 22px; }
+.nr-body-full li { margin: 4px 0; }
+.nr-body-full strong { color: var(--blue); }
+.nr-body-full em { color: var(--slate); }
+.nr-body-full code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 12.5px;
+  background: var(--tag-bg);
+  color: var(--blue-deep);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+[data-theme="dark"] .nr-body-full code { color: var(--blue); }
+.nr-body-full a { color: var(--blue); text-decoration: underline; }
+.nr-body-full a:hover { color: var(--gold); }
+
 /* ---------- 17. 重要声明（乐谱纸卡片） ---------- */
 .notice-section { background: var(--bg-notice); }
 .notice-cards {
