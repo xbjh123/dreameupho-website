@@ -9,12 +9,57 @@
   var D = null;                 // 数据
   var currentLang = "zh";       // 当前语言
 
+  /* 愿望单 API 地址：生产默认 '/api/wishlist'（同源反向代理）。
+     本地开发联调可临时改为 'http://localhost:8090/api/wishlist' */
+  var WISHLIST_API = "/api/wishlist";
+  /* 邮箱校验正则（与后端 EMAIL_RE 保持一致） */
+  var WL_EMAIL_RE = /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/;
+
   var reduceMotion = false;
   try { reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { /* noop */ }
 
+  /* ---------- 主题初始化（同步设置 data-theme，避免首帧闪烁） ---------- */
+  applyThemeInit();
+  function applyThemeInit() {
+    try {
+      var saved = localStorage.getItem("theme");
+      var dark = saved ? saved === "dark" : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
+
+  /* ---------- 主题切换按钮 + 系统偏好跟随 ---------- */
+  function initTheme() {
+    applyThemeInit();
+    if (window.matchMedia) {
+      try {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light");
+          }
+        });
+      } catch (err) { /* noop */ }
+    }
+    document.querySelectorAll(".theme-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) { /* noop */ }
+      });
+    });
+  }
+
   /* ---------- 语言工具 ---------- */
   function savedLang() {
-    try { return localStorage.getItem("de-lang") || "zh"; } catch (e) { return "zh"; }
+    try {
+      var saved = localStorage.getItem("de-lang");
+      if (saved) return saved;
+      /* 首次访问（无偏好）：地区语言检测 */
+      if (window.DE_Geo) return window.DE_Geo.detect();
+      return "zh";
+    } catch (e) { return "zh"; }
   }
 
   /* ---------- 文本工具：去掉描述文本首行的人名行 ---------- */
@@ -29,22 +74,31 @@
     return text.length > len ? text.slice(0, len) + "…" : text;
   }
 
-  /* ---------- 渲染：人物 ---------- */
+  /* ---------- 渲染：人物（中英模式分别使用对应语言描述页图与名字） ---------- */
   function renderCharacters() {
     var mainGrid = document.getElementById("charMain");
     var supGrid = document.getElementById("charSupport");
     if (!mainGrid || !supGrid) return;
 
+    var zh = currentLang === "zh";
     var mains = D.characters.filter(function (c) { return c.group === "main"; });
     var sups = D.characters.filter(function (c) { return c.group === "support"; });
 
+    function pick(c) {
+      return {
+        img: zh ? c.image : (c.imageEn || c.image),
+        nm: zh ? c.name : (c.nameEn || c.name)
+      };
+    }
+
     mainGrid.innerHTML = mains.map(function (c, i) {
       var mystery = c.id === "mayu";
-      return '<article class="char-card main fade-up' + (mystery ? " mystery" : "") + '">' +
+      var p = pick(c);
+      return '<article class="char-card main' + (mystery ? " mystery" : "") + '">' +
         '<figure class="c-photo">' +
-        '<img src="' + c.image + '" alt="' + c.name + '"' + (i > 0 ? ' loading="lazy"' : "") + ' width="1280" height="720">' +
+        '<img src="' + p.img + '" alt="' + p.nm + '"' + (i > 0 ? ' loading="lazy"' : "") + ' width="1280" height="720">' +
         '<figcaption class="c-info">' +
-        '<h3 class="c-name" data-name-zh="' + c.name + '" data-name-en="' + (c.nameEn || c.name) + '">' + c.name + "</h3>" +
+        '<h3 class="c-name" data-name-zh="' + c.name + '" data-name-en="' + (c.nameEn || c.name) + '">' + p.nm + "</h3>" +
         '<span class="c-line"></span>' +
         '<p class="c-brief">' + clip(bodyText(c.description, c.name), 90) + "</p>" +
         (mystery ? '<span class="mystery-tag" data-i18n="mysteryTag">AN UNKNOWN MELODY…</span>' : "") +
@@ -52,12 +106,13 @@
     }).join("");
 
     supGrid.innerHTML = sups.map(function (c) {
+      var p = pick(c);
       var role = bodyText(c.description, c.name);
-      return '<article class="char-card support fade-up">' +
+      return '<article class="char-card support">' +
         '<figure class="c-photo">' +
-        '<img src="' + c.image + '" alt="' + c.name + '" loading="lazy" width="1200" height="431">' +
+        '<img src="' + p.img + '" alt="' + p.nm + '" loading="lazy" width="1200" height="431">' +
         '<figcaption class="c-info">' +
-        '<span class="s-name" data-name-zh="' + c.name + '" data-name-en="' + (c.nameEn || c.name) + '">' + c.name + "</span>" +
+        '<span class="s-name" data-name-zh="' + c.name + '" data-name-en="' + (c.nameEn || c.name) + '">' + p.nm + "</span>" +
         '<span class="s-role">' + clip(role, 40) + "</span>" +
         "</figcaption></figure></article>";
     }).join("");
@@ -394,6 +449,29 @@
     update();
   }
 
+  /* ---------- Hero 视差消退（Apple 招牌：内容上移淡出 + 背景缩放） ---------- */
+  function initHeroParallax() {
+    var hero = document.querySelector(".hero");
+    var content = document.querySelector(".hero-content");
+    if (!hero || !content) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      if (reduceMotion) return;
+      var h = hero.offsetHeight || window.innerHeight;
+      var p = Math.min(window.scrollY / (h * 0.6), 1);   // 60vh 内消退
+      var pb = Math.min(window.scrollY / (h * 1.2), 1);  // 120vh 内背景缩放
+      content.style.transform = "translateY(" + (-80 * p).toFixed(1) + "px)";
+      content.style.opacity = (1 - p).toFixed(3);
+      var bgimg = document.querySelector(".hero-bgimg");
+      if (bgimg) bgimg.style.transform = "scale(" + (1 + 0.06 * pb).toFixed(4) + ")";
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+
   /* ---------- 移动菜单 ---------- */
   function initMenu() {
     var menu = document.getElementById("mobileMenu");
@@ -457,6 +535,84 @@
     });
   }
 
+  /* ---------- 愿望单：前端校验 + 提交发售通知 ----------
+     WISHLIST_API 在文件顶部定义：
+     - 生产默认：'/api/wishlist'（同源）
+     - 本地开发：可临时改为 'http://localhost:8090/api/wishlist'
+     （配合 server/wishlist_api.py）
+  */
+  /* 动态状态文案走 D.ui 双语表，随语言切换读取当前语言 */
+  function i18nMsg(key) {
+    try {
+      var v = D.ui[key][currentLang];
+      return (v === "" || v === null || v === undefined) ? "" : v;
+    } catch (e) { return ""; }
+  }
+
+  function initWishlist() {
+    var form = document.getElementById("wishlistForm");
+    if (!form) return;
+    var input = document.getElementById("wishlistEmail");
+    var msg = document.getElementById("wishlistMsg");
+    var btn = form.querySelector('button[type="submit"]');
+    if (!input || !msg || !btn) return;
+
+    /* 就地提示：成功绿 / 错误红，样式由 .wl-msg.success / .wl-msg.error 提供 */
+    function show(type, text) {
+      msg.className = "wl-msg" + (type ? " " + type : "");
+      msg.textContent = text;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = (input.value || "").trim();
+
+      /* 前端校验：格式错误不请求后端 */
+      if (!WL_EMAIL_RE.test(email)) {
+        show("error", i18nMsg("wishlistErrFormat"));
+        input.focus();
+        return;
+      }
+
+      /* loading：按钮禁用 */
+      btn.disabled = true;
+      show("", i18nMsg("wishlistSending"));
+
+      fetch(WISHLIST_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (data) {
+          return { status: r.status, data: data };
+        });
+      }).then(function (res) {
+        var d = res.data || {};
+        if (d.ok === true) {
+          if (d.duplicate === true) {
+            /* 重复订阅 */
+            show("error", i18nMsg("wishlistDuplicate"));
+          } else {
+            /* 成功：提示 + 清空输入框 */
+            show("success", i18nMsg("wishlistSuccess"));
+            input.value = "";
+          }
+        } else if (d.error === "invalid_email") {
+          show("error", i18nMsg("wishlistErrFormat"));
+        } else if (d.error === "rate_limited") {
+          show("error", i18nMsg("wishlistErrRate"));
+        } else {
+          show("error", i18nMsg("wishlistErrGeneric"));
+        }
+      }).catch(function () {
+        /* 网络失败 */
+        show("error", i18nMsg("wishlistErrGeneric"));
+      }).then(function () {
+        btn.disabled = false;
+      });
+    });
+  }
+
   /* ---------- 启动 ---------- */
   getData().then(function (data) {
     D = data;
@@ -471,5 +627,8 @@
     initFooterToggle();
     initLazy();
     initMovement();
+    initHeroParallax();
+    initTheme();
+    initWishlist();
   });
 })();

@@ -1,0 +1,11 @@
+# 运行时数据（愿望单邮箱库，VPS 上生成）
+server/wishlist.db
+*.db
+
+# IDE
+.vscode/
+.idea/
+
+# 系统
+Thumbs.db
+.DS_Store

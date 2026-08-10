@@ -90,6 +90,52 @@ certbot --nginx -d dreameupho.example.com
 cd /var/www/dreameupho && git pull
 ```
 
+## 愿望单 / 发售通知（server/）
+
+用户可填写邮箱加入愿望单，发售时发送通知。前端在首页 `#wishlist` 区块，后端为轻量 Python API。
+
+### 后端部署（VPS，Caddy 已用）
+
+```bash
+# 1. 安装服务
+mkdir -p /var/lib/dreameupho
+cp /var/www/dreameupho/server/wishlist.service /etc/systemd/system/
+systemctl daemon-reload && systemctl enable --now wishlist
+systemctl status wishlist
+```
+
+```bash
+# 2. Caddyfile（temp.dreameupho.com 内加同源 /api 路由）
+temp.dreameupho.com {
+    root * /var/www/dreameupho
+    file_server
+    encode gzip
+    @api path /api/*
+    reverse_proxy @api 127.0.0.1:8090
+}
+```
+
+```bash
+systemctl reload caddy
+curl https://temp.dreameupho.com/api/health   # {"ok":true,"service":"wishlist"}
+```
+
+### 本地开发
+
+```bash
+python server/wishlist_api.py 8090 127.0.0.1    # 本地 API
+# js/main.js 顶部 WISHLIST_API 临时改为 http://localhost:8090/api/wishlist，改完恢复 '/api/wishlist'
+```
+
+### 发售通知（SMTP）
+
+```bash
+# 配置 SMTP 环境变量后执行
+WL_SMTP_HOST=smtp.163.com WL_SMTP_PORT=465 WL_SMTP_USER=xx WL_SMTP_PASS=授权码 WL_FROM=xx@163.com \
+  python3 server/notify_release.py            # 发送全部未通知邮箱
+python3 server/notify_release.py --dry-run    # 先预览名单
+```
+
 ## 部署注意事项
 
 - 网站是**同人非官方作品**，与原作版权方无关（详见页面页脚声明）

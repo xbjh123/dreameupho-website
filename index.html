@@ -34,6 +34,7 @@
         <button class="lang-btn active" data-lang="zh" aria-pressed="true">中</button>
         <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
+      <button class="theme-toggle" type="button" aria-label="切换主题"><span class="tt-sun" aria-hidden="true">☀</span><span class="tt-moon" aria-hidden="true">☾</span></button>
       <a href="recruit.html" class="btn btn-primary nav-cta"><span data-i18n="navJoin">加入我们</span></a>
       <button class="hamburger" id="hamburger" aria-label="打开菜单" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="h-note">♪</span>
@@ -67,6 +68,7 @@
         <button class="lang-btn active" data-lang="zh" aria-pressed="true">中</button>
         <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
+      <button class="theme-toggle" type="button" aria-label="切换主题"><span class="tt-sun" aria-hidden="true">☀</span><span class="tt-moon" aria-hidden="true">☾</span></button>
       <a href="recruit.html" class="btn btn-primary mm-join"><span data-i18n="navJoin">加入我们</span></a>
     </div>
     <svg class="mm-cloud" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
@@ -93,6 +95,7 @@
       <p class="hero-sub" data-i18n="heroSub">A MELODY TOWARD THE FUTURE</p>
       <div class="hero-actions">
         <a href="recruit.html" class="btn btn-white btn-lg" data-i18n="heroCta">加入制作组 →</a>
+        <a href="#wishlist" class="btn btn-gold btn-lg" data-i18n="heroWish">加入愿望单 ♪</a>
         <a href="#intro" class="btn btn-ghost-white btn-lg" data-i18n="heroMore">了解游戏 ↓</a>
       </div>
     </div>
@@ -267,7 +270,39 @@
     </div>
   </section>
 
-  <!-- ================= MOVEMENT 06 重要声明 ================= -->
+  <!-- ================= 愿望单 · 发售通知 ================= -->
+  <section class="section section-alt mv-block" id="wishlist">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container-narrow reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">06</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <div class="score-title-group">
+            <p class="score-tempo">ADAGIO · 慢板</p>
+            <h2 class="score-title" data-i18n="secWishlist">愿望单 · 发售通知</h2>
+            <p class="score-en">WISHLIST &amp; RELEASE NOTICE</p>
+            <p class="score-quote" data-i18n="wishlistQuote">将游戏加入愿望单，发售时第一时间通知你</p>
+          </div>
+        </div>
+      </header>
+
+      <form class="wishlist-form" id="wishlistForm" novalidate>
+        <label class="wl-label" for="wishlistEmail" data-i18n="wishlistLabel">邮箱地址</label>
+        <div class="wl-row">
+          <input class="wl-input" id="wishlistEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="wishlistHint">
+          <button class="btn btn-primary btn-md" type="submit"><span data-i18n="wishlistSubmit">加入愿望单</span><span class="note" aria-hidden="true">♪</span></button>
+        </div>
+        <p class="wl-hint" id="wishlistHint" data-i18n="wishlistHint">仅在游戏发售时通知你，绝不发送垃圾邮件</p>
+        <p class="wl-msg" id="wishlistMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 07 重要声明 ================= -->
   <section class="section notice-section mv-block" id="notice">
     <span class="baton" aria-hidden="true"></span>
     <div class="container reveal">
@@ -275,7 +310,7 @@
         <div class="score-stage">
           <span class="score-staff" aria-hidden="true"></span>
           <span class="score-barline" aria-hidden="true"></span>
-          <span class="score-num">06</span>
+          <span class="score-num">07</span>
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <svg class="mark-fermata" viewBox="0 0 28 30" aria-hidden="true">
@@ -354,6 +389,7 @@
   </div>
 </footer>
 
+<script src="js/geo.js"></script>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 </body>

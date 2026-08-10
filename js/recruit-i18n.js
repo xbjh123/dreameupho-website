@@ -36,7 +36,10 @@
         for (var i = 0; i < LANGS.length; i++) if (LANGS[i].id === l) return l;
       }
       var old = localStorage.getItem("de-lang");
-      return old === "en" ? "en" : "zh-Hans";
+      if (old) return old === "en" ? "en" : "zh-Hans";
+      /* 首次访问（无偏好）：地区语言检测 */
+      if (window.DE_Geo) return window.DE_Geo.detect() === "zh" ? "zh-Hans" : "en";
+      return "zh-Hans";
     } catch (e) { return "zh-Hans"; }
   }
 
