@@ -95,6 +95,9 @@
   function renderLang(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
+    /* 中文模式：隐藏英文装饰元素（JOIN US / PROGRAM / 英文小字 / 岗位英文标题） */
+    var isZh = lang === "zh-Hans" || lang === "zh-Hant";
+    document.body.classList.toggle("lang-zh", isZh);
     try { localStorage.setItem("recruitLang", lang); } catch (e) { /* noop */ }
 
     var meta = null;
@@ -198,7 +201,7 @@
             p.requirements.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>" : "";
         return '<div class="job-post"><div class="post-name">' + p.name + "</div>" + intro + duties + reqs + "</div>";
       }).join("");
-      var idx = (ci + 1) < 10 ? "0" + (ci + 1) : String(ci + 1);
+      var idx = String(ci + 1);   /* 音符编号 1-7（乐段卡右上角） */
       return '<article class="job-card fade-up">' +
         '<span class="job-index">' + idx + "</span>" +
         '<h3 class="job-title">' + cat.title + "</h3>" +

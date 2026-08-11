@@ -97,28 +97,103 @@
     mainGrid.innerHTML = mains.map(function (c, i) {
       var mystery = c.id === "mayu";
       var p = pick(c);
-      return '<article class="char-card main' + (mystery ? " mystery" : "") + '">' +
+      return '<article class="char-card main' + (mystery ? " mystery" : "") + '" data-char="' + c.id + '" role="button" tabindex="0" aria-label="' + p.nm + '">' +
         '<figure class="c-photo">' +
         '<img src="' + p.img + '" alt="' + p.nm + '"' + (i > 0 ? ' loading="lazy"' : "") + ' width="1280" height="720">' +
-        '<figcaption class="c-info">' +
-        '<h3 class="c-name" data-name-zh="' + c.name + '" data-name-en="' + (c.nameEn || c.name) + '">' + p.nm + "</h3>" +
-        '<span class="c-line"></span>' +
-        '<p class="c-brief">' + clip(bodyText(c.description, c.name), 90) + "</p>" +
-        (mystery ? '<span class="mystery-tag" data-i18n="mysteryTag">AN UNKNOWN MELODY…</span>' : "") +
-        "</figcaption></figure></article>";
+        "</figure></article>";
     }).join("");
 
     supGrid.innerHTML = sups.map(function (c) {
       var p = pick(c);
-      var role = bodyText(c.description, c.name);
-      return '<article class="char-card support">' +
+      return '<article class="char-card support" data-char="' + c.id + '" role="button" tabindex="0" aria-label="' + p.nm + '">' +
         '<figure class="c-photo">' +
         '<img src="' + p.img + '" alt="' + p.nm + '" loading="lazy" width="1200" height="431">' +
-        '<figcaption class="c-info">' +
-        '<span class="s-name" data-name-zh="' + c.name + '" data-name-en="' + (c.nameEn || c.name) + '">' + p.nm + "</span>" +
-        '<span class="s-role">' + clip(role, 40) + "</span>" +
-        "</figcaption></figure></article>";
+        "</figure></article>";
     }).join("");
+
+    initCharModal();
+  }
+
+  /* ---------- 角色详情弹层（点击角色卡展开，展示文案） ---------- */
+  function initCharModal() {
+    var modal = document.getElementById("charModal");
+    if (!modal) return;
+    var body = document.body;
+    var img = document.getElementById("charModalImg");
+    var name = document.getElementById("charModalName");
+    var desc = document.getElementById("charModalDesc");
+    var mystery = document.getElementById("charModalMystery");
+    var closed = document.getElementById("charModalClose");
+    // 防止 renderCharacters 重复调用时重复绑定事件
+    if (modal.__charModalBound) return;
+    modal.__charModalBound = true;
+
+    function open(c) {
+      var zh = currentLang === "zh";
+      var charImg = zh ? c.image : (c.imageEn || c.image);
+      var charName = zh ? c.name : (c.nameEn || c.name);
+      var charDesc = zh ? (c.description || "") : (c.descriptionEn || c.description || "");
+      modal.setAttribute("data-open-char", c.id);
+      if (img) { img.src = charImg; img.alt = charName; }
+      if (name) name.textContent = charName;
+      if (desc) desc.textContent = charDesc;
+      if (mystery) mystery.style.display = (c.id === "mayu") ? "block" : "none";
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      body.style.overflow = "hidden";
+      var closeBtn = modal.querySelector(".char-modal-close");
+      if (closeBtn) closeBtn.focus();
+    }
+    function close() {
+      modal.removeAttribute("data-open-char");
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      body.style.overflow = "";
+    }
+
+    // 事件绑定（事件委托，覆盖两列网格）
+    ["charMain", "charSupport"].forEach(function (gridId) {
+      var grid = document.getElementById(gridId);
+      if (!grid) return;
+      grid.addEventListener("click", function (e) {
+        var card = e.target.closest(".char-card");
+        if (!card) return;
+        var c = findChar(card.getAttribute("data-char"));
+        if (c) open(c);
+      });
+      grid.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        var card = e.target.closest(".char-card");
+        if (!card) return;
+        e.preventDefault();
+        var c = findChar(card.getAttribute("data-char"));
+        if (c) open(c);
+      });
+    });
+
+    var backdrop = modal.querySelector(".char-modal-backdrop");
+    if (backdrop) backdrop.addEventListener("click", close);
+    if (closed) closed.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("open")) close();
+    });
+
+    // 语言切换时若弹层开着则同步刷新
+    window.__charModalRefresh = function () {
+      if (!modal.classList.contains("open")) return;
+      var id = modal.getAttribute("data-open-char");
+      if (!id) return;
+      var c = findChar(id);
+      if (c) open(c);
+    };
+  }
+
+  function findChar(id) {
+    if (!D.characters) return null;
+    for (var i = 0; i < D.characters.length; i++) {
+      if (D.characters[i].id === id) return D.characters[i];
+    }
+    return null;
   }
 
   /* ---------- 渲染：制作成员 ---------- */
@@ -136,8 +211,11 @@
     }).join("");
 
     groupEl.innerHTML = D.credits.groups.map(function (g) {
+      var zh = currentLang === "zh";
       var list = g.list.map(function (row) {
-        return "<p><span class='lbl'>" + row[0] + "：</span><span class='val'>" + row[1] + "</span></p>";
+        var label = zh ? row[1] : row[0];
+        var sep = zh ? "：" : ": ";
+        return "<p><span class='lbl'>" + label + "</span>" + sep + "<span class='val'>" + row[2] + "</span></p>";
       }).join("");
       return '<div class="card credit-card fade-up">' +
         '<div class="credit-title"><span class="en">' + g.en + '</span><span class="zh">' + g.zh + "</span></div>" +
@@ -281,13 +359,9 @@
   /* ---------- 渲染：介绍 / 故事 / 声明 ---------- */
   function renderIntro() {
     var leadEl = document.getElementById("introShort");
-    var bulletsEl = document.getElementById("introBullets");
-    if (!leadEl || !bulletsEl) return;
+    if (!leadEl) return;
     var zh = currentLang === "zh";
     leadEl.textContent = zh ? D.i18n.intro.short.zh : D.i18n.intro.short.en;
-    bulletsEl.innerHTML = D.i18n.intro.bullets.map(function (b) {
-      return "<li>" + (zh ? b.zh : b.en) + "</li>";
-    }).join("");
   }
 
   function renderStory() {
@@ -303,7 +377,6 @@
 
   function renderNotice() {
     var cardsEl = document.getElementById("noticeCards");
-    var footEl = document.getElementById("footNoticeBody");
     if (!cardsEl) return;
     var zh = currentLang === "zh";
     var items = D.i18n.notice.items;
@@ -318,12 +391,6 @@
         "<h3>" + (zh ? titles[i].zh : titles[i].en) + "</h3>" +
         "<p>" + (zh ? n.zh : n.en) + "</p></div>";
     }).join("");
-
-    if (footEl) {
-      footEl.innerHTML = items.map(function (n) {
-        return "<p>" + n.icon + " " + (zh ? n.zh : n.en) + "</p>";
-      }).join("");
-    }
   }
 
   /* ---------- 渲染：招募页 ---------- */
@@ -404,6 +471,9 @@
     });
 
     renderContent();
+
+    // 语言切换时刷新已打开的角色弹层
+    if (window.__charModalRefresh) window.__charModalRefresh();
 
     document.querySelectorAll(".lang-btn").forEach(function (b) {
       var on = b.getAttribute("data-lang") === lang;

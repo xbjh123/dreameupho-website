@@ -98,7 +98,7 @@
 }
 /* 人物卡信息条深色版（图片保持亮色，信息条/文字转深色） */
 [data-theme="dark"] .c-info {
-  background: linear-gradient(180deg, rgba(19,34,56,0) 0%, rgba(19,34,56,0.88) 68%, rgba(19,34,56,0.96) 100%);
+  background: transparent;
   color: var(--ink);
 }
 [data-theme="dark"] .c-name,
@@ -106,7 +106,7 @@
 [data-theme="dark"] .c-brief,
 [data-theme="dark"] .s-role,
 [data-theme="dark"] .mystery-tag { color: var(--slate); }
-[data-theme="dark"] .char-card.support .c-info { background: linear-gradient(180deg, rgba(19,34,56,0.1) 0%, rgba(19,34,56,0.9) 100%); }
+[data-theme="dark"] .char-card.support .c-info { background: transparent; }
 [data-theme="dark"] .char-card { background: var(--bg-card); }
 /* 主题切换按钮 */
 .theme-toggle {
@@ -718,6 +718,7 @@ section[id] { scroll-margin-top: 88px; }
 
 /* 面板底部云朵轮廓 */
 .mm-cloud { display: block; width: calc(100% + 56px); margin-left: -28px; height: 44px; pointer-events: none; }
+.mm-cloud path { fill: var(--mist); }
 
 body.menu-locked { overflow: hidden; }
 
@@ -840,6 +841,9 @@ body.menu-locked { overflow: hidden; }
 .clouds-layer { position: absolute; left: 0; right: 0; width: 100%; pointer-events: none; }
 .hero .cl-back { bottom: 0; height: 110px; }
 .hero .cl-front { bottom: 0; height: 90px; }
+/* 云朵过渡带随主题适配（用实心色变量，CSS 渐变作 SVG fill 会在部分浏览器渲染为黑色） */
+.hero .cl-back path,
+.hero .cl-front path { fill: var(--mist); }
 .hero::after {
   content: "";
   position: absolute;
@@ -1107,7 +1111,7 @@ body.menu-locked { overflow: hidden; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 48px 24px 20px;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.82) 70%, rgba(255,255,255,0.95) 100%);
+  background: transparent;
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg, #1E6FBA, #4A90D9, #BFE0F7) 1;
   border-image-slice: 1;
@@ -1466,6 +1470,11 @@ body.menu-locked { overflow: hidden; }
 
 /* ---------- 19. 页脚（C.5：五线谱分隔、社交金♪） ---------- */
 .foot-cloud { display: block; width: 100%; height: 72px; }
+/* 云朵过渡带用主题渐变（stop-color 随主题覆盖，避免 CSS 渐变作 SVG fill 渲染为黑色） */
+.foot-cloud stop:first-child { stop-color: #0F3D6B; }
+.foot-cloud stop:last-child { stop-color: #0A2C4F; }
+[data-theme="dark"] .foot-cloud stop:first-child { stop-color: #0A1730; }
+[data-theme="dark"] .foot-cloud stop:last-child { stop-color: #060D1A; }
 .footer {
   background: var(--grad-night);
   color: var(--white);
@@ -1763,6 +1772,44 @@ body.menu-locked { overflow: hidden; }
 .cta-bottom { text-align: center; }
 .cta-bottom h2 { font-size: 24px; font-weight: 700; margin-bottom: 32px; }
 
+/* ---------- 20b. 改进计划：B1/D1/C1 ---------- */
+/* B1：招募乐段卡音符编号（数字前加金♪点缀） */
+.job-index::before {
+  content: "♪";
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 8px;
+  transform: rotate(-6deg);
+}
+/* D1：CTA 按钮金色光晕脉冲（呼吸 2 次，克制） */
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242,179,61,0.5), var(--shadow-cta); }
+  50%      { box-shadow: 0 0 20px 6px rgba(242,179,61,0.38), var(--shadow-cta); }
+}
+.cta .btn:hover,
+.cta-bottom .btn:hover {
+  animation: cta-glow 1.4s ease-in-out 2;
+}
+/* C1：中文模式隐藏英文装饰元素（主站 index.html） */
+html:not(.lang-en) .score-en { display: none; }
+html.lang-en .score-en { display: block; }
+html:not(.lang-en) .credit-title .en { display: none; }
+html:not(.lang-en) .credit-title .zh {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--blue);
+}
+html:not(.lang-en) .mm-prog,
+html:not(.lang-en) .mm-links .me { display: none; }
+/* C1：中文模式隐藏英文装饰元素（招募页，多语言系统） */
+body.lang-zh .encore-en,
+body.lang-zh .mm-prog,
+body.lang-zh .mm-links .me,
+body.lang-zh .job-title-en { display: none; }
+
 /* ---------- 21. 响应式 ---------- */
 /* 平板 768–1199 */
 @media (max-width: 1199px) {
@@ -1902,4 +1949,79 @@ body.menu-locked { overflow: hidden; }
   .hero-note, .hero-scroll, .cta-note { animation: none !important; }
   .hero-content { transform: none !important; opacity: 1 !important; will-change: auto !important; }
   .hero-bgimg { transform: none !important; will-change: auto !important; }
+}
+
+/* 角色详情弹层（点击角色卡展开） */
+.char-modal {
+  position: fixed; inset: 0;
+  z-index: 400;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s;
+}
+.char-modal.open { opacity: 1; visibility: visible; }
+.char-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(10,20,40,0.55);
+  backdrop-filter: blur(4px);
+}
+.char-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+  background: var(--bg-card);
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(10,44,79,0.4);
+  border: 1px solid var(--border-card);
+  transform: scale(0.92) translateY(20px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+.char-modal.open .char-modal-card {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+.char-modal-close {
+  position: absolute; top: 12px; right: 12px;
+  z-index: 2;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  color: var(--ink);
+  font-size: 20px; line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.char-modal-close:hover { background: var(--hover-bg); }
+.char-modal-body {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+.char-modal-img { flex: 1 1 50%; min-width: 0; }
+.char-modal-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+.char-modal-text { flex: 1 1 50%; min-width: 0; padding-top: 8px; }
+.char-modal-text h3 { font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.char-modal-text .c-line {
+  display: inline-block;
+  width: 32px; height: 2px;
+  background: var(--gold);
+  margin-bottom: 16px;
+  transform: none !important;
+}
+.char-modal-text p { font-size: 15px; line-height: 1.9; color: var(--ink); }
+.char-modal-text .mystery-tag { margin-top: 16px; color: var(--slate); font-size: 13px; letter-spacing: 0.2em; }
+@media (max-width: 767px) {
+  .char-modal-body { flex-direction: column; }
+  .char-modal { padding: 12px; }
+  .char-modal-text h3 { font-size: 22px; }
 }

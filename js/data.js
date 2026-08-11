@@ -11,63 +11,92 @@
   /* ---------- 人物 ---------- */
   var characters = [
     { id: "kumiko", name: "黄前久美子", nameEn: "Kumiko Oumae", image: "assets/img/characters/main/kumiko.jpg", imageEn: "assets/img/characters/main/en/kumiko.jpg", group: "main",
-      description: "黄前久美子\n玩家所扮演的角色。三年前，她也曾想要过上与他人无二的高中生活，得过且过是她的人生态度，直到被对吹奏的渴望重新唤起了心跳。\n现在的她看似舍弃了那个平凡的自己，成了不愿平庸、不甘失败的上低音号手，以吹奏部部长的身份再次带领同伴向全国大赛金奖发起冲刺。\n然而，她，真的已经蜕变了吗?" },
+      description: "玩家所扮演的角色。三年前，她也曾想要过上与他人无二的高中生活，得过且过是她的人生态度，直到被对吹奏的渴望重新唤起了心跳。",
+      descriptionEn: "The character you play. Three years ago, she too wanted a high school life no different from anyone else's; just muddling through was her creed—until her longing for wind music set her heart racing once more.\n\nNow she seems to have left that ordinary self behind: a euphonium player who refuses mediocrity and will not bow to failure, leading her companions in one final charge at national gold—as band president.\n\nBut has she truly transformed?" },
     { id: "reina", name: "高坂丽奈", nameEn: "Reina Kousaka", image: "assets/img/characters/main/reina.jpg", imageEn: "assets/img/characters/main/en/reina.jpg", group: "main",
-      description: "高坂\n丽奈\n久美子的挚友,小号手,凭着极为优秀的音乐水平、近乎残酷的自律和灾难性的人缘闻名校内。\n她最擅长的事就是矢志不渝——在达成目标的过程中,宁可不择手段,也不愿放弃,甚至是以自己的人格和未来作为担保。\n然而,她,真的仅限于此了吗?" },
+      description: "久美子的挚友，小号手，凭着极为优秀的音乐水平、近乎残酷的自律和灾难性的人缘闻名校内。",
+      descriptionEn: "Kumiko's best friend, a trumpet player known throughout the school for her extraordinary musicianship, near-merciless self-discipline, and legendarily disastrous people skills.\nHer greatest talent is unwavering resolve: In the pursuit of her goals, she would resort to any means necessary rather than giving up—even staking her own character and future on it.\nBut is that truly all there is to her?" },
     { id: "mayu", name: "？？？？", nameEn: "????", image: "assets/img/characters/main/mayu.jpg", imageEn: "assets/img/characters/main/en/mayu.jpg", group: "main",
-      description: "？？？？\n新来的转校生，上低音号手，表面上与周围格格不入，却莫名很受大家欢迎——音乐、针织与微笑都令人侧目。\n以温和友善的面貌示人，从不陷于任何争端冲突，更是低音声部的定心丸。人们说她就宛如一张白纸。\n然而，她，真的就没有秘密了吗？" },
+      description: "新来的转校生，上低音号手，表面上与周围格格不入，却莫名很受大家欢迎——音乐、针织与微笑都令人侧目。",
+      descriptionEn: "The new transfer student, a euphonium player. Though seemingly out of step with those around her, she is strangely beloved by all—her music, her knitting, and her smile always draw attention.\nShe meets the world with gentle warmth, never once caught in any quarrel, and is the calming anchor of the bass section. People say she is like a blank sheet of paper.\nBut does she truly have no secrets?" },
     { id: "shuichi", name: "冢本秀一", nameEn: "Shuichi Tsukamoto", image: "assets/img/characters/main/shuichi.jpg", imageEn: "assets/img/characters/main/en/shuichi.jpg", group: "main",
-      description: "久美子的青梅竹马，长号手，某咖啡厅月卡拥有者，却也是坚定不移的反熬夜标兵（数次亲自打破），曾与久美子共同有过不再主动回忆的过去。\n在初中常伴久美子的左右，前两年也受大家感召，为实现新生的理想而进发。\n然而，他，真的甘于现状了吗？" },
+      description: "久美子的青梅竹马，长号手，某咖啡厅月卡拥有者，却也是坚定不移的反熬夜标兵（数次亲自打破），曾与久美子共同有过不再主动回忆的过去。",
+      descriptionEn: "Kumiko's childhood friend, a trombone player, proud holder of a monthly pass at a certain café, and an unshakable champion of the anti-all-nighter cause (despite having repeatedly broken his own rule). He shares a past with Kumiko that neither of them willingly revisits.\n\nHe stayed by Kumiko's side all through middle school, and over the past two years, swept up by everyone else's determination, he marched on toward their newborn dream. But is he truly content with things as they are?" },
     { id: "midori", name: "川岛绿辉", nameEn: "Sapphire Kawashima", image: "assets/img/characters/main/midori.jpg", imageEn: "assets/img/characters/main/en/midori.jpg", group: "main",
-      description: "久美子在高一结识的好友，低音提琴手/贝斯手。\n因为父母浪漫至死的起名方式过于羞耻，一开始就要求久美子她们称她为\"绿\"。就算如此，她也承继家族追求洒脱不拘的精神，让乐器、爱与死亡成为她人生永不会放弃之物的前三名。\n作为从来都我行我素的\"绿辉\"，面对人生前路，她也总会做出不一样的选择。" },
+      description: "久美子在高一结识的好友，低音提琴手/贝斯手。因为父母浪漫至死的起名方式过于羞耻，一开始就要求久美子她们称她为“绿”。就算如此，她也承继家族追求洒脱不拘的精神，让乐器、爱与死亡成为她人生永不会放弃之物的前三名。作为从来都我行我素的“绿辉”，面对人生前路，她也总会做出不一样的选择。",
+      descriptionEn: "A close friend Kumiko met in her first year, a double bassist. So embarrassed by her parents' hopelessly romantic naming choice that, from the very start, she asked Kumiko and the others to call her \"Midori.\" Even so, she has inherited her family's free and untrammeled spirit, with instruments, love, and death as the top three things she will never give up in life. As \"Sapphire\"—a girl who has always marched to the beat of her own drum—she will, on the road ahead, always make a choice unlike anyone else's." },
     { id: "hazuki", name: "加藤叶月", nameEn: "Hazuki Katou", image: "assets/img/characters/main/hazuki.jpg", imageEn: "assets/img/characters/main/en/hazuki.jpg", group: "main",
-      description: "久美子在高一结识的好友，大号手。\n大家犹疑不前时，都会希望她像\"幕后英雄\"般在终场现身。外表上大大咧咧，隔着一层楼都能听到她爽朗的笑声，强悍如北宇治校规都无法制约。可每逢关键时候，她也会甘愿当作陪衬的自知之明，习惯自己去默默当好那个真正的\"幕后英雄\"。" },
+      description: "久美子在高一结识的好友，大号手。大家犹疑不前时，都会希望她像“幕后英雄”般在终场现身。外表上大大咧咧，隔着一层楼都能听到她爽朗的笑声，强悍如北宇治校规都无法制约。可每逢关键时候，她也会甘愿当作陪衬的自知之明，习惯自己去默默当好那个真正的“幕后英雄”。",
+      descriptionEn: "A close friend Kumiko met in her first year, a tuba player. When everyone else hangs back, they all hope she will appear at the finale like an \"unsung hero.\" Carefree in manner, her bright laughter is audible a whole floor away—so untamable that even Kitauji's school rules cannot hold her. Yet when it truly counts, she has the self-awareness to willingly play the supporting role, quietly being the real \"unsung hero\" herself." },
     { id: "kanade", name: "久石奏", nameEn: "Kanade Hisaishi", image: "assets/img/characters/main/kanade.jpg", imageEn: "assets/img/characters/main/en/kanade.jpg", group: "main",
-      description: "久石奏\n久美子在高二结识的\"可爱\"后辈，\"可爱\"上低音号手。不称呼她\"可爱\"二字，就随时上门取命的类型（划掉）。\n与久美子共事的一年让她不仅意识到逗弄前辈的好玩之处，也知道了努力的意义所在何方。" },
+      description: "久美子在高二结识的“可爱”后辈，“可爱”上低音号手。不称呼她“可爱”二字，就随时上门取命的类型（划掉），与久美子共事的一年让她不仅意识到逗弄前辈的好玩之处，也知道了努力的意义所在何方。",
+      descriptionEn: "The \"cute\" underclassman Kumiko met in her second year, and a \"cute\" euphonium player. The sort who will come to collect your life if you forget to call her \"cute\" (just kidding).\n\nA year of working alongside Kumiko taught her not only how much fun it is to tease her seniors, but also where the true value of hard work lies." },
     { id: "sari", name: "义井沙里", nameEn: "Sari Yoshii", image: "assets/img/characters/main/sari.jpg", imageEn: "assets/img/characters/main/en/sari.jpg", group: "main",
-      description: "这一年的吹奏部新成员，单簧管乐手。\n擅长吹奏和民间传说，也乐于分享这些，在就读的初中里本有机会过上同学前拥后簇的生活。不过，她更想在琴房里独自惬意地看书练琴，也莫名在这方面与丽奈学姐很是合拍。\n即便如此，她仍享受着与朋友相处的时光，只盼那场终将来临的离别，能晚一点到来。" },
+      description: "这一年的吹奏部新成员，单簧管乐手。擅长吹奏和民间传说，也乐于分享这些，在就读的初中里本有机会过上同学前拥后簇的生活。不过，她更想在琴房里独自惬意地看书练琴，也莫名在这方面与丽奈学姐很是合拍。即便如此，她仍享受着与朋友相处的时光，只盼那场终将来临的离别，能晚一点到来。",
+      descriptionEn: "A new member of this year's band, a clarinet player. Skilled at her instrument and well-versed in folklore—and happy to share both. At her old middle school, she could have lived a life with classmates flocking around her; but she would rather read and practice at her ease, alone in the practice room—and in this, she somehow gets along famously with her senior, Reina. Even so, she treasures the time spent with her friends, wishing only that the farewell sure to come will arrive a little later." },
     { id: "kamataya-suzume", name: "釜屋雀", nameEn: "Suzume Kamaya", image: "assets/img/characters/support/kamataya-suzume.jpg", imageEn: "assets/img/characters/support/en/kamataya-suzume.jpg", group: "support",
-      description: "釜屋雀\n这一年的吹奏部新成员,新晋大号手。\n自我取名派对狂客,可因为某些缘故,常\n自甘堕落为姐姐(釜屋燕)的贴心枕头。" },
+      description: "这一年的吹奏部新成员，新晋大号手。自我取名派对狂客，可因为某些缘故，常自甘堕落为姐姐的贴心枕头。",
+      descriptionEn: "A new member of this year's band, and a brand-new tuba player. A self-proclaimed party animal who, for one reason or another, often willingly sinks to serve as her big sister's personal pillow." },
     { id: "kamataya-tsubame", name: "釜屋燕", nameEn: "Tsubame Kamaya", image: "assets/img/characters/support/kamataya-tsubame.jpg", imageEn: "assets/img/characters/support/en/kamataya-tsubame.jpg", group: "support",
-      description: "与久美子同居的打击乐声部成员，司职马林巴。\n自觉长相普通，常将自己的世界局限在眼镜之后，直到妹妹的一句鼓励，才肯上手尝试鲜为人知的奇怪乐器。如此，她才明白在自己之外，竟如此广阔。" },
+      description: "与久美子同届的打击乐声部成员，司职马林巴。自觉长相普通，常将自己的世界局限在眼镜之后，直到妹妹的一句鼓励，才肯上手尝试鲜为人知的奇怪乐器。如此，她才明白在自己之外，竟如此广阔。",
+      descriptionEn: "A member of the percussion section, in the same year as Kumiko, on marimba. Convinced of her plain looks, she long kept her world behind her glasses—until a few words from her little sister led her to try a strange instrument few had ever heard of. Only then did she realize how wide the world beyond herself could be." },
     { id: "takaku-chieri", name: "高久智绘里", nameEn: "Chieri Takahisa", image: "assets/img/characters/support/takaku-chieri.jpg", imageEn: "assets/img/characters/support/en/takaku-chieri.jpg", group: "support",
-      description: "高久\n智绘里\n与久美子同届的单簧管声部成员，吹奏部乐团首席。\n温和恬静的乖乖女，不知是否是刘海遮住了眼睛所致，实力超群却存在感稀薄" },
+      description: "与久美子同届的单簧管声部成员，吹奏部乐团首席。温和恬静的乖乖女，不知是否是刘海遮住了眼睛所致，实力超群却存在感稀薄。",
+      descriptionEn: "A member of the clarinet section in Kumiko's year, and the band's concertmaster. A gentle, soft-spoken model student. Perhaps it's the bangs hanging over her eyes—but for all her first-rate skill, her presence is curiously faint." },
     { id: "oumai-akiko", name: "黄前明子", nameEn: "Akiko Oumae", image: "assets/img/characters/support/oumai-akiko.jpg", imageEn: "assets/img/characters/support/en/oumai-akiko.jpg", group: "support",
-      description: "家庭主妇，久美子坚实的后盾。\n支持并尊重女儿的决定——大女儿如此，二女儿亦然。" },
+      description: "家庭主妇，久美子坚实的后盾。支持并尊重女儿的决定——大女儿如此，二女儿亦然。",
+      descriptionEn: "A homemaker, and Kumiko's staunchest supporter. She supports and respects her daughters' decisions—true for her elder daughter, and just as true for her younger." },
     { id: "kaho", name: "针谷佳穗", nameEn: "Kaho Hariya", image: "assets/img/characters/support/kaho.jpg", imageEn: "assets/img/characters/support/en/kaho.jpg", group: "support",
-      description: "这一年的吹奏部新成员，新晋上低音号手。\n内向腼腆的典型好孩子，憨笑挑战连败纪录保持者，但其笔下画风可堪豪放一词。" },
+      description: "这一年的吹奏部新成员，新晋上低音号手。内向腼腆的典型好孩子，憋笑挑战连败纪录保持者，但其笔下画风可堪豪放一词。",
+      descriptionEn: "A new member of this year's band, and a brand-new euphonium player. A classic shy and introverted good girl, she holds the record for the longest losing streak in the \"try not to laugh\" challenge. Yet the style of her artwork can only be described as bold and unrestrained." },
     { id: "kenzaki-ririka", name: "剑崎梨梨花", nameEn: "Ririka Kenzaki", image: "assets/img/characters/support/kenzaki-ririka.jpg", imageEn: "assets/img/characters/support/en/kenzaki-ririka.jpg", group: "support",
-      description: "久美子在高二结识的\"可爱\"后辈，双簧管乐手。\n双簧乐器会会长、\"早上一个鸡蛋，一天全部健康\"理念的开创者、小奏皮厨房的监督者，热衷于发现新奇事物，并为己所用。" },
+      description: "久美子在高二结识的“可爱”后辈，双簧管乐手。双簧乐器会会长、“早上一个鸡蛋，一天全部健康”理念的开创者、小奏皮厨房的监督者，热衷于发现新奇事物，并为己所用。",
+      descriptionEn: "Another \"cute\" underclassman from Kumiko's second year, an oboe player. President of the Double Reed Club, founder of the \"one egg in the morning keeps you healthy all day\" philosophy, and supervisor of Kanade's Kitchen. She lives to discover novel things—and to make them her own." },
     { id: "sakai-masako", name: "堺万纱子", nameEn: "Sakai Masako", image: "assets/img/characters/support/sakai-masako.jpg", imageEn: "assets/img/characters/support/en/sakai-masako.jpg", group: "support",
-      description: "与久美子同届的打击乐声部成员，总是与井上顺菜同屏出现。\n在线上主持过多届\"莫扎特与Emo万岁\"的同好交流会，因其渊博的通俗音乐知识和热心肠，引得不少路人入群。" },
+      description: "与久美子同届的打击乐声部成员，总是与井上顺菜同屏出现。在线上主持过多届“莫扎特与Emo万岁”的同好交流会，因其渊博的通俗音乐知识和热心肠，引得不少路人入群。",
+      descriptionEn: "A member of the percussion section, in the same year as Kumiko, always sharing the screen with Junna Inoue. Online, she has hosted many editions of the 'Long Live Mozart and Emo' fan meetup, and her encyclopedic knowledge of popular music—together with her warm heart—has drawn many a passerby into the group." },
     { id: "inoue-junna", name: "井上顺菜", nameEn: "Junna Inoue", image: "assets/img/characters/support/inoue-junna.jpg", imageEn: "assets/img/characters/support/en/inoue-junna.jpg", group: "support",
-      description: "与久美子同届的打击乐声部声部长，总是与堺万纱子同屏出现。\n性情直率，有亲和力，深受打击乐声部部员们的爱戴。" },
+      description: "与久美子同届的打击乐声部声部长，总是与堺万纱子同屏出现。性情直率，有亲和力，深受打击乐声部部员们的爱戴。",
+      descriptionEn: "Leader of the percussion section, in the same year as Kumiko, always sharing the screen with Masako Sakai. Frank and personable, she is beloved by every member of the percussion section." },
     { id: "kumiko-father", name: "黄前健太郎", nameEn: "Kentarou Oumae", image: "assets/img/characters/support/kumiko-father.jpg", imageEn: "assets/img/characters/support/en/kumiko-father.jpg", group: "support",
-      description: "公司职员，对即将面临升学的久美子接过部长职务一事颇有微词，总是在餐桌上与女儿话争锋相对。" },
+      description: "公司职员，对即将面临升学的久美子接过部长职务一事颇有微词，总是在餐桌上与女儿话锋相对。",
+      descriptionEn: "A company employee who has reservations about Kumiko taking on the role of band president as she prepares for the next stage of her education. The two often find themselves at odds across the dinner table." },
     { id: "kaizuka-mizore", name: "铠冢霙", nameEn: "Mizore Yoroizuka", image: "assets/img/characters/support/kaizuka-mizore.jpg", imageEn: "assets/img/characters/support/en/kaizuka-mizore.jpg", group: "support",
-      description: "去年和久美子同在北宇治吹奏部的学姐，双簧管乐手，现为京都音乐大学的学生。在新校园里，极高的音乐理解与神秘的生活作风，使她被动拥有一个由若干聒噪学妹组建的应援会。然而，她宁愿所有都在改变，也仍执拗地固守心底一块小小的净土，留给她最珍视的另一个人。" },
-    { id: "suzuki-satsuki", name: "铃木皋月", nameEn: "Satsuki Suzuki", image: "assets/img/characters/support/suzuki-satsuki.jpg", imageEn: "assets/img/characters/support/en/suzuki-satsuki.jpg", group: "support",
-      description: "久美子在高二结识的后辈, 大号手。身材袖珍, 天真烂漫, 大部分时间都在cos美玲的挂件, 可在回家路上也会时不时透露属于自己的真心。" },
+      description: "去年和久美子同在北宇治吹奏部的学姐，双簧管乐手，现为京都音乐大学的学生。在新校园里，极高的音乐理解与神秘的生活作风让人不禁心驰神往，已使她被动拥有一个由若干聒噪学妹组建的应援会。然而，她宁愿所有都在改变，也仍执拗地固守心底一块小小的净土，留给她最珍视的另一个人。",
+      descriptionEn: "A senior in the Kitauji Concert Band during Kumiko's second year, an oboe player now studying at Kyoto University of Music. On her new campus, her profound musical insight and enigmatic lifestyle have earned her a fan club of boisterous underclassmen. Yet she still guards a small sanctuary in her heart, reserved for the person she treasures most." },
+    { id: "suzuki-satsuki", name: "铃木彩月", nameEn: "Satsuki Suzuki", image: "assets/img/characters/support/suzuki-satsuki.jpg", imageEn: "assets/img/characters/support/en/suzuki-satsuki.jpg", group: "support",
+      description: "久美子在高二结识的后辈，大号手。身材袖珍，天真烂漫，大部分时间都在cos美玲的挂件，可在回家路上也会时不时透露属于自己的真心。",
+      descriptionEn: "An underclassman Kumiko met in her second year, a tuba player. Pint-sized and sweetly innocent, she spends most of her time cosplaying as Mirei's bag charm—yet on the walk home, she will sometimes let slip a heart of her own." },
     { id: "suzuki-mirei", name: "铃木美玲", nameEn: "Mirei Suzuki", image: "assets/img/characters/support/suzuki-mirei.jpg", imageEn: "assets/img/characters/support/suzuki-mirei.jpg", group: "support",
-      description: "久美子在高二结识的后辈，大号手。\n身高傲人，冷静务实，胳膊上和心里总是牵\n挂着双马尾的小小女孩，正尝试着如何在兼\n顾自我提升的同时，也照顾别人的感受。" },
+      description: "久美子在高二结识的后辈，大号手。身高傲人，冷静务实，胳膊上和心里总是牵挂着双马尾的小小女孩，正尝试着如何在兼顾自我提升的同时，也照顾别人的感受。",
+      descriptionEn: "An underclassman Kumiko met in her second year, a tuba player. Proud of her height, calm and pragmatic, she always carries a little girl with twintails on her arm and in her heart, and is learning to balance self-improvement with caring for others." },
     { id: "taki-noboru", name: "泷升", nameEn: "Noboru Taki", image: "assets/img/characters/support/taki-noboru.jpg", imageEn: "assets/img/characters/support/en/taki-noboru.jpg", group: "support",
-      description: "北宇治高中吹奏乐部顾问，同时也兼任着几个班的音乐老师和班主任。\n是风度翩翩的森系帅哥，亦是不通人情的\"微笑恶魔\"。两年前泷的到来让吹奏部焕然一新，而现在，新的挑战摆在了他和部员们的面前。" },
+      description: "北宇治高中吹奏乐部顾问，同时也兼任着几个班的音乐老师和班主任。是风度翩翩的森系帅哥，亦是不通人情的“微笑恶魔”。两年前泷的到来让吹奏部焕然一新，而现在，新的挑战摆在了他和部员们的面前。",
+      descriptionEn: "Advisor to the Kitauji High School Concert Band, and also a music and homeroom teacher. A dashing, naturally charismatic heartthrob—and a \"Smiling Devil\" unmoved by human sentiment. Taki's arrival two years ago transformed the band, and now a new challenge awaits him and his members." },
     { id: "maki", name: "牧誓", nameEn: "Chikai Maki", image: "assets/img/characters/support/maki.jpg", imageEn: "assets/img/characters/support/en/maki.jpg", group: "support",
-      description: "与久美子同届的萨克斯声部成员，司职中音萨克斯。高一时还是声部里的开心果，到如今已成长为可靠的声部部长，除去储藏室里的\"大号君\"外，还照料着部员社团生活的方方面面。" },
+      description: "与久美子同届的萨克斯声部成员，司职中音萨克斯。高一时还是声部里的开心果，到如今已成长为可靠的声部长，除去储藏室里的“大号君”外，还照料着部员社团生活的方方面面。",
+      descriptionEn: "A member of the saxophone section in Kumiko's year, playing alto saxophone. The section's ray of sunshine back in his first year, he has since grown into a dependable section leader–on top of caring for \"Tuba-kun\" in the storage room, he tends to every corner of his fellow members' club lives." },
     { id: "kamiishi-yao", name: "上石弥生", nameEn: "Yayoi Kamiishi", image: "assets/img/characters/support/kamiishi-yao.jpg", imageEn: "assets/img/characters/support/en/kamiishi-yao.jpg", group: "support",
-      description: "这一年的吹奏部新成员，新晋大号手。\n佳穗连败纪录的肇事方，幻想作为海盗生活，如今\"落魄\"到需要以漫才笑话和朋友接济小零食为生。" },
+      description: "这一年的吹奏部新成员，新晋大号手。佳穗连败纪录的肇事方，幻想作为海盗生活，如今“落魄”到需要以漫才笑话和朋友接济小零食为生。",
+      descriptionEn: "A new member of this year's band, and a brand-new tuba player. The culprit behind Kaho's losing streak. She dreams about living as a pirate, but has now \"fallen\" to relying on manzai jokes and friend-donated snacks to survive." },
     { id: "matsumoto-michie", name: "松本美知惠", nameEn: "Michie Matsumoto", image: "assets/img/characters/support/matsumoto-michie.jpg", imageEn: "assets/img/characters/support/en/matsumoto-michie.jpg", group: "support",
-      description: "北宇治高中吹奏乐部副顾问，同时也是久美子从高一到高三的班主任。\n\"军曹老师\"的威名之下，却是一颗柔软的心。" },
+      description: "北宇治高中吹奏乐部副顾问，同时也是久美子从高一到高三的班主任。“军曹老师”的威名之下，却是一颗柔软的心。",
+      descriptionEn: "Vice advisor of the Kitauji High School Concert Band, and Kumiko's homeroom teacher from her first year through her third. Beneath the fearsome name of 'Sergeant-sensei' beats a tender heart." },
     { id: "tanaka-asuka", name: "田中明日香", nameEn: "Asuka Tanaka", image: "assets/img/characters/support/tanaka-asuka.jpg", imageEn: "assets/img/characters/support/en/tanaka-asuka.jpg", group: "support",
-      description: "久美子一年级时同在低音声部的\n学姐，曾是上低音号手。\n考上京都大学后，留给久美子的\n除去唯她才能理解的幽默感，也\n只剩下些触不可及的珍贵回忆，\n是久美子最仰慕的人。" },
+      description: "久美子一年级时同在低音声部的学姐，曾是上低音号手。考上京都大学后，留给久美子的除去唯她才能理解的幽默感，也只剩下些触不可及的珍贵回忆，是久美子最仰慕的人。",
+      descriptionEn: "A senior from the bass section during Kumiko's first year, formerly a euphonium player. After leaving for Kyoto University, what remained with Kumiko were a brand of humor only Kumiko could understand, and precious memories now forever out of reach. She is the person Kumiko admires most." },
     { id: "ogasawara-haruka", name: "小笠原晴香", nameEn: "Haruka Ogasawara", image: "assets/img/characters/support/ogasawara-haruka.jpg", imageEn: "assets/img/characters/support/en/ogasawara-haruka.jpg", group: "support",
-      description: "久美子一年级时北宇治吹奏部的部长，上低音萨克斯乐手。\n以温柔著称的爱哭鬼，曾以此风靡校报版面，可一旦遇到值得坚持的人或事物，她从来不会让人失望。" },
+      description: "久美子一年级时北宇治吹奏部的部长，上低音萨克斯乐手。以温柔著称的爱哭鬼，曾以此风靡校报版面，可一旦遇到值得坚持的人或事物，她从来不会让人失望。",
+      descriptionEn: "President of the Kitauji Concert Band in Kumiko's first year, a baritone saxophone player. A kind-hearted crybaby whose tearful moments once filled the school newspaper, she may be easily moved to tears, but she will never disappoint when it comes to the people and things she truly believes in." },
     { id: "kohinata-yume", name: "小日向梦", nameEn: "Yume Kohinata", image: "assets/img/characters/support/kohinata-yume.jpg", imageEn: "assets/img/characters/support/en/kohinata-yume.jpg", group: "support",
-      description: "久美子在高二结识的后辈，小号手。\n吹奏水平高超却缺乏自信，一年级得到加部友惠学姐的鼓励后，总是低着的头终于抬起了些许。" },
+      description: "久美子在高二结识的后辈，小号手。吹奏水平高超却缺乏自信，一年级得到加部友惠学姐的鼓励后，总是低着的头终于抬起了些许。",
+      descriptionEn: "An underclassman Kumiko met in her second year, a trumpet player. A superb performer who sorely lacks confidence. After her senior Tomoe Kabe offered her encouragement in her first year, her perpetually downcast head finally lifted a little." },
     { id: "tsukinaga-motomu", name: "月永求", nameEn: "Motomu Tsukinaga", image: "assets/img/characters/support/tsukinaga-motomu.jpg", imageEn: "assets/img/characters/support/en/tsukinaga-motomu.jpg", group: "support",
-      description: "久美子在高二结识的后辈，低音提琴手。性情孤僻让他人难以接近，只有在面对绿辉学姐时才会显现出温顺的一面。面对自己敬慕的学姐即将毕业的事实，他不得不意识到需要去直视此前不肯回忆的过去。" },
+      description: "久美子在高二结识的后辈，低音提琴手。性情孤僻让他人难以接近，只有在面对绿辉学姐时才会显现出温顺的一面。面对自己敬慕的学姐即将毕业的事实，他不得不意识到需要去直视此前不肯回忆的过去。",
+      descriptionEn: "An underclassman Kumiko met in her second year, a double bassist. His aloof nature keeps others at a distance; only around his senior Midori does he show a gentle side. As the senior he admires prepares to graduate, he must finally face the past he long refused to confront." },
     { id: "sasaki-azusa", name: "佐佐木梓", nameEn: "Azusa Sasaki", image: "assets/img/characters/support/sasaki-azusa.jpg", imageEn: "assets/img/characters/support/en/sasaki-azusa.jpg", group: "support",
-      description: "久美子国中时的同学兼好友，现为立华高中吹奏俱乐部部长。\n天资卓绝的努力家，在带领立华捍卫行奏乐王座的同时，也为实现自己的音乐梦想而大步向前。" }
+      description: "久美子国中时的同学兼好友，现为立华高中吹奏乐部部长。天资卓绝的努力家，在带领立华捍卫行奏乐王座的同时，也为实现自己的音乐梦想而大步向前。",
+      descriptionEn: "Kumiko's classmate and good friend from middle school, now president of the Rikka High School Concert Band.\nA prodigiously gifted hard worker, she leads Rikka in defending its marching crown while striding boldly toward her own musical dreams." }
   ];
 
   /* ---------- 资讯 ---------- */
@@ -84,50 +113,47 @@
   /* ---------- 正文双语（与 data/i18n.json 同构） ---------- */
   var i18n = {
     intro: {
-      short: {
-        zh: "一部关于久美子三年级生活的免费同人视觉小说，包含分支选项与三条恋爱路线。",
-        en: "A free fan-made visual novel about Kumiko's third year, featuring branching choices and three romance routes."
-      },
+      short: { zh: "背景设定为《吹响吧！上低音号》主角黄前久美子的高中第三年。故事地点在日本关西紧邻京都的普通小城——宇治。恰逢春暖花开，晚樱将落，新生们收拾起书包爬上山坡，而久美子拿起上低音号，就要开始她的第一次演出……", en: "The story takes place during the third and final high school year of Kumiko Oumae, the protagonist of Sound! Euphonium. The setting is Uji, an unassuming little city in Japan's Kansai region, right next to Kyoto. Spring is in full bloom, and the late-blooming cherries are about to fall. New students shoulder their school bags and climb the hill, while Kumiko picks up her euphonium, ready to give her very first performance…" },
       bullets: [
-        { zh: "非官方 · 完全免费：这是一部非官方的同人视觉小说。游戏是——并且永远是——完全免费的。",
+        { zh: "非官方与完全免费：本作是非官方同人视觉小说，游戏完全且永久免费。",
           en: "Unofficial & Completely Free: This is an unofficial fan-made visual novel. The game is—and always will be—completely free." },
-        { zh: "不使用官方素材：出于对原作版权方的尊重，本项目不直接使用任何官方美术、音乐或音频素材。全部游戏素材均为独立创作或合法授权的第三方资源。若无意中侵犯了您的权利，请联系我们以便修正。",
+        { zh: "无官方素材：为尊重原著版权，本作绝未直接使用任何官方的图像、音乐或音频素材，所有游戏资产均为独立创作或合法授权的第三方资源。如无意间侵犯到您的权益，请联系我们修改。",
           en: "No Official Assets: Out of respect for the original copyright holders, this project makes no direct use of any official artwork, music, or audio assets. All game assets are either independently created or legally licensed third-party resources. If we have inadvertently infringed upon your rights, please contact us so we can make corrections." },
-        { zh: "语言与音频：中文、英语和日语以外的语言文本借助机器翻译工具制作，可能存在语义偏差——尤其是管乐术语与角色语气方面。此外，本游戏仅包含中文配音。由于制作预算限制，基础界面仅提供英语与简中版本，希望这不会影响您的剧情体验。",
-          en: "On Languages & Audio: Text in languages other than Chinese, English and Japanese was produced with the assistance of machine translation tools, so there may be some semantic drift—particularly regarding wind band terminology and individual characters' voices. In addition, this game features Chinese voice acting only. Due to production budget constraints, the base UI is only available in English and schinese. We sincerely hope this does not detract from your experience of the story." }
+        { zh: "关于多语言与音频：除中文和日文外，其他语言文本依赖辅助翻译工具，针对吹奏乐专业术语及角色口吻可能存在语义偏差。此外，本作仅包含中文配音（或无配音）。",
+          en: "On Languages & Audio: Text in languages other than Chinese and Japanese was produced with the assistance of machine translation tools, so there may be some semantic drift—particularly regarding wind band terminology and individual characters' voices. In addition, this game features Chinese voice acting only (or no voice acting at all)." }
       ]
     },
     story: {
       paragraphs: [
-        { zh: "又一个春天降临北宇治高中，上低音号手黄前久美子正式接过了北宇治吹奏乐部部长一职。",
+        { zh: "北宇治高中迎来了又一个春天，上低音号手·黄前久美子正式接过北宇治吹奏部部长的指挥棒。",
           en: "Another spring has arrived at Kitauji High School, and euphonium player Kumiko Oumae officially takes up the baton as president of the Kitauji Concert Band." },
-        { zh: "这一年，是她与伙伴们最后一次冲击全国大赛金奖的机会。",
+        { zh: "这一年，是她和伙伴们冲击全国吹奏大赛金奖的最后机会。",
           en: "This year marks her—and her friends'—final chance to pursue the Gold Prize at the National Wind Band Contest." },
-        { zh: "在那之前，Sunrise 音乐节的行进演出，不过是一道开胃小菜。",
+        { zh: "在那之前，日升祭的行进乐演出看上去不过是一道轻松的前菜。",
           en: "Before that, the marching show at the Sunrise Festival looks like nothing more than a light appetizer." },
-        { zh: "然而，随着新学年开始，吹奏部的琴房里迎来的，不仅是永远活力满格的新生，还有一位手执上低音号的转校生——她的到来，即将击碎这份平淡的日常。",
+        { zh: "然而，新学期的吹奏部里，除了永远元气拉满的后辈，一位即将打破稀松日常的转校生，也会带着属于她的上低音号，来到此地。",
           en: "Yet as the new school year begins, the band room welcomes not only underclassmen whose energy is forever dialed to maximum, but also a transfer student, her own euphonium in hand—one whose arrival is about to shatter the humdrum everyday." },
-        { zh: "随着她的到来，那熟悉的裂痕再度在社团中蔓延开来。",
+        { zh: "随着她的到来，社团里似曾相识的裂痕再度蔓延。",
           en: "With her coming, an all-too-familiar rift begins to creep through the club once more." },
-        { zh: "但这一次，久美子嗅到了不一样的气息。裂痕之下翻涌的，不仅是胜负之争，更是一场足以摧毁多年信念积累的危机。",
+        { zh: "只是这一次，久美子察觉到了不同：裂痕底下翻涌着的，并不只是关乎胜负的较劲，还有足以让多年信念功亏一篑的危机。",
           en: "But this time, Kumiko senses something different. What churns beneath that rift is not merely a rivalry over winning or losing, but also a crisis grave enough to undo everything that years of faith have built." },
-        { zh: "她会朝着众人仰望的梦想继续前进吗？会半途而废吗？",
+        { zh: "是继续完成众人仰望的夙愿？是半途止步？",
           en: "Will she press on toward the dream everyone looks up to? Will she stop halfway?" },
-        { zh: "又或者……她会亲手将自己逐出那片曾经深爱的舞台？",
+        { zh: "还是……把自己放逐出这片曾经深爱的舞台？",
           en: "Or… will she cast herself out from the stage she once loved so dearly?" },
-        { zh: "一切，都取决于久美子即将做出的选择。",
+        { zh: "一切，都系于久美子将要做出的选择之上。",
           en: "Everything hinges on the choice Kumiko is about to make." }
       ]
     },
     notice: {
       title: { zh: "重要声明", en: "Important Notice" },
       items: [
-        { icon: "♩", zh: "非官方 · 完全免费：这是一部非官方的同人视觉小说。游戏是——并且永远是——完全免费的。",
+        { icon: "♩", zh: "非官方与完全免费：本作是非官方同人视觉小说，游戏完全且永久免费。",
           en: "Unofficial & Completely Free: This is an unofficial fan-made visual novel. The game is—and always will be—completely free." },
-        { icon: "♫", zh: "不使用官方素材：本项目不直接使用任何官方美术、音乐或音频素材。全部游戏素材均为独立创作或合法授权的第三方资源。若无意中侵犯了您的权利，请联系我们以便修正。",
-          en: "No Official Assets: This project makes no direct use of any official artwork, music, or audio assets. All game assets are either independently created or legally licensed third-party resources. If we have inadvertently infringed upon your rights, please contact us so we can make corrections." },
-        { icon: "♪", zh: "语言与音频：中英日以外的语言文本借助机器翻译制作，可能存在语义偏差。本游戏仅包含中文配音；基础界面仅提供英语与简中版本。",
-          en: "On Languages & Audio: Text in languages other than Chinese, English and Japanese was produced with the assistance of machine translation tools. This game features Chinese voice acting only; the base UI is available in English and schinese." }
+        { icon: "♫", zh: "无官方素材：为尊重原著版权，本作绝未直接使用任何官方的图像、音乐或音频素材，所有游戏资产均为独立创作或合法授权的第三方资源。如无意间侵犯到您的权益，请联系我们修改。",
+          en: "No Official Assets: Out of respect for the original copyright holders, this project makes no direct use of any official artwork, music, or audio assets. All game assets are either independently created or legally licensed third-party resources. If we have inadvertently infringed upon your rights, please contact us so we can make corrections." },
+        { icon: "♪", zh: "关于多语言与音频：除中文和日文外，其他语言文本依赖辅助翻译工具，针对吹奏乐专业术语及角色口吻可能存在语义偏差。此外，本作仅包含中文配音（或无配音）。",
+          en: "On Languages & Audio: Text in languages other than Chinese and Japanese was produced with the assistance of machine translation tools, so there may be some semantic drift—particularly regarding wind band terminology and individual characters' voices. In addition, this game features Chinese voice acting only (or no voice acting at all)." }
       ]
     }
   };
@@ -152,7 +178,14 @@
     secCredits:   { zh: "制作成员", en: "Credits" },
     secNews:      { zh: "资讯更新", en: "News" },
     secNotice:    { zh: "重要声明", en: "Important Notice" },
-    introQuote:   { zh: "免费同人视觉小说 · 分支选项 · 三条恋爱路线", en: "Free fan-made visual novel · Branching choices · 3 romance routes" },
+    /* 总谱页头速度术语：中文模式只显示中文，英文模式显示意大利语 + 中文 */
+    tempoIntro:   { zh: "行板", en: "ANDANTE · 行板" },
+    tempoStory:   { zh: "富有表情地", en: "ESPRESSIVO · 富有表情地" },
+    tempoChars:   { zh: "独奏群像", en: "SOLI · 独奏群像" },
+    tempoCredits: { zh: "全奏", en: "TUTTI · 全奏" },
+    tempoNews:    { zh: "中板", en: "MODERATO · 中板" },
+    tempoWishlist:{ zh: "慢板", en: "ADAGIO · 慢板" },
+    tempoNotice:  { zh: "延长记号", en: "FERMATA · 延长记号" },
     chipVN:       { zh: "视觉小说", en: "Visual Novel" },
     chipBand:     { zh: "吹奏部", en: "Band Club" },
     chipFree:     { zh: "完全免费", en: "100% Free" },
@@ -172,7 +205,7 @@
     wishlistErrFormat: { zh: "邮箱格式不正确，请检查后重试", en: "That email doesn't look right — please check and retry" },
     wishlistErrRate: { zh: "操作太频繁，请稍后再试", en: "Too many attempts — please try again later" },
     wishlistErrGeneric: { zh: "提交失败，请稍后再试", en: "Something went wrong — please try again later" },
-    ctaLine:      { zh: "一起吹响通往未来的旋律吧", en: "Let's sound off a melody toward the future together!" },
+    ctaLine:      { zh: "梦想悠风制作组万分期待您的加入！", en: "Everyone at DreamEupho Studio can't wait to welcome you aboard!" },
     ctaSub:       { zh: "持续招募中 · 剧本 / 美术 / 配音 / 音乐 / 程序 / 运营 / 翻译", en: "Recruiting · Scenario / Art / Voice / Music / Programming / Operations / Translation" },
     ctaBtn:       { zh: "查看岗位详情 →", en: "SEE OPEN POSITIONS →" },
     ctaGroup:     { zh: "玩家群 / 招募群：1029729353 / 1022882012", en: "QQ Groups: 1029729353 / 1022882012" },
@@ -205,38 +238,38 @@
   /* ---------- 制作成员 ---------- */
   var credits = {
     core: [
-      { role: "Project Leader", roleZh: "项目负责人", name: "苏昂", note: "♪" },
+      { role: "Project Leader", roleZh: "主催", name: "苏昂", note: "♪" },
       { role: "Director & Staging", roleZh: "导演 · 演出", name: "赛博吟游诗人42", note: "♫" },
-      { role: "Production Coordinator", roleZh: "制作统筹", name: "谐波回响", note: "♩" },
-      { role: "Project Manager", roleZh: "项目管理", name: "WG华", note: "♬" }
+      { role: "Production Coordinator", roleZh: "制作进行", name: "谐波回响", note: "♩" },
+      { role: "Project Manager", roleZh: "策划", name: "WG华", note: "♬" }
     ],
     groups: [
       { en: "Scenario", zh: "剧本", list: [
-        ["Lead Author", "FoffeR、赛博吟游诗人42"],
-        ["Script Writer", "FoffeR、SakaHaya、崎岖山翁、梳风、陶守谦、芷璃破碎、V、Sword"],
-        ["Consultant", "再睡五分钟、悠久风、WonderKindom、MT德意松、当代闲人、AFlutter"]
+        ["Lead Author", "剧本策划", "FoffeR、赛博吟游诗人42"],
+        ["Script Writer", "编剧", "FoffeR、SakaHaya、崎岖山翁、梳风、陶守谦、芷璃破碎、V、Sword"],
+        ["Consultant", "顾问（文化背景与市场）", "再睡五分钟、悠久风、WonderKindom、MT德意松、当代闲人、AFlutter"]
       ] },
       { en: "Voice Acting", zh: "配音", list: [
-        ["Voice Director", "予薇Werin"],
-        ["Voice Cast", "予薇Werin、绵绵雪芙蕾Candy、花君困、希夜_lily桑、Sakura樱酱、宫羽铃奈、苏以沫、墨白、言名海"]
+        ["Voice Director", "配音导演", "予薇Werin"],
+        ["Voice Cast", "配音演员", "予薇Werin、绵绵雪芙蕾Candy、花君困、希夜_lily桑、Sakura樱酱、宫羽铃奈、苏以沫、墨白、言名海"]
       ] },
       { en: "Art", zh: "美术", list: [
-        ["2D Art", "牧野双实、绝赞双厨狂悲制作人、镜月、不笑憮、画鸽毛仙、摆烂画画人寻缘、Hasema、夏樱、盘常、洛桤Lochi、不知名魔法师、未来降雨十万年、深海西兰花、Acesul、萨摩耶、苏昂、是tytyty、SakaHaya、赛博吟游诗人42、ひびつつz、玉面狼、琼林也、燰薪、噜啦嘞、赵雨眠、啓keisuke、優花雫、丸"],
-        ["3D (Backgrounds)", "路人甲、蓝山、是水桶啊、赛博吟游诗人42、立水寒若青、化树、小柳、玄翼捭羽、白开水味咖啡、ひびつつz、AOSHIBA、zxy、养猫的艺术家 (T菌)、慕可muk、Zixi lrena"],
-        ["Graphic Design", "RamuNeon、五块钱的洗衣机、玻璃鼎、麦兜、江畔何人初见Yue、余默、易安、Sing、野生黄白猫"],
-        ["Compositing", "波亚燐、咸鱼"]
+        ["2D Art", "二维美术", "牧野双实、绝赞双厨狂悲制作人、镜月、不笑憮、画鸽毛仙、摆烂画画人寻缘、Hasema、夏樱、盘常、洛桤Lochi、不知名魔法师、未来降雨十万年、深海西兰花、Acesul、萨摩耶、苏昂、是tytyty、SakaHaya、赛博吟游诗人42、ひびつつz、玉面狼、琼林也、燰薪、噜啦嘞、赵雨眠、啓keisuke、優花雫、丸"],
+        ["3D (Backgrounds)", "三维背景", "路人甲、蓝山、是水桶啊、赛博吟游诗人42、立水寒若青、化树、小柳、玄翼捭羽、白开水味咖啡、ひびつつz、AOSHIBA、zxy、养猫的艺术家 (T菌)、慕可muk、Zixi lrena"],
+        ["Graphic Design", "平面设计", "RamuNeon、五块钱的洗衣机、玻璃鼎、麦兜、江畔何人初见Yue、余默、易安、Sing、野生黄白猫"],
+        ["Compositing", "合成", "波亚燐、咸鱼"]
       ] },
       { en: "Programming", zh: "程序", list: [
-        ["Programming", "闪达、烫烫烫Tang_YM、早八时睡觉的你、莉莉、章鱼维克、FractalD471、牙白です、明溪、晓陆sylph、ART0189"]
+        ["Programming", "程序开发", "闪达、烫烫烫Tang_YM、早八时睡觉的你、莉莉、章鱼维克、FractalD471、牙白です、明溪、晓陆sylph、ART0189"]
       ] },
       { en: "Music", zh: "音乐", list: [
-        ["Composer / Arranger", "夜星兰、Explorer010、hanahanayoww、Triple-LLL、AlvinString芝玄、一坨狗、Kazimierz、花卷Jwyan、梨落(Liraku)、贺音奏、空白ダスト、atomo、嘤联邦邦主、PianoByDefault、言、泠音ryoune"],
-        ["Performing Musicians", "euphonium丝瓜、Jackson-Kylin、四槌侠、贺音奏、冷梦梦梦梦、APiccolo、たかし"]
+        ["Composer / Arranger", "作编曲", "夜星兰、Explorer010、hanahanayoww、Triple-LLL、AlvinString芝玄、一坨狗、Kazimierz、花卷Jwyan、梨落(Liraku)、贺音奏、空白ダスト、atomo、嘤联邦邦主、PianoByDefault、言、泠音ryoune"],
+        ["Performing Musicians", "乐手", "euphonium丝瓜、APiccolo、Jackson-Kylin、四槌侠、冷梦梦梦梦、たかし"]
       ] },
       { en: "Others", zh: "其他", list: [
-        ["Translation", "崎岖山翁"],
-        ["Production Support", "Rikka、水明水明、ageless、镜花、晓陆sylph、阿瑾"],
-        ["PR", "皮卡丘不是竹鼠、少校炭、鹿目lumu、铠冢霙视野狭隘、euphony、贺喜保护协会、神尾轻摇观铃响、玄、Noruneru"]
+        ["Translation", "翻译", "崎岖山翁"],
+        ["Production Support", "制作协力", "Rikka、水明水明、ageless、镜花、晓陆sylph、阿瑾"],
+        ["PR", "宣发", "皮卡丘不是竹鼠、少校炭、鹿目lumu、铠冢霙视野狭隘、euphony、贺喜保护协会、神尾轻摇观铃响、玄、Noruneru"]
       ] }
     ],
     thanks: "京阿尼语料组、北宇治婚礼部、坏心思的蓝女巫童话社、ReMujica复权乐章、余怀仁、被炒的炒饭、吉川优子official、我也是伞厨、Zero-sum零和、北宇治字幕组、西冰库神学院、OnesetEuph、帆前、toto、Καντακουζηνός、瑞乐乐器、DX、唐雲范（已故）、孙烨文、和泉Ciao、星辰与弦、Error伊洛"
@@ -258,7 +291,7 @@
     ],
     jobs: [
       {
-        index: "01", title: "剧本创作", titleEn: "Scenario Writing",
+        index: "1", title: "剧本创作", titleEn: "Scenario Writing",
         posts: [
           {
             name: "剧本写手",
@@ -281,7 +314,7 @@
         ]
       },
       {
-        index: "02", title: "美术与视觉设计", titleEn: "Art & Visual Design",
+        index: "2", title: "美术与视觉设计", titleEn: "Art & Visual Design",
         posts: [
           {
             name: "二维美术",
@@ -413,7 +446,7 @@
         ]
       },
       {
-        index: "03", title: "配音与语音制作", titleEn: "Voice Acting & Audio",
+        index: "3", title: "配音与语音制作", titleEn: "Voice Acting & Audio",
         posts: [
           {
             name: "配音导演",
@@ -472,7 +505,7 @@
         ]
       },
       {
-        index: "04", title: "音乐、音频与音效制作", titleEn: "Music, Audio & SFX",
+        index: "4", title: "音乐、音频与音效制作", titleEn: "Music, Audio & SFX",
         posts: [
           {
             name: "音乐制作人",
@@ -567,7 +600,7 @@
         ]
       },
       {
-        index: "05", title: "游戏开发", titleEn: "Game Development",
+        index: "5", title: "游戏开发", titleEn: "Game Development",
         posts: [
           {
             name: "Unity 开发",
@@ -592,7 +625,7 @@
         ]
       },
       {
-        index: "06", title: "宣传与内容运营", titleEn: "PR & Content Operations",
+        index: "6", title: "宣传与内容运营", titleEn: "PR & Content Operations",
         posts: [
           {
             name: "社区运营",
@@ -633,7 +666,7 @@
         ]
       },
       {
-        index: "07", title: "翻译与校对", titleEn: "Translation & Proofreading",
+        index: "7", title: "翻译与校对", titleEn: "Translation & Proofreading",
         posts: [
           {
             name: "翻译与校对",

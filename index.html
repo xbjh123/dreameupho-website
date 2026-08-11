@@ -126,22 +126,15 @@
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <span class="score-mark mark-up" aria-hidden="true"><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span></span>
           <div class="score-title-group">
-            <p class="score-tempo">ANDANTE · 行板</p>
+            <p class="score-tempo" data-i18n="tempoIntro">行板</p>
             <h2 class="score-title" data-i18n="secIntro">游戏介绍</h2>
             <p class="score-en">GAME INTRODUCTION</p>
-            <p class="score-quote" data-i18n="introQuote">免费同人视觉小说 · 分支选项 · 三条恋爱路线</p>
           </div>
           <span class="score-end end-note" aria-hidden="true">♪</span>
         </div>
       </header>
 
       <p class="lead" id="introShort"></p>
-      <ul class="intro-bullets" id="introBullets"></ul>
-      <div class="chip-row">
-        <span class="chip" data-i18n="chipVN">视觉小说</span>
-        <span class="chip" data-i18n="chipBand">吹奏部</span>
-        <span class="chip" data-i18n="chipFree">完全免费</span>
-      </div>
     </div>
   </section>
 
@@ -158,7 +151,7 @@
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <div class="score-title-group">
-            <p class="score-tempo">ESPRESSIVO · 富有表情地</p>
+            <p class="score-tempo" data-i18n="tempoStory">富有表情地</p>
             <h2 class="score-title" data-i18n="secStory">故事背景</h2>
             <p class="score-en">STORY</p>
             <svg class="mark-hairpin" viewBox="0 0 120 16" aria-hidden="true">
@@ -190,7 +183,7 @@
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <span class="score-mark mark-dots" aria-hidden="true"><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span></span>
           <div class="score-title-group">
-            <p class="score-tempo">SOLI · 独奏群像</p>
+            <p class="score-tempo" data-i18n="tempoChars">独奏群像</p>
             <h2 class="score-title" data-i18n="secChars">人物介绍</h2>
             <p class="score-en">CHARACTERS</p>
           </div>
@@ -226,7 +219,7 @@
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <span class="score-mark mark-chord" aria-hidden="true"><span class="mk-n">●</span><span class="mk-n">●</span><span class="mk-n">●</span></span>
           <div class="score-title-group">
-            <p class="score-tempo">TUTTI · 全奏</p>
+            <p class="score-tempo" data-i18n="tempoCredits">全奏</p>
             <h2 class="score-title" data-i18n="secCredits">制作成员</h2>
             <p class="score-en">CREDITS</p>
           </div>
@@ -257,7 +250,7 @@
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <div class="score-title-group">
-            <p class="score-tempo">MODERATO · 中板</p>
+            <p class="score-tempo" data-i18n="tempoNews">中板</p>
             <h2 class="score-title" data-i18n="secNews">资讯更新</h2>
             <p class="score-en">LATEST NEWS</p>
           </div>
@@ -282,7 +275,7 @@
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <div class="score-title-group">
-            <p class="score-tempo">ADAGIO · 慢板</p>
+            <p class="score-tempo" data-i18n="tempoWishlist">慢板</p>
             <h2 class="score-title" data-i18n="secWishlist">愿望单 · 发售通知</h2>
             <p class="score-en">WISHLIST &amp; RELEASE NOTICE</p>
             <p class="score-quote" data-i18n="wishlistQuote">将游戏加入愿望单，发售时第一时间通知你</p>
@@ -318,7 +311,7 @@
             <circle cx="14" cy="25" r="3" fill="rgba(30,111,186,0.35)"/>
           </svg>
           <div class="score-title-group">
-            <p class="score-tempo">FERMATA · 延长记号</p>
+            <p class="score-tempo" data-i18n="tempoNotice">延长记号</p>
             <h2 class="score-title" data-i18n="secNotice">重要声明</h2>
             <p class="score-en">IMPORTANT NOTICE</p>
           </div>
@@ -376,9 +369,7 @@
     <hr class="foot-divider">
 
     <div class="foot-notice">
-      <button class="foot-notice-toggle"><span data-i18n="footNotice">重要声明</span>&nbsp;<span class="caret" data-i18n="footExpand">展开 ▾</span></button>
-      <div class="foot-notice-body" id="footNoticeBody"></div>
-      <a href="#notice" class="foot-notice-link" data-i18n="footFull">查看完整声明 ↑</a>
+      <a href="#notice" class="foot-notice-link" data-i18n="footFull">重要声明 · 查看完整声明 ↑</a>
     </div>
 
     <div class="foot-bottom">
@@ -392,5 +383,25 @@
 <script src="js/geo.js"></script>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+
+<!-- 角色详情弹层（点击角色卡展开） -->
+<div class="char-modal" id="charModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="角色详情">
+  <div class="char-modal-backdrop"></div>
+  <div class="char-modal-card">
+    <button class="char-modal-close" id="charModalClose" aria-label="关闭">×</button>
+    <div class="char-modal-body">
+      <div class="char-modal-img">
+        <img id="charModalImg" src="" alt="">
+      </div>
+      <div class="char-modal-text">
+        <h3 id="charModalName"></h3>
+        <span class="c-line"></span>
+        <p id="charModalDesc"></p>
+        <p id="charModalMystery" class="mystery-tag" style="display:none">AN UNKNOWN MELODY…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
