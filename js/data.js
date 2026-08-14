@@ -209,6 +209,8 @@
     ctaSub:       { zh: "持续招募中 · 剧本 / 美术 / 配音 / 音乐 / 程序 / 运营 / 翻译", en: "Recruiting · Scenario / Art / Voice / Music / Programming / Operations / Translation" },
     ctaBtn:       { zh: "查看岗位详情 →", en: "SEE OPEN POSITIONS →" },
     ctaGroup:     { zh: "玩家群 / 招募群：1029729353 / 1022882012", en: "QQ Groups: 1029729353 / 1022882012" },
+    heroGroup:    { zh: "玩家群 / 招募群：1029729353 / 1022882012", en: "QQ Groups: 1029729353 / 1022882012" },
+    newsNote:     { zh: "锐意更新中", en: "Under Active Development" },
     footTagline:  { zh: "A MELODY TOWARD THE FUTURE", en: "A MELODY TOWARD THE FUTURE" },
     footNotice:   { zh: "重要声明", en: "Important Notice" },
     footExpand:   { zh: "展开 ▾", en: "EXPAND ▾" },

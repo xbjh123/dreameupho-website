@@ -820,6 +820,12 @@ body.menu-locked { overflow: hidden; }
 }
 .hero-actions { display: flex; gap: 20px; margin-top: 28px; flex-wrap: wrap; }
 .hero-actions .btn { box-shadow: var(--shadow-cta); }
+.hero-contact {
+  margin-top: 22px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.65);
+}
 
 .hero-scroll {
   position: absolute;
