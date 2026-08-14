@@ -198,20 +198,13 @@
 
   /* ---------- 渲染：制作成员 ---------- */
   function renderCredits() {
-    var coreEl = document.getElementById("coreTeam");
     var groupEl = document.getElementById("creditGroups");
     var thanksEl = document.getElementById("thanksNames");
-    if (!coreEl || !groupEl || !thanksEl) return;
-
-    coreEl.innerHTML = D.credits.core.map(function (m) {
-      return '<div class="card core-card fade-up">' +
-        '<div class="core-avatar">' + m.note + "</div>" +
-        '<span class="core-role">' + m.role + "</span>" +
-        '<div class="core-name">' + m.name + "</div></div>";
-    }).join("");
-
-    groupEl.innerHTML = D.credits.groups.map(function (g) {
-      var zh = currentLang === "zh";
+    if (!groupEl || !thanksEl) return;
+    var zh = currentLang === "zh";
+    /* 主创（原核心团队）并入统一框体，与其他部门样式一致 */
+    var groups = [{ en: "Core Team", zh: "主创", list: D.credits.core.map(function (m) { return [m.role, m.roleZh, m.name]; }) }].concat(D.credits.groups);
+    groupEl.innerHTML = groups.map(function (g) {
       var list = g.list.map(function (row) {
         var label = zh ? row[1] : row[0];
         var sep = zh ? "：" : ": ";
@@ -356,15 +349,8 @@
       .then(function () { renderNews(); });
   }
 
-  /* ---------- 渲染：介绍 / 故事 / 声明 ---------- */
+  /* ---------- 渲染：介绍 / 声明 ---------- */
   function renderIntro() {
-    var leadEl = document.getElementById("introShort");
-    if (!leadEl) return;
-    var zh = currentLang === "zh";
-    leadEl.textContent = zh ? D.i18n.intro.short.zh : D.i18n.intro.short.en;
-  }
-
-  function renderStory() {
     var el = document.getElementById("storyParas");
     if (!el) return;
     var zh = currentLang === "zh";
@@ -486,7 +472,6 @@
 
   function renderContent() {
     renderIntro();
-    renderStory();
     renderCharacters();
     renderCredits();
     renderNews();
