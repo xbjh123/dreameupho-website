@@ -242,7 +242,7 @@
     groups: [
       { en: "Scenario", zh: "剧本", list: [
         ["Lead Author", "剧本策划", "FoffeR、赛博吟游诗人42"],
-        ["Script Writer", "编剧", "FoffeR、SakaHaya、崎岖山翁、梳风、陶守谦、芷璃破碎、V、Sword"],
+        ["Script Writer", "编剧", "FoffeR、SakaHaya、崎岖山翁、梳风、皮卡丘不是竹鼠、陶守谦、芷璃破碎、V、Sword"],
         ["Consultant", "顾问（文化背景与市场）", "再睡五分钟、悠久风、WonderKindom、MT德意松、当代闲人、AFlutter"]
       ] },
       { en: "Voice Acting", zh: "配音", list: [
