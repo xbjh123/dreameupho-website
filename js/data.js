@@ -104,15 +104,15 @@
 
   /* ---------- 游戏画面轮播（按语言显示对应语言版本画面） ---------- */
   var gallery = [
-    { img: "assets/img/gallery/gallery-01.png", lang: "zh" },
-    { img: "assets/img/gallery/gallery-02.png", lang: "zh" },
-    { img: "assets/img/gallery/gallery-06.png", lang: "both" },
-    { img: "assets/img/gallery/gallery-04.png", lang: "zh" },
-    { img: "assets/img/gallery/gallery-11.png", lang: "zh" },
-    { img: "assets/img/gallery/gallery-12.png", lang: "en" },
-    { img: "assets/img/gallery/gallery-08.png", lang: "en" },
-    { img: "assets/img/gallery/gallery-09.png", lang: "en" },
-    { img: "assets/img/gallery/gallery-13.png", lang: "en" }
+    { img: "assets/img/gallery/gallery-01.webp", lang: "zh" },
+    { img: "assets/img/gallery/gallery-02.webp", lang: "zh" },
+    { img: "assets/img/gallery/gallery-06.webp", lang: "both" },
+    { img: "assets/img/gallery/gallery-04.webp", lang: "zh" },
+    { img: "assets/img/gallery/gallery-11.webp", lang: "zh" },
+    { img: "assets/img/gallery/gallery-12.webp", lang: "en" },
+    { img: "assets/img/gallery/gallery-08.webp", lang: "en" },
+    { img: "assets/img/gallery/gallery-09.webp", lang: "en" },
+    { img: "assets/img/gallery/gallery-13.webp", lang: "en" }
   ];
 
   /* ---------- 正文双语（与 data/i18n.json 同构） ---------- */

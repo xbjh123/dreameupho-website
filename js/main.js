@@ -379,7 +379,7 @@
     if (!galleryCount) return;
     track.innerHTML = items.map(function (g, i) {
       return '<figure class="gc-slide' + (i === 0 ? " active" : "") + '">' +
-        '<img src="' + g.img + '" alt="' + (currentLang === "zh" ? "游戏画面" : "Game screenshot") + '" loading="' + (i === 0 ? "eager" : "lazy") + '"></figure>';
+        '<img src="' + g.img + '" alt="' + (currentLang === "zh" ? "游戏画面" : "Game screenshot") + '" loading="eager"></figure>';
     }).join("");
     // 骨架淡入：图片加载完成（或已缓存）后给 img 加 .loaded，图片淡入
     track.querySelectorAll(".gc-slide img").forEach(function (img) {
