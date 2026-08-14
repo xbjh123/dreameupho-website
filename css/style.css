@@ -47,6 +47,9 @@
   --score-bg: rgba(232,242,252,0.85);
   --tip-bg: #E8F2FC;
   --hover-bg: rgba(232,242,252,0.6);
+  --gc-dot-idle: rgba(30,111,186,0.22);
+  --gc-dot-track: rgba(30,111,186,0.14);
+  --gc-shadow: 0 16px 36px rgba(10,44,79,0.12);
   --staff-deco: rgba(30,111,186,0.15);
   --mini-staff: rgba(30,111,186,0.2);
   --head-bg-c: linear-gradient(180deg, #F5F9FD 0%, #F5F9FD 68%, rgba(245,249,253,0) 100%);
@@ -86,6 +89,9 @@
   --score-bg: rgba(19,34,56,0.85);
   --tip-bg: rgba(74,144,217,0.15);
   --hover-bg: rgba(74,144,217,0.18);
+  --gc-dot-idle: rgba(147,165,192,0.38);
+  --gc-dot-track: rgba(74,144,217,0.2);
+  --gc-shadow: 0 14px 34px rgba(0,0,0,0.32);
   --staff-deco: rgba(74,144,217,0.3);
   --mini-staff: rgba(74,144,217,0.35);
   --head-bg-c: linear-gradient(180deg, #0B1526 0%, #0B1526 68%, rgba(11,21,38,0) 100%);
@@ -283,7 +289,7 @@ section[id] { scroll-margin-top: 88px; }
 .btn-primary { background: var(--blue); color: var(--white); }
 .btn-primary:hover { background: var(--blue-deep); }
 /* 白底按钮（深底/Hero）：白底主蓝字 */
-.btn-white { background: var(--white); color: var(--blue); }
+.btn-white { background: var(--white); color: #1E6FBA; }
 .btn-white:hover { color: var(--blue-mid); }
 /* 次按钮：透明底 1px 主蓝 45% 描边 */
 .btn-ghost { border: 1px solid rgba(30,111,186,0.45); color: var(--blue); background: transparent; }
@@ -821,10 +827,184 @@ body.menu-locked { overflow: hidden; }
 .hero-actions { display: flex; gap: 20px; margin-top: 28px; flex-wrap: wrap; }
 .hero-actions .btn { box-shadow: var(--shadow-cta); }
 .hero-contact {
-  margin-top: 22px;
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.65);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 7px 16px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.hero-contact .hc-note { color: var(--gold); font-size: 13px; line-height: 1; }
+
+/* ---------- 游戏画面轮播（Steam 风格横向展示 · 翻谱过渡） ---------- */
+.gallery-carousel { position: relative; }
+.gallery-carousel:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; border-radius: 4px; }
+/* 轮播区块页头与轮播图间距收紧，避免标题下大面积空白 */
+#gallery .score-head { margin-bottom: 22px; }
+#gallery { padding-top: 64px; padding-bottom: 72px; }
+/* 背景联结光晕：让轮播盒与上下区块更融合，避免「悬浮割裂」 */
+.gallery-carousel::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 140px;
+  z-index: 0;
+  background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(74,144,217,0.16), transparent 72%);
+  pointer-events: none;
+}
+.gc-viewport {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: var(--gc-shadow);
+  background: var(--mist);
+  touch-action: pan-y; /* 纵向页面滚动优先，横向滑动由 JS 接管 */
+}
+/* 底部渐隐：深色下让大图下缘「沉入」背景，弱化独立盒感；浅色下保留完整画面 */
+.gc-viewport::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 56px;
+  z-index: 4;
+  background: linear-gradient(180deg, transparent, var(--mist));
+  opacity: 0.6;
+  pointer-events: none;
+}
+[data-theme="light"] .gc-viewport {
+  border-color: rgba(30,111,186,0.12);
+}
+[data-theme="light"] .gc-viewport::after { opacity: 0; }
+.gc-track { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+
+/* 幻灯片：方向性「翻谱」过渡（track[data-dir] 决定候场方向，JS 给退场页加 .gc-out，650ms 后移除） */
+.gc-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transform: translateX(28px) scale(1.03);
+  transition: opacity 0.5s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.gc-track[data-dir="prev"] .gc-slide { transform: translateX(-28px) scale(1.03); }
+.gc-slide.active { opacity: 1; transform: translateX(0) scale(1); z-index: 2; pointer-events: auto; }
+.gc-slide.gc-out { opacity: 0; transform: translateX(-18px) scale(1.01); z-index: 1; }
+.gc-track[data-dir="prev"] .gc-slide.gc-out { transform: translateX(18px) scale(1.01); }
+
+/* 骨架淡入：图片就绪前透明，加载完成（img.loaded）后淡入 */
+.gc-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gc-slide img.loaded { opacity: 1; }
+
+/* Ken Burns 呼吸感：当前页图片极缓推近，悬停暂停 */
+.gc-slide.active img { animation: gcKenBurns 6s ease-out both; }
+.gallery-carousel:hover .gc-slide.active img { animation-play-state: paused; }
+@keyframes gcKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.045); }
+}
+
+/* 箭头：深色毛玻璃圆钮 + CSS 人字形图标 */
+.gc-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(10,23,48,0.42);
+  backdrop-filter: blur(8px) saturate(1.3);
+  -webkit-backdrop-filter: blur(8px) saturate(1.3);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(10,44,79,0.28), inset 0 1px 0 rgba(255,255,255,0.18);
+  opacity: 0.7;
+  font-size: 0;
+  cursor: pointer; z-index: 5;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+  transition: background 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gc-viewport:hover .gc-arrow, .gc-arrow:focus-visible { opacity: 1; }
+.gc-arrow::before {
+  content: ""; width: 11px; height: 11px;
+  border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor;
+  transition: transform 0.25s ease;
+}
+.gc-next::before { transform: rotate(45deg) translateX(-1px); }
+.gc-prev::before { transform: rotate(-135deg) translateY(-1px); }
+.gc-arrow:hover {
+  background: linear-gradient(135deg, rgba(30,111,186,0.92), rgba(74,144,217,0.92));
+  border-color: rgba(242,179,61,0.75);
+  box-shadow: 0 6px 20px rgba(30,111,186,0.4);
+}
+.gc-next:hover { transform: translateY(-50%) translateX(2px); }
+.gc-prev:hover { transform: translateY(-50%) translateX(-2px); }
+.gc-arrow:active { transform: translateY(-50%) scale(0.94); }
+.gc-arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.gc-prev { left: 16px; } .gc-next { right: 16px; }
+
+/* 角标计数器（♪ n / total，由 JS 更新） */
+.gc-counter {
+  position: absolute; top: 14px; right: 14px; z-index: 6;
+  font-family: var(--font-en);
+  font-size: 12px; letter-spacing: 0.06em;
+  color: #fff;
+  background: rgba(10,23,48,0.45);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  padding: 4px 12px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+.gc-counter .gc-counter-note { color: var(--gold); }
+
+/* 圆点 → 胶囊进度条：当前项展开为胶囊，金色播放头随自动播放扫过 */
+.gc-dots { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 16px; }
+.gc-dot {
+  position: relative; width: 8px; height: 8px;
+  border: none; padding: 0; border-radius: 999px;
+  background: var(--gc-dot-idle);
+  cursor: pointer; overflow: hidden;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease;
+}
+.gc-dot::before { content: ""; position: absolute; inset: -7px; }
+.gc-dot:hover { background: rgba(30,111,186,0.55); }
+.gc-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.gc-dot.active { width: 34px; background: var(--gc-dot-track); }
+.gc-dot.active::after {
+  content: ""; position: absolute; inset: 0; border-radius: 999px;
+  background: var(--grad-gold);
+  transform-origin: left center;
+  animation: gcProgress 3s linear both; /* 时长 = 自动播放间隔 3s */
+}
+.gallery-carousel:hover .gc-dot.active::after, .gallery-carousel.gc-paused .gc-dot.active::after { animation-play-state: paused; }
+@keyframes gcProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (hover: none) { /* 触屏设备无悬停，箭头常显 */
+  .gc-arrow { opacity: 1; }
+}
+@media (max-width: 767px) {
+  .gc-arrow { width: 40px; height: 40px; opacity: 1; }
+  .gc-prev { left: 10px; }
+  .gc-next { right: 10px; }
+  .gc-viewport { border-radius: var(--r-card); }
+  .gc-counter { top: 10px; right: 10px; padding: 4px 10px; font-size: 11px; }
+  .gc-dots { margin-top: 12px; }
 }
 
 .hero-scroll {
@@ -1359,62 +1539,6 @@ body.menu-locked { overflow: hidden; }
 .notice-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
 .notice-card p { font-size: 14px; line-height: 1.8; color: var(--slate); }
 
-/* ---------- 17.5 愿望单 / 发售通知 ---------- */
-.wishlist-form {
-  max-width: 560px;
-  margin: 0 auto;
-}
-.wl-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
-.wl-row {
-  display: flex;
-  gap: 12px;
-  align-items: stretch;
-}
-.wl-input {
-  flex: 1 1 auto;
-  min-width: 0;
-  height: 48px;
-  padding: 0 18px;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--r-btn);
-  background: var(--bg-card);
-  color: var(--ink);
-  font-family: var(--font-en);
-  font-size: 15px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.wl-input:focus {
-  outline: none;
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(30,111,186,0.18);
-}
-[data-theme="dark"] .wl-input:focus {
-  box-shadow: 0 0 0 3px rgba(74,144,217,0.25);
-}
-.wl-input::placeholder { color: var(--slate); opacity: 0.7; }
-.wl-hint {
-  font-size: 13px;
-  letter-spacing: 0.03em;
-  color: var(--slate);
-  margin-top: 12px;
-}
-/* 就地状态提示：成功绿 / 错误红（CSS 变量） */
-.wl-msg {
-  min-height: 22px;
-  margin-top: 14px;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-.wl-msg.success { color: var(--success); }
-.wl-msg.error { color: var(--error); }
 /* 提交中：按钮禁用态 */
 .btn[disabled] { opacity: 0.6; cursor: wait; }
 
@@ -1841,10 +1965,6 @@ body.lang-zh .job-title-en { display: none; }
   /* 移动端关闭粘性页头（小屏观感不佳） */
   #characters .score-head,
   #credits .score-head { position: static; background: none; margin-bottom: 32px; }
-  /* 愿望单：窄屏纵向排列 */
-  /* 愿望单移动端：输入框与按钮纵向排列 */
-  .wl-row { flex-direction: column; }
-  .wl-row .btn { width: 100%; }
   .hero-sub { font-size: 15px; }
   .hero-content { padding-top: 63px; }
   .hero-content > * { max-width: 100%; }

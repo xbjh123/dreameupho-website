@@ -24,6 +24,7 @@
     </a>
     <div class="nav-links">
       <a href="#intro" class="nav-link" data-i18n="navIntro">游戏介绍</a>
+      <a href="#gallery" class="nav-link" data-i18n="navGallery">游戏画面</a>
       <a href="#characters" class="nav-link" data-i18n="navChars">人物介绍</a>
       <a href="#credits" class="nav-link" data-i18n="navCredits">制作成员</a>
       <a href="#news" class="nav-link" data-i18n="navNews">资讯更新</a>
@@ -57,9 +58,10 @@
     </div>
     <nav class="mm-links">
       <a href="#intro"><span class="mi">01</span><span class="mn" data-i18n="navIntro">游戏介绍</span><span class="ml"></span><span class="me">INTRODUCTION</span></a>
-      <a href="#characters"><span class="mi">02</span><span class="mn" data-i18n="navChars">人物介绍</span><span class="ml"></span><span class="me">CHARACTERS</span></a>
-      <a href="#credits"><span class="mi">03</span><span class="mn" data-i18n="navCredits">制作成员</span><span class="ml"></span><span class="me">CREDITS</span></a>
-      <a href="#news"><span class="mi">04</span><span class="mn" data-i18n="navNews">资讯更新</span><span class="ml"></span><span class="me">NEWS</span></a>
+      <a href="#gallery"><span class="mi">02</span><span class="mn" data-i18n="navGallery">游戏画面</span><span class="ml"></span><span class="me">GALLERY</span></a>
+      <a href="#characters"><span class="mi">03</span><span class="mn" data-i18n="navChars">人物介绍</span><span class="ml"></span><span class="me">CHARACTERS</span></a>
+      <a href="#credits"><span class="mi">04</span><span class="mn" data-i18n="navCredits">制作成员</span><span class="ml"></span><span class="me">CREDITS</span></a>
+      <a href="#news"><span class="mi">05</span><span class="mn" data-i18n="navNews">资讯更新</span><span class="ml"></span><span class="me">NEWS</span></a>
     </nav>
     <div class="mm-bottom">
       <div class="lang-switch" role="group" aria-label="Language">
@@ -93,10 +95,9 @@
       <p class="hero-sub" data-i18n="heroSub">A MELODY TOWARD THE FUTURE</p>
       <div class="hero-actions">
         <a href="recruit.html" class="btn btn-white btn-lg" data-i18n="heroCta">加入制作组 →</a>
-        <a href="#wishlist" class="btn btn-gold btn-lg" data-i18n="heroWish">加入愿望单 ♪</a>
         <a href="#intro" class="btn btn-ghost-white btn-lg" data-i18n="heroMore">了解游戏 ↓</a>
       </div>
-      <p class="hero-contact" data-i18n="heroGroup">玩家群 / 招募群：1029729353 / 1022882012</p>
+      <p class="hero-contact"><span class="hc-note" aria-hidden="true">♪</span><span data-i18n="heroGroup">玩家群 / 招募群：1029729353 / 1022882012</span></p>
     </div>
 
     <div class="hero-scroll" aria-hidden="true">
@@ -137,7 +138,38 @@
     </div>
   </section>
 
-  <!-- ================= MOVEMENT 02 人物介绍 ================= -->
+  <!-- ================= MOVEMENT 02 游戏画面 ================= -->
+  <section class="section section-alt mv-block" id="gallery">
+    <span class="baton" aria-hidden="true"></span>
+    <div class="container-wide reveal">
+      <header class="score-head">
+        <div class="score-stage">
+          <span class="score-staff" aria-hidden="true"></span>
+          <span class="score-barline" aria-hidden="true"></span>
+          <span class="score-num">02</span>
+          <span class="score-fall sf-1" aria-hidden="true">♪</span>
+          <span class="score-fall sf-2" aria-hidden="true">♪</span>
+          <div class="score-title-group">
+            <p class="score-tempo" data-i18n="tempoGallery">快板</p>
+            <h2 class="score-title" data-i18n="secGallery">游戏画面</h2>
+            <p class="score-en">GALLERY</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="gallery-carousel" id="galleryCarousel" tabindex="0" role="group" aria-roledescription="carousel">
+        <div class="gc-viewport">
+          <div class="gc-track" id="gcTrack" data-dir="next"></div>
+          <span class="gc-counter" id="gcCounter" aria-hidden="true"></span>
+          <button class="gc-arrow gc-prev" type="button" aria-label="上一张">‹</button>
+          <button class="gc-arrow gc-next" type="button" aria-label="下一张">›</button>
+        </div>
+        <div class="gc-dots" id="gcDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MOVEMENT 03 人物介绍 ================= -->
   <section class="section mv-block" id="characters">
     <span class="baton" aria-hidden="true"></span>
     <svg class="bg-cloud bg-c2" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/></svg>
@@ -146,7 +178,7 @@
         <div class="score-stage">
           <span class="score-staff" aria-hidden="true"></span>
           <span class="score-barline" aria-hidden="true"></span>
-          <span class="score-num">02</span>
+          <span class="score-num">03</span>
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <span class="score-mark mark-dots" aria-hidden="true"><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span><span class="mk-n">♪</span></span>
@@ -173,7 +205,7 @@
     </div>
   </section>
 
-  <!-- ================= MOVEMENT 03 制作成员 ================= -->
+  <!-- ================= MOVEMENT 04 制作成员 ================= -->
   <section class="section section-alt mv-block" id="credits">
     <span class="baton" aria-hidden="true"></span>
     <svg class="bg-cloud bg-c3" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,90 L0,58 C180,20 380,78 720,60 C1040,44 1260,80 1440,52 L1440,90 Z" fill="#FFFFFF"/></svg>
@@ -182,7 +214,7 @@
         <div class="score-stage">
           <span class="score-staff" aria-hidden="true"></span>
           <span class="score-barline" aria-hidden="true"></span>
-          <span class="score-num">03</span>
+          <span class="score-num">04</span>
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <span class="score-mark mark-chord" aria-hidden="true"><span class="mk-n">●</span><span class="mk-n">●</span><span class="mk-n">●</span></span>
@@ -217,7 +249,7 @@
     </div>
   </section>
 
-  <!-- ================= MOVEMENT 04 资讯更新 ================= -->
+  <!-- ================= MOVEMENT 05 资讯更新 ================= -->
   <section class="section mv-block" id="news">
     <span class="baton" aria-hidden="true"></span>
     <div class="container-narrow reveal">
@@ -225,7 +257,7 @@
         <div class="score-stage">
           <span class="score-staff" aria-hidden="true"></span>
           <span class="score-barline" aria-hidden="true"></span>
-          <span class="score-num">04</span>
+          <span class="score-num">05</span>
           <span class="score-fall sf-1" aria-hidden="true">♪</span>
           <span class="score-fall sf-2" aria-hidden="true">♪</span>
           <div class="score-title-group">
@@ -240,38 +272,6 @@
       <div class="news-more" id="newsMore" style="display:none;">
         <a href="#news" class="link-btn"><span data-i18n="newsAll">查看全部</span><span class="arr">→</span></a>
       </div>
-    </div>
-  </section>
-
-  <!-- ================= 愿望单 · 发售通知 ================= -->
-  <section class="section section-alt mv-block" id="wishlist">
-    <span class="baton" aria-hidden="true"></span>
-    <div class="container-narrow reveal">
-      <header class="score-head">
-        <div class="score-stage">
-          <span class="score-staff" aria-hidden="true"></span>
-          <span class="score-barline" aria-hidden="true"></span>
-          <span class="score-num">05</span>
-          <span class="score-fall sf-1" aria-hidden="true">♪</span>
-          <span class="score-fall sf-2" aria-hidden="true">♪</span>
-          <div class="score-title-group">
-            <p class="score-tempo" data-i18n="tempoWishlist">慢板</p>
-            <h2 class="score-title" data-i18n="secWishlist">愿望单 · 发售通知</h2>
-            <p class="score-en">WISHLIST &amp; RELEASE NOTICE</p>
-            <p class="score-quote" data-i18n="wishlistQuote">将游戏加入愿望单，发售时第一时间通知你</p>
-          </div>
-        </div>
-      </header>
-
-      <form class="wishlist-form" id="wishlistForm" novalidate>
-        <label class="wl-label" for="wishlistEmail" data-i18n="wishlistLabel">邮箱地址</label>
-        <div class="wl-row">
-          <input class="wl-input" id="wishlistEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="wishlistHint">
-          <button class="btn btn-primary btn-md" type="submit"><span data-i18n="wishlistSubmit">加入愿望单</span><span class="note" aria-hidden="true">♪</span></button>
-        </div>
-        <p class="wl-hint" id="wishlistHint" data-i18n="wishlistHint">仅在游戏发售时通知你，绝不发送垃圾邮件</p>
-        <p class="wl-msg" id="wishlistMsg" role="status" aria-live="polite"></p>
-      </form>
     </div>
   </section>
 

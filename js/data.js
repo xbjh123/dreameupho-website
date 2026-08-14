@@ -99,15 +99,20 @@
       descriptionEn: "Kumiko's classmate and good friend from middle school, now president of the Rikka High School Concert Band.\nA prodigiously gifted hard worker, she leads Rikka in defending its marching crown while striding boldly toward her own musical dreams." }
   ];
 
-  /* ---------- 资讯 ---------- */
-  var news = [
-    { id: 1, title: "DreamEupho 项目成员招募正式开启", titleEn: "DreamEupho Team Recruitment is Now Open", date: "2026-08-07", tag: "招募",
-      content: "出于对作品纯粹的热爱，我们正在寻找志同道合的创作者加入 DreamEupho 开发管线。目前开放剧本、美术、配音、音乐、程序、运营、翻译等七大方向岗位，详见「加入我们」页面。本文档长期更新，具体招募岗位会随项目进度动态调整。",
-      contentEn: "Out of pure love for the work, we are looking for like-minded creators to join the DreamEupho development pipeline. Positions are open across seven tracks: Scenario, Art, Voice Acting, Music, Programming, Operations and Translation. See the Join Us page for details.",
-      link: "recruit.html" },
-    { id: 2, title: "官方网站原型搭建中", titleEn: "Official Website Prototype Under Construction", date: "2026-08-07", tag: "开发",
-      content: "DreamEupho 官方网站正在搭建中，将陆续上线游戏介绍、故事背景、人物介绍、制作成员、资讯更新等内容板块，敬请期待。",
-      contentEn: "The official DreamEupho website is under construction. Sections covering the game intro, story, characters, credits and news updates will be rolled out progressively. Stay tuned." }
+  /* ---------- 资讯（暂无正式资讯，区块展示「锐意更新中」） ---------- */
+  var news = [];
+
+  /* ---------- 游戏画面轮播（按语言显示对应语言版本画面） ---------- */
+  var gallery = [
+    { img: "assets/img/gallery/gallery-01.png", lang: "zh" },
+    { img: "assets/img/gallery/gallery-02.png", lang: "zh" },
+    { img: "assets/img/gallery/gallery-06.png", lang: "both" },
+    { img: "assets/img/gallery/gallery-04.png", lang: "zh" },
+    { img: "assets/img/gallery/gallery-11.png", lang: "zh" },
+    { img: "assets/img/gallery/gallery-12.png", lang: "en" },
+    { img: "assets/img/gallery/gallery-08.png", lang: "en" },
+    { img: "assets/img/gallery/gallery-09.png", lang: "en" },
+    { img: "assets/img/gallery/gallery-13.png", lang: "en" }
   ];
 
   /* ---------- 正文双语（与 data/i18n.json 同构） ---------- */
@@ -161,6 +166,7 @@
   /* ---------- 全站静态文案双语表（data-i18n 键） ---------- */
   var ui = {
     navIntro:     { zh: "游戏介绍", en: "Intro" },
+    navGallery:   { zh: "游戏画面", en: "Gallery" },
     navStory:     { zh: "故事背景", en: "Story" },
     navChars:     { zh: "人物介绍", en: "Characters" },
     navCredits:   { zh: "制作成员", en: "Credits" },
@@ -170,9 +176,9 @@
     heroTitle:    { zh: "通向未来的旋律", en: "A MELODY TOWARD THE FUTURE" },
     heroSub:      { zh: "A MELODY TOWARD THE FUTURE", en: "" },
     heroCta:      { zh: "加入制作组 →", en: "JOIN THE TEAM →" },
-    heroWish:     { zh: "加入愿望单 ♪", en: "ADD TO WISHLIST ♪" },
     heroMore:     { zh: "了解游戏 ↓", en: "EXPLORE ↓" },
     secIntro:     { zh: "游戏介绍", en: "About the Game" },
+    secGallery:   { zh: "游戏画面", en: "Gallery" },
     secStory:     { zh: "故事背景", en: "Story" },
     secChars:     { zh: "人物介绍", en: "Characters" },
     secCredits:   { zh: "制作成员", en: "Credits" },
@@ -180,11 +186,11 @@
     secNotice:    { zh: "重要声明", en: "Important Notice" },
     /* 总谱页头速度术语：中文模式只显示中文，英文模式显示意大利语 + 中文 */
     tempoIntro:   { zh: "行板", en: "ANDANTE · 行板" },
+    tempoGallery: { zh: "快板", en: "ALLEGRO · 快板" },
     tempoStory:   { zh: "富有表情地", en: "ESPRESSIVO · 富有表情地" },
     tempoChars:   { zh: "独奏群像", en: "SOLI · 独奏群像" },
     tempoCredits: { zh: "全奏", en: "TUTTI · 全奏" },
     tempoNews:    { zh: "中板", en: "MODERATO · 中板" },
-    tempoWishlist:{ zh: "慢板", en: "ADAGIO · 慢板" },
     tempoNotice:  { zh: "延长记号", en: "FERMATA · 延长记号" },
     chipVN:       { zh: "视觉小说", en: "Visual Novel" },
     chipBand:     { zh: "吹奏部", en: "Band Club" },
@@ -193,18 +199,6 @@
     supportChars: { zh: "配角阵容", en: "Supporting Cast" },
     mysteryTag:   { zh: "AN UNKNOWN MELODY…", en: "AN UNKNOWN MELODY…" },
     newsAll:      { zh: "查看全部", en: "VIEW ALL" },
-    /* 愿望单 / 发售通知 */
-    secWishlist:  { zh: "愿望单 · 发售通知", en: "Wishlist & Release Notice" },
-    wishlistQuote:{ zh: "将游戏加入愿望单，发售时第一时间通知你", en: "Join the wishlist and get notified the moment the game launches" },
-    wishlistLabel:{ zh: "邮箱地址", en: "Email Address" },
-    wishlistSubmit:{ zh: "加入愿望单", en: "ADD TO WISHLIST" },
-    wishlistHint: { zh: "仅在游戏发售时通知你，绝不发送垃圾邮件", en: "We'll only notify you at launch — no spam, ever." },
-    wishlistSending: { zh: "正在提交…", en: "Sending…" },
-    wishlistSuccess: { zh: "已加入愿望单！发售时我们会通知你", en: "Added to the wishlist! We'll notify you at launch." },
-    wishlistDuplicate: { zh: "你已经加入过愿望单了", en: "You're already on the wishlist" },
-    wishlistErrFormat: { zh: "邮箱格式不正确，请检查后重试", en: "That email doesn't look right — please check and retry" },
-    wishlistErrRate: { zh: "操作太频繁，请稍后再试", en: "Too many attempts — please try again later" },
-    wishlistErrGeneric: { zh: "提交失败，请稍后再试", en: "Something went wrong — please try again later" },
     ctaLine:      { zh: "梦想悠风制作组万分期待您的加入！", en: "Everyone at DreamEupho Studio can't wait to welcome you aboard!" },
     ctaSub:       { zh: "持续招募中 · 剧本 / 美术 / 配音 / 音乐 / 程序 / 运营 / 翻译", en: "Recruiting · Scenario / Art / Voice / Music / Programming / Operations / Translation" },
     ctaBtn:       { zh: "查看岗位详情 →", en: "SEE OPEN POSITIONS →" },
@@ -693,6 +687,7 @@
   var inlineData = {
     characters: characters,
     news: news,
+    gallery: gallery,
     i18n: i18n,
     ui: ui,
     credits: credits,
@@ -720,6 +715,7 @@
         cache = {
           characters: res[0].characters || res[0],
           news: res[1],
+          gallery: inlineData.gallery,
           i18n: res[2],
           ui: inlineData.ui,
           credits: inlineData.credits,

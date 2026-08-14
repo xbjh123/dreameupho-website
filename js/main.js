@@ -9,14 +9,9 @@
   var D = null;                 // 数据
   var currentLang = "zh";       // 当前语言
 
-  /* 愿望单 API 地址：生产默认 '/api/wishlist'（同源反向代理）。
-     本地开发联调可临时改为 'http://localhost:8090/api/wishlist' */
-  var WISHLIST_API = "/api/wishlist";
   /* 资讯 API 地址：生产默认 '/api/news'（同源）。
      本地开发联调可临时改为 'http://localhost:8090/api/news' */
   var NEWS_API = "/api/news";
-  /* 邮箱校验正则（与后端 EMAIL_RE 保持一致） */
-  var WL_EMAIL_RE = /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/;
 
   var reduceMotion = false;
   try { reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { /* noop */ }
@@ -361,6 +356,141 @@
     }).join("");
   }
 
+  /* ---------- 渲染：游戏画面轮播（Steam 风格，按语言显示对应版本画面，翻谱过渡） ---------- */
+  var galleryIndex = 0;
+  var galleryCount = 0;
+  var galleryTimer = null;
+  var galleryBound = false;   // 静态控件（箭头/悬停/键盘/触摸/可见性）只绑定一次
+  var gcOutTimer = null;
+  var gcTouchX = null;
+
+  function galleryForLang() {
+    var items = D && D.gallery ? D.gallery : [];
+    return currentLang === "zh" ? items.filter(function (g) { return g.lang === "zh" || g.lang === "both"; })
+                                : items.filter(function (g) { return g.lang === "en" || g.lang === "both"; });
+  }
+
+  function renderGallery() {
+    var track = document.getElementById("gcTrack");
+    if (!track) return;
+    var items = galleryForLang();
+    galleryCount = items.length;
+    galleryIndex = 0;   // 重建后索引复位，避免旧索引与第 0 张 active 不一致
+    if (!galleryCount) return;
+    track.innerHTML = items.map(function (g, i) {
+      return '<figure class="gc-slide' + (i === 0 ? " active" : "") + '">' +
+        '<img src="' + g.img + '" alt="' + (currentLang === "zh" ? "游戏画面" : "Game screenshot") + '" loading="' + (i === 0 ? "eager" : "lazy") + '"></figure>';
+    }).join("");
+    // 骨架淡入：图片加载完成（或已缓存）后给 img 加 .loaded，图片淡入
+    track.querySelectorAll(".gc-slide img").forEach(function (img) {
+      function markLoaded() { img.classList.add("loaded"); }
+      if (img.complete && img.naturalWidth > 0) { markLoaded(); }
+      else {
+        img.addEventListener("load", markLoaded);
+        img.addEventListener("error", markLoaded);   // 失败也标记加载完成，避免永久空白
+      }
+    });
+    var dotsEl = document.getElementById("gcDots");
+    if (dotsEl) {
+      dotsEl.innerHTML = items.map(function (g, i) {
+        return '<button class="gc-dot' + (i === 0 ? " active" : "") + '" data-i="' + i + '" aria-label="' + (i + 1) + '"></button>';
+      }).join("");
+      dotsEl.querySelectorAll(".gc-dot").forEach(function (d) {
+        d.addEventListener("click", function () {
+          var i = parseInt(d.getAttribute("data-i"), 10);
+          if (i !== galleryIndex) { goGallery(i, i > galleryIndex ? 1 : -1); restartGalleryTimer(); }
+        });
+      });
+    }
+    updateGalleryCounter();
+    bindGalleryOnce();
+    startGalleryTimer();
+  }
+
+  /* 静态控件监听：仅绑定一次（语言切换会重复 renderGallery，防止监听器累积导致一次点击连跳多张） */
+  function bindGalleryOnce() {
+    if (galleryBound) return;
+    var wrap = document.getElementById("galleryCarousel");
+    var track = document.getElementById("gcTrack");
+    if (!wrap || !track) return;
+    galleryBound = true;
+    var viewport = track.closest(".gc-viewport");
+    var prev = viewport ? viewport.querySelector(".gc-prev") : null;
+    var next = viewport ? viewport.querySelector(".gc-next") : null;
+    if (prev) prev.addEventListener("click", function () { goGallery(galleryIndex - 1, -1); restartGalleryTimer(); });
+    if (next) next.addEventListener("click", function () { goGallery(galleryIndex + 1, 1); restartGalleryTimer(); });
+    wrap.addEventListener("mouseenter", stopGalleryTimer);
+    wrap.addEventListener("mouseleave", startGalleryTimer);
+    // 键盘 ←/→（仅轮播容器或其内部控件聚焦时生效）
+    wrap.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); goGallery(galleryIndex - 1, -1); restartGalleryTimer(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); goGallery(galleryIndex + 1, 1); restartGalleryTimer(); }
+    });
+    // 触摸滑动（阈值 40px；passive + CSS touch-action: pan-y 保证纵向滚动不受影响）
+    if (viewport) {
+      viewport.addEventListener("touchstart", function (e) {
+        gcTouchX = e.touches[0].clientX;
+        stopGalleryTimer();
+      }, { passive: true });
+      viewport.addEventListener("touchend", function (e) {
+        var dx = gcTouchX === null ? 0 : e.changedTouches[0].clientX - gcTouchX;
+        gcTouchX = null;
+        if (Math.abs(dx) >= 40) { goGallery(galleryIndex + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); }
+        startGalleryTimer();
+      }, { passive: true });
+    }
+    // 标签页隐藏时暂停自动播放，回前台恢复
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { stopGalleryTimer(); } else { startGalleryTimer(); }
+    });
+  }
+
+  function goGallery(i, dir) {
+    if (!galleryCount) return;
+    var n = (i + galleryCount) % galleryCount;
+    var track = document.getElementById("gcTrack");
+    if (track) track.setAttribute("data-dir", dir === -1 ? "prev" : "next");
+    var slides = document.querySelectorAll("#gcTrack .gc-slide");
+    if (n !== galleryIndex && slides[galleryIndex]) {
+      slides[galleryIndex].classList.add("gc-out");   // 旧幻灯片按方向退场，动画结束后清类
+      if (gcOutTimer) clearTimeout(gcOutTimer);
+      gcOutTimer = setTimeout(function () {
+        document.querySelectorAll("#gcTrack .gc-slide.gc-out").forEach(function (s) { s.classList.remove("gc-out"); });
+      }, 650);
+    }
+    galleryIndex = n;
+    slides.forEach(function (s, k) { s.classList.toggle("active", k === n); });
+    if (slides[n]) slides[n].classList.remove("gc-out");   // 快速往返时防止新当前页残留退场态
+    document.querySelectorAll("#gcDots .gc-dot").forEach(function (d, k) { d.classList.toggle("active", k === n); });
+    updateGalleryCounter();
+  }
+
+  function updateGalleryCounter() {
+    var c = document.getElementById("gcCounter");
+    if (c) c.innerHTML = galleryCount ? "<span class='gc-counter-note'>♪</span> " + (galleryIndex + 1) + " / " + galleryCount : "";
+  }
+
+  function startGalleryTimer() {
+    stopGalleryTimer();
+    var wrap = document.getElementById("galleryCarousel");
+    if (wrap) wrap.classList.remove("gc-paused");
+    if (!galleryCount) return;
+    // 重启当前圆点的进度动画，使金色播放头与重新计时的 5s 保持同步
+    var activeDot = document.querySelector("#gcDots .gc-dot.active");
+    if (activeDot) {
+      activeDot.classList.remove("active");
+      void activeDot.offsetWidth;   // 强制回流，动画从头开始
+      activeDot.classList.add("active");
+    }
+    galleryTimer = setInterval(function () { goGallery(galleryIndex + 1, 1); }, 3000);
+  }
+  function stopGalleryTimer() {
+    if (galleryTimer) { clearInterval(galleryTimer); galleryTimer = null; }
+    var wrap = document.getElementById("galleryCarousel");
+    if (wrap) wrap.classList.add("gc-paused");
+  }
+  function restartGalleryTimer() { startGalleryTimer(); }
+
   function renderNotice() {
     var cardsEl = document.getElementById("noticeCards");
     if (!cardsEl) return;
@@ -472,6 +602,7 @@
 
   function renderContent() {
     renderIntro();
+    renderGallery();
     renderCharacters();
     renderCredits();
     renderNews();
@@ -699,84 +830,6 @@
     });
   }
 
-  /* ---------- 愿望单：前端校验 + 提交发售通知 ----------
-     WISHLIST_API 在文件顶部定义：
-     - 生产默认：'/api/wishlist'（同源）
-     - 本地开发：可临时改为 'http://localhost:8090/api/wishlist'
-     （配合 server/wishlist_api.py）
-  */
-  /* 动态状态文案走 D.ui 双语表，随语言切换读取当前语言 */
-  function i18nMsg(key) {
-    try {
-      var v = D.ui[key][currentLang];
-      return (v === "" || v === null || v === undefined) ? "" : v;
-    } catch (e) { return ""; }
-  }
-
-  function initWishlist() {
-    var form = document.getElementById("wishlistForm");
-    if (!form) return;
-    var input = document.getElementById("wishlistEmail");
-    var msg = document.getElementById("wishlistMsg");
-    var btn = form.querySelector('button[type="submit"]');
-    if (!input || !msg || !btn) return;
-
-    /* 就地提示：成功绿 / 错误红，样式由 .wl-msg.success / .wl-msg.error 提供 */
-    function show(type, text) {
-      msg.className = "wl-msg" + (type ? " " + type : "");
-      msg.textContent = text;
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var email = (input.value || "").trim();
-
-      /* 前端校验：格式错误不请求后端 */
-      if (!WL_EMAIL_RE.test(email)) {
-        show("error", i18nMsg("wishlistErrFormat"));
-        input.focus();
-        return;
-      }
-
-      /* loading：按钮禁用 */
-      btn.disabled = true;
-      show("", i18nMsg("wishlistSending"));
-
-      fetch(WISHLIST_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email })
-      }).then(function (r) {
-        return r.json().catch(function () { return {}; }).then(function (data) {
-          return { status: r.status, data: data };
-        });
-      }).then(function (res) {
-        var d = res.data || {};
-        if (d.ok === true) {
-          if (d.duplicate === true) {
-            /* 重复订阅 */
-            show("error", i18nMsg("wishlistDuplicate"));
-          } else {
-            /* 成功：提示 + 清空输入框 */
-            show("success", i18nMsg("wishlistSuccess"));
-            input.value = "";
-          }
-        } else if (d.error === "invalid_email") {
-          show("error", i18nMsg("wishlistErrFormat"));
-        } else if (d.error === "rate_limited") {
-          show("error", i18nMsg("wishlistErrRate"));
-        } else {
-          show("error", i18nMsg("wishlistErrGeneric"));
-        }
-      }).catch(function () {
-        /* 网络失败 */
-        show("error", i18nMsg("wishlistErrGeneric"));
-      }).then(function () {
-        btn.disabled = false;
-      });
-    });
-  }
-
   /* ---------- 启动 ---------- */
   getData().then(function (data) {
     D = data;
@@ -793,7 +846,6 @@
     initMovement();
     initHeroParallax();
     initTheme();
-    initWishlist();
     loadNews();
   });
 })();
