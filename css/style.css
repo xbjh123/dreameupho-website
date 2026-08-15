@@ -1425,7 +1425,7 @@ body.menu-locked { overflow: hidden; }
 .core-role { display: block; font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 6px; }
 .core-name { font-size: 16px; font-weight: 700; color: var(--ink); }
 
-.credit-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.credit-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .credit-title { display: flex; align-items: baseline; gap: 12px; }
 .credit-title .en { font-family: var(--font-en); font-weight: 700; font-size: 16px; color: var(--blue); }
 .credit-title .zh { font-size: 12px; color: var(--slate); }
