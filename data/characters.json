@@ -81,46 +81,6 @@
       "descriptionEn": "A new member of this year's band, a clarinet player. Skilled at her instrument and well-versed in folklore—and happy to share both. At her old middle school, she could have lived a life with classmates flocking around her; but she would rather read and practice at her ease, alone in the practice room—and in this, she somehow gets along famously with her senior, Reina. Even so, she treasures the time spent with her friends, wishing only that the farewell sure to come will arrive a little later."
     },
     {
-      "id": "kamataya-suzume",
-      "name": "釜屋雀",
-      "image": "assets/img/characters/support/kamataya-suzume.jpg",
-      "group": "support",
-      "description": "这一年的吹奏部新成员，新晋大号手。自我取名派对狂客，可因为某些缘故，常自甘堕落为姐姐的贴心枕头。",
-      "imageEn": "assets/img/characters/support/en/kamataya-suzume.jpg",
-      "nameEn": "Suzume Kamaya",
-      "descriptionEn": "A new member of this year's band, and a brand-new tuba player. A self-proclaimed party animal who, for one reason or another, often willingly sinks to serve as her big sister's personal pillow."
-    },
-    {
-      "id": "kamataya-tsubame",
-      "name": "釜屋燕",
-      "image": "assets/img/characters/support/kamataya-tsubame.jpg",
-      "group": "support",
-      "description": "与久美子同届的打击乐声部成员，司职马林巴。自觉长相普通，常将自己的世界局限在眼镜之后，直到妹妹的一句鼓励，才肯上手尝试鲜为人知的奇怪乐器。如此，她才明白在自己之外，竟如此广阔。",
-      "imageEn": "assets/img/characters/support/en/kamataya-tsubame.jpg",
-      "nameEn": "Tsubame Kamaya",
-      "descriptionEn": "A member of the percussion section, in the same year as Kumiko, on marimba. Convinced of her plain looks, she long kept her world behind her glasses—until a few words from her little sister led her to try a strange instrument few had ever heard of. Only then did she realize how wide the world beyond herself could be."
-    },
-    {
-      "id": "takaku-chieri",
-      "name": "高久智绘里",
-      "image": "assets/img/characters/support/takaku-chieri.jpg",
-      "group": "support",
-      "description": "与久美子同届的单簧管声部成员，吹奏部乐团首席。温和恬静的乖乖女，不知是否是刘海遮住了眼睛所致，实力超群却存在感稀薄。",
-      "imageEn": "assets/img/characters/support/en/takaku-chieri.jpg",
-      "nameEn": "Chieri Takahisa",
-      "descriptionEn": "A member of the clarinet section in Kumiko's year, and the band's concertmaster. A gentle, soft-spoken model student. Perhaps it's the bangs hanging over her eyes—but for all her first-rate skill, her presence is curiously faint."
-    },
-    {
-      "id": "oumai-akiko",
-      "name": "黄前明子",
-      "image": "assets/img/characters/support/oumai-akiko.jpg",
-      "group": "support",
-      "description": "家庭主妇，久美子坚实的后盾。支持并尊重女儿的决定——大女儿如此，二女儿亦然。",
-      "imageEn": "assets/img/characters/support/en/oumai-akiko.jpg",
-      "nameEn": "Akiko Oumae",
-      "descriptionEn": "A homemaker, and Kumiko's staunchest supporter. She supports and respects her daughters' decisions—true for her elder daughter, and just as true for her younger."
-    },
-    {
       "id": "kaho",
       "name": "针谷佳穗",
       "image": "assets/img/characters/support/kaho.jpg",
@@ -131,94 +91,14 @@
       "descriptionEn": "A new member of this year's band, and a brand-new euphonium player. A classic shy and introverted good girl, she holds the record for the longest losing streak in the \"try not to laugh\" challenge. Yet the style of her artwork can only be described as bold and unrestrained."
     },
     {
-      "id": "kenzaki-ririka",
-      "name": "剑崎梨梨花",
-      "image": "assets/img/characters/support/kenzaki-ririka.jpg",
+      "id": "kamataya-suzume",
+      "name": "釜屋雀",
+      "image": "assets/img/characters/support/kamataya-suzume.jpg",
       "group": "support",
-      "description": "久美子在高二结识的“可爱”后辈，双簧管乐手。双簧乐器会会长、“早上一个鸡蛋，一天全部健康”理念的开创者、小奏皮厨房的监督者，热衷于发现新奇事物，并为己所用。",
-      "imageEn": "assets/img/characters/support/en/kenzaki-ririka.jpg",
-      "nameEn": "Ririka Kenzaki",
-      "descriptionEn": "Another \"cute\" underclassman from Kumiko's second year, an oboe player. President of the Double Reed Club, founder of the \"one egg in the morning keeps you healthy all day\" philosophy, and supervisor of Kanade's Kitchen. She lives to discover novel things—and to make them her own."
-    },
-    {
-      "id": "sakai-masako",
-      "name": "堺万纱子",
-      "image": "assets/img/characters/support/sakai-masako.jpg",
-      "group": "support",
-      "description": "与久美子同届的打击乐声部成员，总是与井上顺菜同屏出现。在线上主持过多届“莫扎特与Emo万岁”的同好交流会，因其渊博的通俗音乐知识和热心肠，引得不少路人入群。",
-      "imageEn": "assets/img/characters/support/en/sakai-masako.jpg",
-      "nameEn": "Sakai Masako",
-      "descriptionEn": "A member of the percussion section, in the same year as Kumiko, always sharing the screen with Junna Inoue. Online, she has hosted many editions of the 'Long Live Mozart and Emo' fan meetup, and her encyclopedic knowledge of popular music—together with her warm heart—has drawn many a passerby into the group."
-    },
-    {
-      "id": "inoue-junna",
-      "name": "井上顺菜",
-      "image": "assets/img/characters/support/inoue-junna.jpg",
-      "group": "support",
-      "description": "与久美子同届的打击乐声部声部长，总是与堺万纱子同屏出现。性情直率，有亲和力，深受打击乐声部部员们的爱戴。",
-      "imageEn": "assets/img/characters/support/en/inoue-junna.jpg",
-      "nameEn": "Junna Inoue",
-      "descriptionEn": "Leader of the percussion section, in the same year as Kumiko, always sharing the screen with Masako Sakai. Frank and personable, she is beloved by every member of the percussion section."
-    },
-    {
-      "id": "kumiko-father",
-      "name": "黄前健太郎",
-      "image": "assets/img/characters/support/kumiko-father.jpg",
-      "group": "support",
-      "description": "公司职员，对即将面临升学的久美子接过部长职务一事颇有微词，总是在餐桌上与女儿话锋相对。",
-      "imageEn": "assets/img/characters/support/en/kumiko-father.jpg",
-      "nameEn": "Kentarou Oumae",
-      "descriptionEn": "A company employee who has reservations about Kumiko taking on the role of band president as she prepares for the next stage of her education. The two often find themselves at odds across the dinner table."
-    },
-    {
-      "id": "kaizuka-mizore",
-      "name": "铠冢霙",
-      "image": "assets/img/characters/support/kaizuka-mizore.jpg",
-      "group": "support",
-      "description": "去年和久美子同在北宇治吹奏部的学姐，双簧管乐手，现为京都音乐大学的学生。在新校园里，极高的音乐理解与神秘的生活作风让人不禁心驰神往，已使她被动拥有一个由若干聒噪学妹组建的应援会。然而，她宁愿所有都在改变，也仍执拗地固守心底一块小小的净土，留给她最珍视的另一个人。",
-      "imageEn": "assets/img/characters/support/en/kaizuka-mizore.jpg",
-      "nameEn": "Mizore Yoroizuka",
-      "descriptionEn": "A senior in the Kitauji Concert Band during Kumiko's second year, an oboe player now studying at Kyoto University of Music. On her new campus, her profound musical insight and enigmatic lifestyle have earned her a fan club of boisterous underclassmen. Yet she still guards a small sanctuary in her heart, reserved for the person she treasures most."
-    },
-    {
-      "id": "suzuki-satsuki",
-      "name": "铃木彩月",
-      "image": "assets/img/characters/support/suzuki-satsuki.jpg",
-      "group": "support",
-      "description": "久美子在高二结识的后辈，大号手。身材袖珍，天真烂漫，大部分时间都在cos美玲的挂件，可在回家路上也会时不时透露属于自己的真心。",
-      "imageEn": "assets/img/characters/support/en/suzuki-satsuki.jpg",
-      "nameEn": "Satsuki Suzuki",
-      "descriptionEn": "An underclassman Kumiko met in her second year, a tuba player. Pint-sized and sweetly innocent, she spends most of her time cosplaying as Mirei's bag charm—yet on the walk home, she will sometimes let slip a heart of her own."
-    },
-    {
-      "id": "suzuki-mirei",
-      "name": "铃木美玲",
-      "image": "assets/img/characters/support/suzuki-mirei.jpg",
-      "group": "support",
-      "description": "久美子在高二结识的后辈，大号手。身高傲人，冷静务实，胳膊上和心里总是牵挂着双马尾的小小女孩，正尝试着如何在兼顾自我提升的同时，也照顾别人的感受。",
-      "imageEn": "assets/img/characters/support/suzuki-mirei.jpg",
-      "nameEn": "Mirei Suzuki",
-      "descriptionEn": "An underclassman Kumiko met in her second year, a tuba player. Strikingly tall, cool-headed and pragmatic, with a tiny twin-tailed girl forever hanging off her arm—and on her mind—she is now learning how to keep improving herself while also minding the feelings of others."
-    },
-    {
-      "id": "taki-noboru",
-      "name": "泷升",
-      "image": "assets/img/characters/support/taki-noboru.jpg",
-      "group": "support",
-      "description": "北宇治高中吹奏乐部顾问，同时也兼任着几个班的音乐老师和班主任。是风度翩翩的森系帅哥，亦是不通人情的“微笑恶魔”。两年前泷的到来让吹奏部焕然一新，而现在，新的挑战摆在了他和部员们的面前。",
-      "imageEn": "assets/img/characters/support/en/taki-noboru.jpg",
-      "nameEn": "Noboru Taki",
-      "descriptionEn": "Advisor to the Kitauji High School Concert Band, who also serves as music teacher and homeroom teacher to several classes. A dashing, effortlessly natural heartthrob—and, at the same time, a \"Smiling Devil\" who makes no concessions to human sentiment. Taki's arrival two years ago transformed the band completely, and now a new challenge stands before him and his members."
-    },
-    {
-      "id": "maki",
-      "name": "牧誓",
-      "image": "assets/img/characters/support/maki.jpg",
-      "group": "support",
-      "description": "与久美子同届的萨克斯声部成员，司职中音萨克斯。高一时还是声部里的开心果，到如今已成长为可靠的声部长，除去储藏室里的“大号君”外，还照料着部员社团生活的方方面面。",
-      "imageEn": "assets/img/characters/support/en/maki.jpg",
-      "nameEn": "Chikai Maki",
-      "descriptionEn": "A member of the saxophone section in Kumiko's year, playing alto saxophone. The section's ray of sunshine back in his first year, he has since grown into a dependable section leader–on top of caring for \"Tuba-kun\" in the storage room, he tends to every corner of his fellow members' club lives."
+      "description": "这一年的吹奏部新成员，新晋大号手。自我取名派对狂客，可因为某些缘故，常自甘堕落为姐姐的贴心枕头。",
+      "imageEn": "assets/img/characters/support/en/kamataya-suzume.jpg",
+      "nameEn": "Suzume Kamaya",
+      "descriptionEn": "A new member of this year's band, and a brand-new tuba player. A self-proclaimed party animal who, for one reason or another, often willingly sinks to serve as her big sister's personal pillow."
     },
     {
       "id": "kamiishi-yao",
@@ -231,14 +111,64 @@
       "descriptionEn": "A new member of this year's band, and a brand-new tuba player. The culprit behind Kaho's losing streak. She dreams about living as a pirate, but has now \"fallen\" to relying on manzai jokes and friend-donated snacks to survive."
     },
     {
-      "id": "matsumoto-michie",
-      "name": "松本美知惠",
-      "image": "assets/img/characters/support/matsumoto-michie.jpg",
+      "id": "tsukinaga-motomu",
+      "name": "月永求",
+      "image": "assets/img/characters/support/tsukinaga-motomu.jpg",
       "group": "support",
-      "description": "北宇治高中吹奏乐部副顾问，同时也是久美子从高一到高三的班主任。“军曹老师”的威名之下，却是一颗柔软的心。",
-      "imageEn": "assets/img/characters/support/en/matsumoto-michie.jpg",
-      "nameEn": "Michie Matsumoto",
-      "descriptionEn": "Vice advisor of the Kitauji High School Concert Band, and Kumiko's homeroom teacher from her first year through her third. Beneath the fearsome name of 'Sergeant-sensei' beats a tender heart."
+      "description": "久美子在高二结识的后辈，低音提琴手。性情孤僻让他人难以接近，只有在面对绿辉学姐时才会显现出温顺的一面。面对自己敬慕的学姐即将毕业的事实，他不得不意识到需要去直视此前不肯回忆的过去。",
+      "imageEn": "assets/img/characters/support/en/tsukinaga-motomu.jpg",
+      "nameEn": "Motomu Tsukinaga",
+      "descriptionEn": "An underclassman Kumiko met in her second year, a double bassist. His aloof nature keeps others at a distance; only around his senior Midori does he show a gentle side. As the senior he admires prepares to graduate, he must finally face the past he long refused to confront."
+    },
+    {
+      "id": "suzuki-mirei",
+      "name": "铃木美玲",
+      "image": "assets/img/characters/support/suzuki-mirei.jpg",
+      "group": "support",
+      "description": "久美子在高二结识的后辈，大号手。身高傲人，冷静务实，胳膊上和心里总是牵挂着双马尾的小小女孩，正尝试着如何在兼顾自我提升的同时，也照顾别人的感受。",
+      "imageEn": "assets/img/characters/support/suzuki-mirei.jpg",
+      "nameEn": "Mirei Suzuki",
+      "descriptionEn": "An underclassman Kumiko met in her second year, a tuba player. Strikingly tall, cool-headed and pragmatic, with a tiny twin-tailed girl forever hanging off her arm—and on her mind—she is now learning how to keep improving herself while also minding the feelings of others."
+    },
+    {
+      "id": "suzuki-satsuki",
+      "name": "铃木彩月",
+      "image": "assets/img/characters/support/suzuki-satsuki.jpg",
+      "group": "support",
+      "description": "久美子在高二结识的后辈，大号手。身材袖珍，天真烂漫，大部分时间都在cos美玲的挂件，可在回家路上也会时不时透露属于自己的真心。",
+      "imageEn": "assets/img/characters/support/en/suzuki-satsuki.jpg",
+      "nameEn": "Satsuki Suzuki",
+      "descriptionEn": "An underclassman Kumiko met in her second year, a tuba player. Pint-sized and sweetly innocent, she spends most of her time cosplaying as Mirei's bag charm—yet on the walk home, she will sometimes let slip a heart of her own."
+    },
+    {
+      "id": "kenzaki-ririka",
+      "name": "剑崎梨梨花",
+      "image": "assets/img/characters/support/kenzaki-ririka.jpg",
+      "group": "support",
+      "description": "久美子在高二结识的“可爱”后辈，双簧管乐手。双簧乐器会会长、“早上一个鸡蛋，一天全部健康”理念的开创者、小奏皮厨房的监督者，热衷于发现新奇事物，并为己所用。",
+      "imageEn": "assets/img/characters/support/en/kenzaki-ririka.jpg",
+      "nameEn": "Ririka Kenzaki",
+      "descriptionEn": "Another \"cute\" underclassman from Kumiko's second year, an oboe player. President of the Double Reed Club, founder of the \"one egg in the morning keeps you healthy all day\" philosophy, and supervisor of Kanade's Kitchen. She lives to discover novel things—and to make them her own."
+    },
+    {
+      "id": "kamataya-tsubame",
+      "name": "釜屋燕",
+      "image": "assets/img/characters/support/kamataya-tsubame.jpg",
+      "group": "support",
+      "description": "与久美子同届的打击乐声部成员，司职马林巴。自觉长相普通，常将自己的世界局限在眼镜之后，直到妹妹的一句鼓励，才肯上手尝试鲜为人知的奇怪乐器。如此，她才明白在自己之外，竟如此广阔。",
+      "imageEn": "assets/img/characters/support/en/kamataya-tsubame.jpg",
+      "nameEn": "Tsubame Kamaya",
+      "descriptionEn": "A member of the percussion section, in the same year as Kumiko, on marimba. Convinced of her plain looks, she long kept her world behind her glasses—until a few words from her little sister led her to try a strange instrument few had ever heard of. Only then did she realize how wide the world beyond herself could be."
+    },
+    {
+      "id": "kohinata-yume",
+      "name": "小日向梦",
+      "image": "assets/img/characters/support/kohinata-yume.jpg",
+      "group": "support",
+      "description": "久美子在高二结识的后辈，小号手。吹奏水平高超却缺乏自信，一年级得到加部友惠学姐的鼓励后，总是低着的头终于抬起了些许。",
+      "imageEn": "assets/img/characters/support/en/kohinata-yume.jpg",
+      "nameEn": "Yume Kohinata",
+      "descriptionEn": "An underclassman Kumiko met in her second year, a trumpet player. A superb performer who sorely lacks confidence. After her senior Tomoe Kabe offered her encouragement in her first year, her perpetually downcast head finally lifted a little."
     },
     {
       "id": "tanaka-asuka",
@@ -261,24 +191,74 @@
       "descriptionEn": "President of the Kitauji Concert Band in Kumiko's first year, a baritone saxophone player. A kind-hearted crybaby whose tearful moments once filled the school newspaper, she may be easily moved to tears, but she will never disappoint when it comes to the people and things she truly believes in."
     },
     {
-      "id": "kohinata-yume",
-      "name": "小日向梦",
-      "image": "assets/img/characters/support/kohinata-yume.jpg",
+      "id": "kaizuka-mizore",
+      "name": "铠冢霙",
+      "image": "assets/img/characters/support/kaizuka-mizore.jpg",
       "group": "support",
-      "description": "久美子在高二结识的后辈，小号手。吹奏水平高超却缺乏自信，一年级得到加部友惠学姐的鼓励后，总是低着的头终于抬起了些许。",
-      "imageEn": "assets/img/characters/support/en/kohinata-yume.jpg",
-      "nameEn": "Yume Kohinata",
-      "descriptionEn": "An underclassman Kumiko met in her second year, a trumpet player. A superb performer who sorely lacks confidence. After her senior Tomoe Kabe offered her encouragement in her first year, her perpetually downcast head finally lifted a little."
+      "description": "去年和久美子同在北宇治吹奏部的学姐，双簧管乐手，现为京都音乐大学的学生。在新校园里，极高的音乐理解与神秘的生活作风让人不禁心驰神往，已使她被动拥有一个由若干聒噪学妹组建的应援会。然而，她宁愿所有都在改变，也仍执拗地固守心底一块小小的净土，留给她最珍视的另一个人。",
+      "imageEn": "assets/img/characters/support/en/kaizuka-mizore.jpg",
+      "nameEn": "Mizore Yoroizuka",
+      "descriptionEn": "A senior in the Kitauji Concert Band during Kumiko's second year, an oboe player now studying at Kyoto University of Music. On her new campus, her profound musical insight and enigmatic lifestyle have earned her a fan club of boisterous underclassmen. Yet she still guards a small sanctuary in her heart, reserved for the person she treasures most."
     },
     {
-      "id": "tsukinaga-motomu",
-      "name": "月永求",
-      "image": "assets/img/characters/support/tsukinaga-motomu.jpg",
+      "id": "taki-noboru",
+      "name": "泷升",
+      "image": "assets/img/characters/support/taki-noboru.jpg",
       "group": "support",
-      "description": "久美子在高二结识的后辈，低音提琴手。性情孤僻让他人难以接近，只有在面对绿辉学姐时才会显现出温顺的一面。面对自己敬慕的学姐即将毕业的事实，他不得不意识到需要去直视此前不肯回忆的过去。",
-      "imageEn": "assets/img/characters/support/en/tsukinaga-motomu.jpg",
-      "nameEn": "Motomu Tsukinaga",
-      "descriptionEn": "An underclassman Kumiko met in her second year, a double bassist. His aloof nature keeps others at a distance; only around his senior Midori does he show a gentle side. As the senior he admires prepares to graduate, he must finally face the past he long refused to confront."
+      "description": "北宇治高中吹奏乐部顾问，同时也兼任着几个班的音乐老师和班主任。是风度翩翩的森系帅哥，亦是不通人情的“微笑恶魔”。两年前泷的到来让吹奏部焕然一新，而现在，新的挑战摆在了他和部员们的面前。",
+      "imageEn": "assets/img/characters/support/en/taki-noboru.jpg",
+      "nameEn": "Noboru Taki",
+      "descriptionEn": "Advisor to the Kitauji High School Concert Band, who also serves as music teacher and homeroom teacher to several classes. A dashing, effortlessly natural heartthrob—and, at the same time, a \"Smiling Devil\" who makes no concessions to human sentiment. Taki's arrival two years ago transformed the band completely, and now a new challenge stands before him and his members."
+    },
+    {
+      "id": "matsumoto-michie",
+      "name": "松本美知惠",
+      "image": "assets/img/characters/support/matsumoto-michie.jpg",
+      "group": "support",
+      "description": "北宇治高中吹奏乐部副顾问，同时也是久美子从高一到高三的班主任。“军曹老师”的威名之下，却是一颗柔软的心。",
+      "imageEn": "assets/img/characters/support/en/matsumoto-michie.jpg",
+      "nameEn": "Michie Matsumoto",
+      "descriptionEn": "Vice advisor of the Kitauji High School Concert Band, and Kumiko's homeroom teacher from her first year through her third. Beneath the fearsome name of 'Sergeant-sensei' beats a tender heart."
+    },
+    {
+      "id": "inoue-junna",
+      "name": "井上顺菜",
+      "image": "assets/img/characters/support/inoue-junna.jpg",
+      "group": "support",
+      "description": "与久美子同届的打击乐声部声部长，总是与堺万纱子同屏出现。性情直率，有亲和力，深受打击乐声部部员们的爱戴。",
+      "imageEn": "assets/img/characters/support/en/inoue-junna.jpg",
+      "nameEn": "Junna Inoue",
+      "descriptionEn": "Leader of the percussion section, in the same year as Kumiko, always sharing the screen with Masako Sakai. Frank and personable, she is beloved by every member of the percussion section."
+    },
+    {
+      "id": "sakai-masako",
+      "name": "堺万纱子",
+      "image": "assets/img/characters/support/sakai-masako.jpg",
+      "group": "support",
+      "description": "与久美子同届的打击乐声部成员，总是与井上顺菜同屏出现。在线上主持过多届“莫扎特与Emo万岁”的同好交流会，因其渊博的通俗音乐知识和热心肠，引得不少路人入群。",
+      "imageEn": "assets/img/characters/support/en/sakai-masako.jpg",
+      "nameEn": "Sakai Masako",
+      "descriptionEn": "A member of the percussion section, in the same year as Kumiko, always sharing the screen with Junna Inoue. Online, she has hosted many editions of the 'Long Live Mozart and Emo' fan meetup, and her encyclopedic knowledge of popular music—together with her warm heart—has drawn many a passerby into the group."
+    },
+    {
+      "id": "takaku-chieri",
+      "name": "高久智绘里",
+      "image": "assets/img/characters/support/takaku-chieri.jpg",
+      "group": "support",
+      "description": "与久美子同届的单簧管声部成员，吹奏部乐团首席。温和恬静的乖乖女，不知是否是刘海遮住了眼睛所致，实力超群却存在感稀薄。",
+      "imageEn": "assets/img/characters/support/en/takaku-chieri.jpg",
+      "nameEn": "Chieri Takahisa",
+      "descriptionEn": "A member of the clarinet section in Kumiko's year, and the band's concertmaster. A gentle, soft-spoken model student. Perhaps it's the bangs hanging over her eyes—but for all her first-rate skill, her presence is curiously faint."
+    },
+    {
+      "id": "maki",
+      "name": "牧誓",
+      "image": "assets/img/characters/support/maki.jpg",
+      "group": "support",
+      "description": "与久美子同届的萨克斯声部成员，司职中音萨克斯。高一时还是声部里的开心果，到如今已成长为可靠的声部长，除去储藏室里的“大号君”外，还照料着部员社团生活的方方面面。",
+      "imageEn": "assets/img/characters/support/en/maki.jpg",
+      "nameEn": "Chikai Maki",
+      "descriptionEn": "A member of the saxophone section in Kumiko's year, playing alto saxophone. The section's ray of sunshine back in his first year, he has since grown into a dependable section leader–on top of caring for \"Tuba-kun\" in the storage room, he tends to every corner of his fellow members' club lives."
     },
     {
       "id": "sasaki-azusa",
@@ -289,6 +269,26 @@
       "imageEn": "assets/img/characters/support/en/sasaki-azusa.jpg",
       "nameEn": "Azusa Sasaki",
       "descriptionEn": "Kumiko's classmate and good friend from middle school, now president of the Rikka High School Concert Band.\nA prodigiously gifted hard worker, she leads Rikka in defending its marching crown while striding boldly toward her own musical dreams."
+    },
+    {
+      "id": "oumai-akiko",
+      "name": "黄前明子",
+      "image": "assets/img/characters/support/oumai-akiko.jpg",
+      "group": "support",
+      "description": "家庭主妇，久美子坚实的后盾。支持并尊重女儿的决定——大女儿如此，二女儿亦然。",
+      "imageEn": "assets/img/characters/support/en/oumai-akiko.jpg",
+      "nameEn": "Akiko Oumae",
+      "descriptionEn": "A homemaker, and Kumiko's staunchest supporter. She supports and respects her daughters' decisions—true for her elder daughter, and just as true for her younger."
+    },
+    {
+      "id": "kumiko-father",
+      "name": "黄前健太郎",
+      "image": "assets/img/characters/support/kumiko-father.jpg",
+      "group": "support",
+      "description": "公司职员，对即将面临升学的久美子接过部长职务一事颇有微词，总是在餐桌上与女儿话锋相对。",
+      "imageEn": "assets/img/characters/support/en/kumiko-father.jpg",
+      "nameEn": "Kentarou Oumae",
+      "descriptionEn": "A company employee who has reservations about Kumiko taking on the role of band president as she prepares for the next stage of her education. The two often find themselves at odds across the dinner table."
     }
   ]
 }
