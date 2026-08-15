@@ -890,18 +890,35 @@ body.menu-locked { overflow: hidden; }
 [data-theme="light"] .gc-viewport::after { opacity: 0; }
 .gc-track { position: relative; width: 100%; aspect-ratio: 16 / 9; }
 
-/* 幻灯片：方向性「翻谱」过渡（track[data-dir] 决定候场方向，JS 给退场页加 .gc-out，650ms 后移除） */
+/* 幻灯片：复合渐变过渡
+   新图「对焦进入」：模糊 10px→0 + 微缩放 1.06→1 + 亮度 0.9→1 + 淡入（0.9s）
+   旧图「失焦退场」：模糊 0→8px + 微缩放 1→1.04 + 亮度 1→0.85 + 淡出（0.9s）
+   两层叠加形成纵深对焦感；Ken Burns 呼吸动画继续作用于 img，互不冲突 */
 .gc-slide {
   position: absolute; inset: 0;
   opacity: 0;
-  transform: translateX(28px) scale(1.03);
-  transition: opacity 0.5s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
+  will-change: opacity, transform, filter;
 }
-.gc-track[data-dir="prev"] .gc-slide { transform: translateX(-28px) scale(1.03); }
-.gc-slide.active { opacity: 1; transform: translateX(0) scale(1); z-index: 2; pointer-events: auto; }
-.gc-slide.gc-out { opacity: 0; transform: translateX(-18px) scale(1.01); z-index: 1; }
-.gc-track[data-dir="prev"] .gc-slide.gc-out { transform: translateX(18px) scale(1.01); }
+.gc-slide.active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
+  animation: gcFadeIn 0.9s ease-out both;
+}
+.gc-slide.gc-out {
+  z-index: 1;
+  animation: gcFadeOut 0.9s ease-in both;
+}
+@keyframes gcFadeIn {
+  0%   { opacity: 0; transform: scale(1.06); filter: blur(10px) brightness(0.9); }
+  60%  { opacity: 1; transform: scale(1.01); filter: blur(2px) brightness(0.98); }
+  100% { opacity: 1; transform: scale(1);    filter: blur(0) brightness(1); }
+}
+@keyframes gcFadeOut {
+  0%   { opacity: 1; transform: scale(1);    filter: blur(0) brightness(1); }
+  100% { opacity: 0; transform: scale(1.04); filter: blur(8px) brightness(0.85); }
+}
 
 /* 图片：默认可见（加载完成淡入；即使 .loaded 延迟/失败也不留空白） */
 .gc-slide img {
@@ -1337,7 +1354,7 @@ body.menu-locked { overflow: hidden; }
 
 /* 真由悬念卡 */
 .char-card.mystery { border: 2px dashed rgba(30,111,186,0.3); }
-.char-card.mystery .c-photo img { filter: brightness(0.72) saturate(0.82); }
+/* 立绘与其他角色保持一致，不做压暗（去神秘滤镜）；悬念感保留在虚线框与名字上 */
 .char-card.mystery .c-name { font-family: var(--font-en); }
 .mystery-tag {
   display: block;
@@ -1408,7 +1425,7 @@ body.menu-locked { overflow: hidden; }
 .core-role { display: block; font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 6px; }
 .core-name { font-size: 16px; font-weight: 700; color: var(--ink); }
 
-.credit-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.credit-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .credit-title { display: flex; align-items: baseline; gap: 12px; }
 .credit-title .en { font-family: var(--font-en); font-weight: 700; font-size: 16px; color: var(--blue); }
 .credit-title .zh { font-size: 12px; color: var(--slate); }

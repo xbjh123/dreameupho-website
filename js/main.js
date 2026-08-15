@@ -448,15 +448,13 @@
   function goGallery(i, dir) {
     if (!galleryCount) return;
     var n = (i + galleryCount) % galleryCount;
-    var track = document.getElementById("gcTrack");
-    if (track) track.setAttribute("data-dir", dir === -1 ? "prev" : "next");
     var slides = document.querySelectorAll("#gcTrack .gc-slide");
     if (n !== galleryIndex && slides[galleryIndex]) {
-      slides[galleryIndex].classList.add("gc-out");   // 旧幻灯片按方向退场，动画结束后清类
+      slides[galleryIndex].classList.add("gc-out");   // 旧幻灯片淡出退场，动画结束后清类
       if (gcOutTimer) clearTimeout(gcOutTimer);
       gcOutTimer = setTimeout(function () {
         document.querySelectorAll("#gcTrack .gc-slide.gc-out").forEach(function (s) { s.classList.remove("gc-out"); });
-      }, 650);
+      }, 950);
     }
     galleryIndex = n;
     slides.forEach(function (s, k) { s.classList.toggle("active", k === n); });

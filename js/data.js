@@ -103,16 +103,19 @@
   var news = [];
 
   /* ---------- 游戏画面轮播（按语言显示对应语言版本画面） ---------- */
+  /* 中文序列 [01,04,11,06,02] ↔ 英文序列 [13,08,09,06,12] 一一对应同一画面
+     （01↔13 教室对话 / 04↔08 教室秀一 / 11↔09 咖啡厅丽奈 / 06 both 音乐厅 / 02↔12 主菜单）
+     06 为 both，置于两序列第 4 位交叉点之后，保证两语言过滤后都在第 4 位 */
   var gallery = [
     { img: "assets/img/gallery/gallery-01.webp", lang: "zh" },
-    { img: "assets/img/gallery/gallery-02.webp", lang: "zh" },
-    { img: "assets/img/gallery/gallery-06.webp", lang: "both" },
     { img: "assets/img/gallery/gallery-04.webp", lang: "zh" },
     { img: "assets/img/gallery/gallery-11.webp", lang: "zh" },
-    { img: "assets/img/gallery/gallery-12.webp", lang: "en" },
+    { img: "assets/img/gallery/gallery-13.webp", lang: "en" },
     { img: "assets/img/gallery/gallery-08.webp", lang: "en" },
     { img: "assets/img/gallery/gallery-09.webp", lang: "en" },
-    { img: "assets/img/gallery/gallery-13.webp", lang: "en" }
+    { img: "assets/img/gallery/gallery-06.webp", lang: "both" },
+    { img: "assets/img/gallery/gallery-02.webp", lang: "zh" },
+    { img: "assets/img/gallery/gallery-12.webp", lang: "en" }
   ];
 
   /* ---------- 正文双语（与 data/i18n.json 同构） ---------- */
@@ -240,14 +243,14 @@
       { role: "Project Manager", roleZh: "策划", name: "WG华", note: "♬" }
     ],
     groups: [
+      { en: "Voice Acting", zh: "配音", list: [
+        ["Voice Director", "配音导演", "予薇Werin"],
+        ["Voice Cast", "配音演员", "予薇Werin、绵绵雪芙蕾Candy、花君困、希夜_lily桑、Sakura樱酱、宫羽铃奈、苏以沫、墨白、言名海"]
+      ] },
       { en: "Scenario", zh: "剧本", list: [
         ["Lead Author", "剧本策划", "FoffeR、赛博吟游诗人42"],
         ["Script Writer", "编剧", "FoffeR、SakaHaya、崎岖山翁、梳风、皮卡丘不是竹鼠、陶守谦、芷璃破碎、V、Sword"],
         ["Consultant", "顾问（文化背景与市场）", "再睡五分钟、悠久风、WonderKindom、MT德意松、当代闲人、AFlutter"]
-      ] },
-      { en: "Voice Acting", zh: "配音", list: [
-        ["Voice Director", "配音导演", "予薇Werin"],
-        ["Voice Cast", "配音演员", "予薇Werin、绵绵雪芙蕾Candy、花君困、希夜_lily桑、Sakura樱酱、宫羽铃奈、苏以沫、墨白、言名海"]
       ] },
       { en: "Art", zh: "美术", list: [
         ["2D Art", "二维美术", "牧野双实、绝赞双厨狂悲制作人、镜月、不笑憮、画鸽毛仙、摆烂画画人寻缘、Hasema、夏樱、盘常、洛桤Lochi、不知名魔法师、未来降雨十万年、深海西兰花、Acesul、萨摩耶、苏昂、是tytyty、SakaHaya、赛博吟游诗人42、ひびつつz、玉面狼、琼林也、燰薪、噜啦嘞、赵雨眠、啓keisuke、優花雫、丸"],
